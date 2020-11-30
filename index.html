@@ -19,7 +19,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./style.css">
 
-  <title>ToDo</title>
+  <title>To Do</title>
 </head>
 
 <body>
@@ -27,15 +27,15 @@
 
 <!-- Start Top Bar -->
 
-    <div class="row bg-primary text-white py-3 mt-3 mx-1 rounded">
+    <div class="row bg-primary text-white py-3 mt-3 mx-auto rounded">
       <div class="col">
-        <p class="mt-2 mb-1">Victoria's Life Repo</p>
+        <h3 class="mt-2 mb-1 pl-3">Victoria's To Do List:</h3>
       </div>
       <div class="col">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Add task..">
+        <div class="input-group d-flex justify-content-end">
+          <input type="text" class="bg-dark text-white border-0 rounded pl-3" placeholder="Add task..">
           <div class="input-group-append">
-            <span class="input-group-text bg-success" id="inputGroup-sizing-default">+</span>
+            <span class="input-group-text bg-success border-0 rounded text-white" id="inputGroup-sizing-default">+</span>
           </div>
         </div>
       </div>
@@ -44,925 +44,124 @@
 <!-- End of Top Bar -->
 
 <!-- Start Task Header Bar -->
-    <div class="row mx-1 text-center">
+    <div class="row pt-3 text-center bg-dark text-white mx-auto">
 
-      <div class="col-sm">
+      <div class="col-1 ml-n2">
         <p><b>Type</b></p>
       </div>
 
-      <div class="col">
+      <div class="col-2">
         <p><b>Task/Description</b></p>
       </div>
 
-      <div class="col">
-        <p><b>Assigned To</b></p>
+      <div class="col-1">
+        <p><b>Assigned</b></p>
       </div>
 
-      <div class="col">
+      <div class="col-2">
         <p><b>Priority</b></p>
       </div>
 
-      <div class="col">
+      <div class="col-2">
         <p><b>Status</b></p>
       </div>
 
-      <div class="col">
+      <div class="col-3">
         <p><b>Due Date</b></p>
       </div>
 
-      <div class="col">
+      <div class="col-1 ml-2">
         <p><b>Delete</b></p>
       </div>
       
     </div>
 <!-- End Task Header Bar -->
-<!-- Section 1 -->
-<section>
-<div class="row mx-auto text-center">
 
-  <!-- Type -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">Work</option>
-      <option class="bg-primary">Home</option>
-      <option class="bg-primary">Leisure</option>
-      <option class="bg-primary">Other</option>
-    </select>
-  </div>
-
-  <!-- Task/Description -->
-  <div class="col">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control">
-    </div>
-  </div>
-
-  <!-- Assigned to -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option value="victoria">Victoria</option>
-      <option value="dani">Dani</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
-
-  <!-- Priority -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-success">Low</option>
-      <option class="bg-warning">Medium</option>
-      <option class="bg-danger">High</option>
-    </select>
-  </div>
-
-  <!-- Status -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-danger">Not Started</option>
-      <option class="bg-warning">In Progress</option>
-      <option class="bg-success">Completed</option>
-    </select>
-  </div>
-
-  <!-- Due Date -->
-  <div class="col">
-    <div class="btn-group" role="group" type="button">
-      <select class="selectpicker" data-width="fit" name="DOBDay">
-        <option>Day</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBMonth">
-        <option>Month</option>
-        <option value="January">01</option>
-        <option value="Febuary">02</option>
-        <option value="March">03</option>
-        <option value="April">04</option>
-        <option value="May">05</option>
-        <option value="June">06</option>
-        <option value="July">07</option>
-        <option value="August">08</option>
-        <option value="September">09</option>
-        <option value="October">10</option>
-        <option value="November">11</option>
-        <option value="December">12</option>
-
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBYear">
-        <option>Year</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-        <option value="2010">2010</option>
-        <option value="2009">2009</option>
-        <option value="2008">2008</option>
-        <option value="2007">2007</option>
-        <option value="2006">2006</option>
-        <option value="2005">2005</option>
-        <option value="2004">2004</option>
-        <option value="2003">2003</option>
-        <option value="2002">2002</option>
-        <option value="2001">2001</option>
-        <option value="2000">2000</option>
-        <option value="1999">1999</option>
-        <option value="1998">1998</option>
-        <option value="1997">1997</option>
-        <option value="1996">1996</option>
-        <option value="1995">1995</option>
-        <option value="1994">1994</option>
-        <option value="1993">1993</option>
-        <option value="1992">1992</option>
-        <option value="1991">1991</option>
-        <option value="1990">1990</option>
-        <option value="1989">1989</option>
-        <option value="1988">1988</option>
-        <option value="1987">1987</option>
-        <option value="1986">1986</option>
-        <option value="1985">1985</option>
-        <option value="1984">1984</option>
-        <option value="1983">1983</option>
-        <option value="1982">1982</option>
-        <option value="1981">1981</option>
-        <option value="1980">1980</option>
-        <option value="1979">1979</option>
-        <option value="1978">1978</option>
-        <option value="1977">1977</option>
-        <option value="1976">1976</option>
-        <option value="1975">1975</option>
-        <option value="1974">1974</option>
-        <option value="1973">1973</option>
-        <option value="1972">1972</option>
-        <option value="1971">1971</option>
-        <option value="1970">1970</option>
-        <option value="1969">1969</option>
-        <option value="1968">1968</option>
-        <option value="1967">1967</option>
-        <option value="1966">1966</option>
-        <option value="1965">1965</option>
-        <option value="1964">1964</option>
-        <option value="1963">1963</option>
-        <option value="1962">1962</option>
-        <option value="1961">1961</option>
-        <option value="1960">1960</option>
-        <option value="1959">1959</option>
-        <option value="1958">1958</option>
-        <option value="1957">1957</option>
-        <option value="1956">1956</option>
-        <option value="1955">1955</option>
-        <option value="1954">1954</option>
-        <option value="1953">1953</option>
-        <option value="1952">1952</option>
-        <option value="1951">1951</option>
-        <option value="1950">1950</option>
-        <option value="1949">1949</option>
-        <option value="1948">1948</option>
-        <option value="1947">1947</option>
-        <option value="1946">1946</option>
-        <option value="1945">1945</option>
-        <option value="1944">1944</option>
-        <option value="1943">1943</option>
-        <option value="1942">1942</option>
-        <option value="1941">1941</option>
-        <option value="1940">1940</option>
-        <option value="1939">1939</option>
-        <option value="1938">1938</option>
-        <option value="1937">1937</option>
-        <option value="1936">1936</option>
-        <option value="1935">1935</option>
-        <option value="1934">1934</option>
-        <option value="1933">1933</option>
-        <option value="1932">1932</option>
-        <option value="1931">1931</option>
-        <option value="1930">1930</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Delete -->
-  <div class="col">
-    <p class="text-center">🗑</p>
-  </div>
-
-</div>
-
-<!-- End Task 1 -->
-</section>
-
-<!-- Section 2 -->
-<section>
 <!-- Start Task 1 -->
-<div class="row mx-auto text-center">
-
-  <!-- Type -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">Work</option>
-      <option class="bg-primary">Home</option>
-      <option class="bg-primary">Leisure</option>
-      <option class="bg-primary">Other</option>
-    </select>
-  </div>
-
-  <!-- Task/Description -->
-  <div class="col">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control">
-    </div>
-  </div>
-
-  <!-- Assigned to -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option value="victoria">Victoria</option>
-      <option value="dani">Dani</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
-
-  <!-- Priority -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-success">Low</option>
-      <option class="bg-warning">Medium</option>
-      <option class="bg-danger">High</option>
-    </select>
-  </div>
-
-  <!-- Status -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-danger">Not Started</option>
-      <option class="bg-warning">In Progress</option>
-      <option class="bg-success">Completed</option>
-    </select>
-  </div>
-
-  <!-- Due Date -->
-  <div class="col">
-    <div class="btn-group" role="group" type="button">
-      <select class="selectpicker" data-width="fit" name="DOBDay">
-        <option>Day</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBMonth">
-        <option>Month</option>
-        <option value="January">01</option>
-        <option value="Febuary">02</option>
-        <option value="March">03</option>
-        <option value="April">04</option>
-        <option value="May">05</option>
-        <option value="June">06</option>
-        <option value="July">07</option>
-        <option value="August">08</option>
-        <option value="September">09</option>
-        <option value="October">10</option>
-        <option value="November">11</option>
-        <option value="December">12</option>
-
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBYear">
-        <option>Year</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-        <option value="2010">2010</option>
-        <option value="2009">2009</option>
-        <option value="2008">2008</option>
-        <option value="2007">2007</option>
-        <option value="2006">2006</option>
-        <option value="2005">2005</option>
-        <option value="2004">2004</option>
-        <option value="2003">2003</option>
-        <option value="2002">2002</option>
-        <option value="2001">2001</option>
-        <option value="2000">2000</option>
-        <option value="1999">1999</option>
-        <option value="1998">1998</option>
-        <option value="1997">1997</option>
-        <option value="1996">1996</option>
-        <option value="1995">1995</option>
-        <option value="1994">1994</option>
-        <option value="1993">1993</option>
-        <option value="1992">1992</option>
-        <option value="1991">1991</option>
-        <option value="1990">1990</option>
-        <option value="1989">1989</option>
-        <option value="1988">1988</option>
-        <option value="1987">1987</option>
-        <option value="1986">1986</option>
-        <option value="1985">1985</option>
-        <option value="1984">1984</option>
-        <option value="1983">1983</option>
-        <option value="1982">1982</option>
-        <option value="1981">1981</option>
-        <option value="1980">1980</option>
-        <option value="1979">1979</option>
-        <option value="1978">1978</option>
-        <option value="1977">1977</option>
-        <option value="1976">1976</option>
-        <option value="1975">1975</option>
-        <option value="1974">1974</option>
-        <option value="1973">1973</option>
-        <option value="1972">1972</option>
-        <option value="1971">1971</option>
-        <option value="1970">1970</option>
-        <option value="1969">1969</option>
-        <option value="1968">1968</option>
-        <option value="1967">1967</option>
-        <option value="1966">1966</option>
-        <option value="1965">1965</option>
-        <option value="1964">1964</option>
-        <option value="1963">1963</option>
-        <option value="1962">1962</option>
-        <option value="1961">1961</option>
-        <option value="1960">1960</option>
-        <option value="1959">1959</option>
-        <option value="1958">1958</option>
-        <option value="1957">1957</option>
-        <option value="1956">1956</option>
-        <option value="1955">1955</option>
-        <option value="1954">1954</option>
-        <option value="1953">1953</option>
-        <option value="1952">1952</option>
-        <option value="1951">1951</option>
-        <option value="1950">1950</option>
-        <option value="1949">1949</option>
-        <option value="1948">1948</option>
-        <option value="1947">1947</option>
-        <option value="1946">1946</option>
-        <option value="1945">1945</option>
-        <option value="1944">1944</option>
-        <option value="1943">1943</option>
-        <option value="1942">1942</option>
-        <option value="1941">1941</option>
-        <option value="1940">1940</option>
-        <option value="1939">1939</option>
-        <option value="1938">1938</option>
-        <option value="1937">1937</option>
-        <option value="1936">1936</option>
-        <option value="1935">1935</option>
-        <option value="1934">1934</option>
-        <option value="1933">1933</option>
-        <option value="1932">1932</option>
-        <option value="1931">1931</option>
-        <option value="1930">1930</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Delete -->
-  <div class="col">
-    <p class="text-center">🗑</p>
-  </div>
-
-</div>
-
-<!-- End Task 1 -->
-</section>
-
-<!-- Section 3 -->
 <section>
-<!-- Start Task 1 -->
 <div class="row mx-auto text-center">
 
   <!-- Type -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">Work</option>
-      <option class="bg-primary">Home</option>
-      <option class="bg-primary">Leisure</option>
-      <option class="bg-primary">Other</option>
-    </select>
+  <div class="col-1 bg-dark">
+    <div class="form-group">
+      <label for="type1">Type</label>
+      <select id="type1" class="selectpicker" data-width="fit">
+        <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None</option>
+        <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work</option>
+        <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home</option>
+        <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">Leisure</option>
+        <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other</option>
+      </select>
+      </div>
   </div>
 
   <!-- Task/Description -->
-  <div class="col">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control">
+  <div class="col-2 bg-dark pdesc">
+    <div class="input-group">
+      <label for="desc1">Task/Description</label>
+      <input id="desc1" type="text" class="form-control bg-dark text-white my-0 rounded">
     </div>
   </div>
 
   <!-- Assigned to -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option value="victoria">Victoria</option>
-      <option value="dani">Dani</option>
-      <option value="other">Other</option>
-    </select>
+  <div class="col-1 bg-dark text-center">
+    <div class="form-group">
+    <label for="assigned1">Assigned</label>
+      <select id="assigned1" class="bg-dark selectpicker text-center" data-width="fit">
+        <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None</option>
+        <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria</option>
+        <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
+      </select>
+    </div>
   </div>
 
   <!-- Priority -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-success">Low</option>
-      <option class="bg-warning">Medium</option>
-      <option class="bg-danger">High</option>
-    </select>
+  <div class="col-2 bg-dark">
+    <div class="form-group">
+      <label for="priority1">Priority</label>
+      <select id="priority1" class="bg-dark selectpicker" data-width="fit">
+        <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None</option>
+        <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
+        <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium</option>
+        <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
+      </select>
+    </div>
   </div>
 
   <!-- Status -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-danger">Not Started</option>
-      <option class="bg-warning">In Progress</option>
-      <option class="bg-success">Completed</option>
-    </select>
+  <div class="col-2 bg-dark">
+    <div class="form-group">
+      <label for="status1">Status</label>
+      <select id="status1" class="bg-dark selectpicker" data-width="fit">
+        <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None</option>
+        <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not Started</option>
+        <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In Progress</option>
+        <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">Completed</option>
+      </select>
+    </div>
   </div>
 
   <!-- Due Date -->
-  <div class="col">
-    <div class="btn-group" role="group" type="button">
-      <select class="selectpicker" data-width="fit" name="DOBDay">
-        <option>Day</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBMonth">
-        <option>Month</option>
-        <option value="January">01</option>
-        <option value="Febuary">02</option>
-        <option value="March">03</option>
-        <option value="April">04</option>
-        <option value="May">05</option>
-        <option value="June">06</option>
-        <option value="July">07</option>
-        <option value="August">08</option>
-        <option value="September">09</option>
-        <option value="October">10</option>
-        <option value="November">11</option>
-        <option value="December">12</option>
-
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBYear">
-        <option>Year</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-        <option value="2010">2010</option>
-        <option value="2009">2009</option>
-        <option value="2008">2008</option>
-        <option value="2007">2007</option>
-        <option value="2006">2006</option>
-        <option value="2005">2005</option>
-        <option value="2004">2004</option>
-        <option value="2003">2003</option>
-        <option value="2002">2002</option>
-        <option value="2001">2001</option>
-        <option value="2000">2000</option>
-        <option value="1999">1999</option>
-        <option value="1998">1998</option>
-        <option value="1997">1997</option>
-        <option value="1996">1996</option>
-        <option value="1995">1995</option>
-        <option value="1994">1994</option>
-        <option value="1993">1993</option>
-        <option value="1992">1992</option>
-        <option value="1991">1991</option>
-        <option value="1990">1990</option>
-        <option value="1989">1989</option>
-        <option value="1988">1988</option>
-        <option value="1987">1987</option>
-        <option value="1986">1986</option>
-        <option value="1985">1985</option>
-        <option value="1984">1984</option>
-        <option value="1983">1983</option>
-        <option value="1982">1982</option>
-        <option value="1981">1981</option>
-        <option value="1980">1980</option>
-        <option value="1979">1979</option>
-        <option value="1978">1978</option>
-        <option value="1977">1977</option>
-        <option value="1976">1976</option>
-        <option value="1975">1975</option>
-        <option value="1974">1974</option>
-        <option value="1973">1973</option>
-        <option value="1972">1972</option>
-        <option value="1971">1971</option>
-        <option value="1970">1970</option>
-        <option value="1969">1969</option>
-        <option value="1968">1968</option>
-        <option value="1967">1967</option>
-        <option value="1966">1966</option>
-        <option value="1965">1965</option>
-        <option value="1964">1964</option>
-        <option value="1963">1963</option>
-        <option value="1962">1962</option>
-        <option value="1961">1961</option>
-        <option value="1960">1960</option>
-        <option value="1959">1959</option>
-        <option value="1958">1958</option>
-        <option value="1957">1957</option>
-        <option value="1956">1956</option>
-        <option value="1955">1955</option>
-        <option value="1954">1954</option>
-        <option value="1953">1953</option>
-        <option value="1952">1952</option>
-        <option value="1951">1951</option>
-        <option value="1950">1950</option>
-        <option value="1949">1949</option>
-        <option value="1948">1948</option>
-        <option value="1947">1947</option>
-        <option value="1946">1946</option>
-        <option value="1945">1945</option>
-        <option value="1944">1944</option>
-        <option value="1943">1943</option>
-        <option value="1942">1942</option>
-        <option value="1941">1941</option>
-        <option value="1940">1940</option>
-        <option value="1939">1939</option>
-        <option value="1938">1938</option>
-        <option value="1937">1937</option>
-        <option value="1936">1936</option>
-        <option value="1935">1935</option>
-        <option value="1934">1934</option>
-        <option value="1933">1933</option>
-        <option value="1932">1932</option>
-        <option value="1931">1931</option>
-        <option value="1930">1930</option>
-      </select>
+  <div class="col-3 bg-dark text-white">
+    <div class="form-group">
+      <label for="date1">Due Date</label>
+      <input id="date1" type="date" class="date bg-dark text-white rounded border-0">
     </div>
   </div>
 
   <!-- Delete -->
-  <div class="col">
-    <p class="text-center">🗑</p>
+  <div class="col-1 bg-dark">
+    <div class="form-group">
+      <label for="delete1">Delete</label>
+      <p id="delete1" class="text-center pt-2">🗑</p>
+    <div class="form-group"></div>
   </div>
 
 </div>
 
-<!-- End Task 1 -->
 </section>
 
-<!-- Section 4 -->
-<section>
-<!-- Start Task 1 -->
-<div class="row mx-auto text-center">
-
-  <!-- Type -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">Work</option>
-      <option class="bg-primary">Home</option>
-      <option class="bg-primary">Leisure</option>
-      <option class="bg-primary">Other</option>
-    </select>
-  </div>
-
-  <!-- Task/Description -->
-  <div class="col">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control">
-    </div>
-  </div>
-
-  <!-- Assigned to -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option value="victoria">Victoria</option>
-      <option value="dani">Dani</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
-
-  <!-- Priority -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-success">Low</option>
-      <option class="bg-warning">Medium</option>
-      <option class="bg-danger">High</option>
-    </select>
-  </div>
-
-  <!-- Status -->
-  <div class="col">
-    <select class="selectpicker" data-width="fit">
-      <option class="bg-primary">None</option>
-      <option class="bg-danger">Not Started</option>
-      <option class="bg-warning">In Progress</option>
-      <option class="bg-success">Completed</option>
-    </select>
-  </div>
-
-  <!-- Due Date -->
-  <div class="col">
-    <div class="btn-group" role="group" type="button">
-      <select class="selectpicker" data-width="fit" name="DOBDay">
-        <option>Day</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBMonth">
-        <option>Month</option>
-        <option value="January">01</option>
-        <option value="Febuary">02</option>
-        <option value="March">03</option>
-        <option value="April">04</option>
-        <option value="May">05</option>
-        <option value="June">06</option>
-        <option value="July">07</option>
-        <option value="August">08</option>
-        <option value="September">09</option>
-        <option value="October">10</option>
-        <option value="November">11</option>
-        <option value="December">12</option>
-
-      </select>
-
-      <select class="selectpicker" data-width="fit" name="DOBYear">
-        <option>Year</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-        <option value="2010">2010</option>
-        <option value="2009">2009</option>
-        <option value="2008">2008</option>
-        <option value="2007">2007</option>
-        <option value="2006">2006</option>
-        <option value="2005">2005</option>
-        <option value="2004">2004</option>
-        <option value="2003">2003</option>
-        <option value="2002">2002</option>
-        <option value="2001">2001</option>
-        <option value="2000">2000</option>
-        <option value="1999">1999</option>
-        <option value="1998">1998</option>
-        <option value="1997">1997</option>
-        <option value="1996">1996</option>
-        <option value="1995">1995</option>
-        <option value="1994">1994</option>
-        <option value="1993">1993</option>
-        <option value="1992">1992</option>
-        <option value="1991">1991</option>
-        <option value="1990">1990</option>
-        <option value="1989">1989</option>
-        <option value="1988">1988</option>
-        <option value="1987">1987</option>
-        <option value="1986">1986</option>
-        <option value="1985">1985</option>
-        <option value="1984">1984</option>
-        <option value="1983">1983</option>
-        <option value="1982">1982</option>
-        <option value="1981">1981</option>
-        <option value="1980">1980</option>
-        <option value="1979">1979</option>
-        <option value="1978">1978</option>
-        <option value="1977">1977</option>
-        <option value="1976">1976</option>
-        <option value="1975">1975</option>
-        <option value="1974">1974</option>
-        <option value="1973">1973</option>
-        <option value="1972">1972</option>
-        <option value="1971">1971</option>
-        <option value="1970">1970</option>
-        <option value="1969">1969</option>
-        <option value="1968">1968</option>
-        <option value="1967">1967</option>
-        <option value="1966">1966</option>
-        <option value="1965">1965</option>
-        <option value="1964">1964</option>
-        <option value="1963">1963</option>
-        <option value="1962">1962</option>
-        <option value="1961">1961</option>
-        <option value="1960">1960</option>
-        <option value="1959">1959</option>
-        <option value="1958">1958</option>
-        <option value="1957">1957</option>
-        <option value="1956">1956</option>
-        <option value="1955">1955</option>
-        <option value="1954">1954</option>
-        <option value="1953">1953</option>
-        <option value="1952">1952</option>
-        <option value="1951">1951</option>
-        <option value="1950">1950</option>
-        <option value="1949">1949</option>
-        <option value="1948">1948</option>
-        <option value="1947">1947</option>
-        <option value="1946">1946</option>
-        <option value="1945">1945</option>
-        <option value="1944">1944</option>
-        <option value="1943">1943</option>
-        <option value="1942">1942</option>
-        <option value="1941">1941</option>
-        <option value="1940">1940</option>
-        <option value="1939">1939</option>
-        <option value="1938">1938</option>
-        <option value="1937">1937</option>
-        <option value="1936">1936</option>
-        <option value="1935">1935</option>
-        <option value="1934">1934</option>
-        <option value="1933">1933</option>
-        <option value="1932">1932</option>
-        <option value="1931">1931</option>
-        <option value="1930">1930</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Delete -->
-  <div class="col">
-    <p class="text-center">🗑</p>
-  </div>
-
-</div>
-
 <!-- End Task 1 -->
-</section>
-
-
-<!-- Buttons -->
-
-<!-- Type button -->
-<!-- <select type="button" class="btn btn-secondary text-white">
-  <option value="work">Work</option>
-  <option value="home">Home</option>
-  <option value="leisure">Leisure</option>
-  <option value="other">Other</option>
-</select> -->
-
-
-<!-- Priority Button -->
-<!-- <select class="selectpicker">
-  <option class="bg-primary">None</option>
-  <option class="bg-success">Low</option>
-  <option class="bg-warning">Medium</option>
-  <option class="bg-danger">High</option>
-</select> -->
-
-  
-<!-- Status Button -->
-<!-- <select class="selectpicker">
-  <option class="bg-primary">None</option>
-  <option class="bg-danger">Not Started</option>
-  <option class="bg-warning">In Progress</option>
-  <option class="bg-success">Completed</option>
-</select> -->
-
-
-<!-- Assingee Button -->
-<!-- <select type="button" class="btn btn-secondary text-white">
-  <option value="victoria">Victoria</option>
-  <option value="dani">Dani</option>
-  <option value="other">Other</option>
-</select> -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
