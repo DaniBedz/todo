@@ -6,6 +6,52 @@ html {
   background-color: rgb(188, 188, 188) !important;
 }
 
-.date-picker {
-  width: 3rem;
+.dropdown-toggle {
+  color: RGBA(0, 0, 0, 0) !important;
+}
+
+.btn-light {
+  background: transparent !important;
+  border: 0px solid #000 !important;
+}
+
+.btn:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.bootstrap-select > .dropdown-toggle:focus {
+  outline: none !important;
+}
+
+.pdesc {
+  padding-top: 0.38rem !important;
+}
+
+.date {
+  margin-top: 0.6rem !important;
+}
+
+button {
+  padding: 0 !important;
+  padding-top: 5px !important;
+}
+
+ul.dropdown-menu > li {
+  text-align: center;
+}
+
+.dropdown-menu {
+  background-color: rgb(52, 58, 64);
+}
+
+.btn-victoria {
+  background-color: violet;
+}
+.btn-dani {
+  background-color: skyblue;
+}
+
+label {
+  display: none;
 }
