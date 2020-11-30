@@ -1,0 +1,11 @@
+html {
+  background-color: rgb(188, 188, 188) !important;
+}
+
+.bg-grey {
+  background-color: rgb(188, 188, 188) !important;
+}
+
+.date-picker {
+  width: 3rem;
+}
