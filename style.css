@@ -1,13 +1,22 @@
+:root {
+  --grey: #484848;
+  --darkgrey: #343a40;
+}
+
 html {
-  background-color: rgb(188, 188, 188) !important;
+  background-color: var(--grey);
+}
+
+body {
+  background-color: var(--darkgrey);
 }
 
 .bg-grey {
-  background-color: rgb(188, 188, 188) !important;
+  background-color: var(--grey);
 }
 
 .task-list-bg {
-  background-color: rgb(52, 58, 64);
+  background-color: var(--darkgrey);
 }
 
 .dropdown-toggle {
@@ -38,7 +47,10 @@ html {
 
 button {
   padding: 0 !important;
-  padding-top: 5px !important;
+}
+*/ .btn-pad {
+  display: block;
+  padding-top: 50px !important;
 }
 
 ul.dropdown-menu > li {
@@ -46,7 +58,7 @@ ul.dropdown-menu > li {
 }
 
 .dropdown-menu {
-  background-color: rgb(52, 58, 64);
+  background-color: var(--darkgrey);
 }
 
 .btn-victoria {
@@ -63,16 +75,10 @@ label {
 .container * {
   box-sizing: border-box;
   font-size: 15px;
-  word-wrap: break-word;;
+  word-wrap: break-word;
 }
-
-.container-fluid {
-  padding: 20px;
-}
-
 
 .card-body {
-  /* background-color: rgb(52, 58, 64); */
   background-color: rgba(0, 0, 0, 0);
   left: 5px;
   padding-left: 10px;
@@ -81,21 +87,14 @@ label {
 
 .card {
   background-color: RGBA(0, 0, 0, 0);
-  height: 3.5rem;
-}
-
-.add-task { 
-  display: inline-block !important;
-  height: 100% !important;
-}
-
-.task-width {
-  width: 30vw;
+  height: 100%;
+  border-left: 1px solid rgb(188, 188, 188) !important;
+  border-right: 1px solid rgb(188, 188, 188) !important;
+  border-top: 0px solid rgb(188, 188, 188) !important;
+  border-bottom: 0px solid rgb(188, 188, 188) !important;
 }
 
 .plus {
-  margin-left: -1.9rem !important;
-  margin-top: 50px !important;
   padding-top: 0.6rem !important;
   padding-bottom: 0.6rem !important;
 }
@@ -106,8 +105,18 @@ label {
 }
 
 .top-rounded {
-  border-top-left-radius: .25rem !important;
-  border-top-right-radius: .25rem !important;
+  border-top-left-radius: 0.25rem !important;
+  border-top-right-radius: 0.25rem !important;
+}
+
+.left-rounded {
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+}
+
+.right-rounded {
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
 }
 
 .no-gutters {
@@ -117,4 +126,15 @@ label {
   padding-left: 0;
 }
 
+.task-width {
+  width: 100vw;
+}
 
+.row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.input-mt {
+  margin-top: -0.35rem !important;
+}
