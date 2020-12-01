@@ -23,6 +23,17 @@ body {
   color: RGBA(0, 0, 0, 0) !important;
 }
 
+.btn-victoria {
+  background-color: violet;
+}
+.btn-dani {
+  background-color: skyblue;
+}
+
+button {
+  padding: 0 !important;
+}
+
 .btn-light {
   background: transparent !important;
   border: 0px solid #000 !important;
@@ -37,22 +48,6 @@ body {
   outline: none !important;
 }
 
-.pdesc {
-  padding-top: 0.38rem !important;
-}
-
-.date {
-  margin-top: 0.5rem !important;
-}
-
-button {
-  padding: 0 !important;
-}
-*/ .btn-pad {
-  display: block;
-  padding-top: 50px !important;
-}
-
 ul.dropdown-menu > li {
   text-align: center;
 }
@@ -61,11 +56,12 @@ ul.dropdown-menu > li {
   background-color: var(--darkgrey);
 }
 
-.btn-victoria {
-  background-color: violet;
+.pdesc {
+  padding-top: 0.38rem !important;
 }
-.btn-dani {
-  background-color: skyblue;
+
+.date {
+  margin-top: 0.5rem !important;
 }
 
 label {
@@ -78,30 +74,14 @@ label {
   word-wrap: break-word;
 }
 
-.card-body {
-  background-color: rgba(0, 0, 0, 0);
-  left: 5px;
-  padding-left: 10px;
-  bottom: 37px;
-}
-
 .card {
-  background-color: RGBA(0, 0, 0, 0);
-  height: 100%;
-  border-left: 1px solid rgb(188, 188, 188) !important;
-  border-right: 1px solid rgb(188, 188, 188) !important;
-  border-top: 0px solid rgb(188, 188, 188) !important;
-  border-bottom: 0px solid rgb(188, 188, 188) !important;
+  border-top: 0px;
+  border-bottom: 0px;
 }
 
 .plus {
   padding-top: 0.6rem !important;
   padding-bottom: 0.6rem !important;
-}
-
-.row {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .top-rounded {
@@ -117,13 +97,6 @@ label {
 .right-rounded {
   border-top-right-radius: 0.25rem !important;
   border-bottom-right-radius: 0.25rem !important;
-}
-
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-  padding-right: 0;
-  padding-left: 0;
 }
 
 .task-width {

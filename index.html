@@ -30,549 +30,546 @@
 
     <div class="bg-dark rounded m-0">
 
-    <div class="row bg-primary text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
-      <div class="col-7">
-        <h4 class="mt-2 mb-1 pl-3 w-100 d-none d-md-block"">Victoria and Dani's To Do List:</h4>
-      </div>
-      <div class="col-sm-12 col-md-5">
-        <div class="input-group d-flex flex-nowrap">
-          <input type="text" class="bg-dark text-white border-0 pl-3 py-2 task-width left-rounded" placeholder="Add task..">
-          <div class="bg-success border-0 text-white px-3 plus right-rounded">+</div>
+      <div class="row bg-primary text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
+        <div class="col-7">
+          <h4 class="mt-2 mb-1 pl-3 w-100 d-none d-md-block"">Victoria and Dani's To Do List:</h4>
+        </div>
+        <div class="col-sm-12 col-md-5">
+          <div class="input-group d-flex flex-nowrap">
+            <input type="text" class="bg-dark text-white border-0 pl-3 py-2 task-width left-rounded" placeholder="Add task..">
+            <div class="bg-success border-0 text-white px-3 plus right-rounded">+</div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- End of Top Bar -->
+      <!-- End of Top Bar -->
 
-    <!-- Start Task Header Bar -->
-    <div class="row pt-3 text-center bg-dark text-white mx-auto mb-n3">
+      <!-- Start Task Header Bar -->
+      <div class="row pt-3 text-center bg-dark text-white mx-auto mb-n3">
 
-      <div class="col-1 container">
-          <p><b>Type </b></p>
+        <div class="col-1 container">
+            <p><b>Type </b></p>
+        </div>
+
+        <div class="col-2 container">
+            <p><b>Task </b></p>
+        </div>
+
+        <div class="col-2 container">
+            <p><b>Assignee</b></p>
+        </div>
+
+        <div class="col-2 container">
+            <p><b>Priority </b></p>
+        </div>
+
+        <div class="col-2 container">
+            <p><b>Status </b></p>
+        </div>
+
+        <div class="col-2 container">
+            <p><b>Due Date </b></p>
+        </div>
+
+        <div class="col-1 container">
+            <p><b>X</b></p>
+        </div>
+        
       </div>
+      <!-- End Task Header Bar -->
 
-      <div class="col-2 container">
-          <p><b>Task </b></p>
-      </div>
-
-      <div class="col-2 container">
-          <p><b>Assignee</b></p>
-      </div>
-
-      <div class="col-2 container">
-          <p><b>Priority </b></p>
-      </div>
-
-      <div class="col-2 container">
-          <p><b>Status </b></p>
-      </div>
-
-      <div class="col-2 container">
-          <p><b>Due Date </b></p>
-      </div>
-
-      <div class="col-1 container">
-          <p><b>X</b></p>
-      </div>
+      <!-- Start Task 1 -->
+      <div class="card row mx-auto text-center">
+        <div class="col">
+          <div class="row bg-dark mx-n3 pt-3">
       
-    </div>
-    <!-- End Task Header Bar -->
-
-    <!-- Start Task 1 -->
-    <div class="card row mx-auto text-center">
-      <div class="col">
-        <div class="row bg-dark mx-n3 pt-3">
-    
-          <!-- Type -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="type1">Type</label>
-              <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
-                </option>
-                <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
-                </option>
-                <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
-                  Leisure</option>
-                <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
-                </option>
-              </select>
+            <!-- Type -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="type1">Type</label>
+                <select id="type1" class="selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
+                  </option>
+                  <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
+                  </option>
+                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
+                    Leisure</option>
+                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Task/Description -->
-          <div class="col-2 bg-dark pdesc">
-            <div class="input-group">
-              <label for="desc1">Task/Description</label>
-              <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+          
+            <!-- Task/Description -->
+            <div class="col-2 bg-dark pdesc">
+              <div class="input-group">
+                <label for="desc1">Task/Description</label>
+                <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+              </div>
             </div>
-          </div>
-        
-          <!-- Assigned to -->
-          <div class="col-2 bg-dark text-center">
-            <div class="form-group">
-              <label for="assigned1">Assigned</label>
-              <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
-                </option>
-                <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
-              </select>
+          
+            <!-- Assigned to -->
+            <div class="col-2 bg-dark text-center">
+              <div class="form-group">
+                <label for="assigned1">Assigned</label>
+                <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
+                  </option>
+                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Priority -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="priority1">Priority</label>
-              <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
-                <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
-                </option>
-                <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
-              </select>
+          
+            <!-- Priority -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="priority1">Priority</label>
+                <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
+                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Status -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="status1">Status</label>
-              <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
-                  Started</option>
-                <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
-                  Progress</option>
-                <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
-                  Completed</option>
-              </select>
+          
+            <!-- Status -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="status1">Status</label>
+                <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
+                    Started</option>
+                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
+                    Progress</option>
+                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
+                    Completed</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Due Date -->
-          <div class="col-2 bg-dark text-white">
-            <div class="form-group mt-n1">
-              <label for="date1">Due Date</label>
-              <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+          
+            <!-- Due Date -->
+            <div class="col-2 bg-dark text-white">
+              <div class="form-group mt-n1">
+                <label for="date1">Due Date</label>
+                <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+              </div>
             </div>
-          </div>
-        
-          <!-- Delete -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="delete1">Delete</label>
-              <p id="delete1" class="text-center pt-1">🗑</p>
+          
+            <!-- Delete -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="delete1">Delete</label>
+                <p id="delete1" class="text-center pt-1">🗑</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Task 1 -->
+      <!-- End Task 1 -->
 
-    <!-- Start Task 2 -->
-    <div class="card row mx-auto text-center">
-      <div class="col">
-        <div class="row bg-dark mx-n3 pt-3">
-    
-          <!-- Type -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="type1">Type</label>
-              <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
-                </option>
-                <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
-                </option>
-                <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
-                  Leisure</option>
-                <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
-                </option>
-              </select>
+      <!-- Start Task 2 -->
+      <div class="card row mx-auto text-center">
+        <div class="col">
+          <div class="row bg-dark mx-n3 pt-3">
+      
+            <!-- Type -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="type1">Type</label>
+                <select id="type1" class="selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
+                  </option>
+                  <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
+                  </option>
+                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
+                    Leisure</option>
+                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Task/Description -->
-          <div class="col-2 bg-dark pdesc">
-            <div class="input-group">
-              <label for="desc1">Task/Description</label>
-              <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+          
+            <!-- Task/Description -->
+            <div class="col-2 bg-dark pdesc">
+              <div class="input-group">
+                <label for="desc1">Task/Description</label>
+                <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+              </div>
             </div>
-          </div>
-        
-          <!-- Assigned to -->
-          <div class="col-2 bg-dark text-center">
-            <div class="form-group">
-              <label for="assigned1">Assigned</label>
-              <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
-                </option>
-                <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
-              </select>
+          
+            <!-- Assigned to -->
+            <div class="col-2 bg-dark text-center">
+              <div class="form-group">
+                <label for="assigned1">Assigned</label>
+                <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
+                  </option>
+                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Priority -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="priority1">Priority</label>
-              <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
-                <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
-                </option>
-                <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
-              </select>
+          
+            <!-- Priority -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="priority1">Priority</label>
+                <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
+                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Status -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="status1">Status</label>
-              <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
-                  Started</option>
-                <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
-                  Progress</option>
-                <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
-                  Completed</option>
-              </select>
+          
+            <!-- Status -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="status1">Status</label>
+                <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
+                    Started</option>
+                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
+                    Progress</option>
+                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
+                    Completed</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Due Date -->
-          <div class="col-2 bg-dark text-white">
-            <div class="form-group mt-n1">
-              <label for="date1">Due Date</label>
-              <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+          
+            <!-- Due Date -->
+            <div class="col-2 bg-dark text-white">
+              <div class="form-group mt-n1">
+                <label for="date1">Due Date</label>
+                <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+              </div>
             </div>
-          </div>
-        
-          <!-- Delete -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="delete1">Delete</label>
-              <p id="delete1" class="text-center pt-1">🗑</p>
+          
+            <!-- Delete -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="delete1">Delete</label>
+                <p id="delete1" class="text-center pt-1">🗑</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Task 2 -->
+      <!-- End Task 2 -->
 
-    <!-- Start Task 3 -->
-    <div class="card row mx-auto text-center">
-      <div class="col">
-        <div class="row bg-dark mx-n3 pt-3">
-    
-          <!-- Type -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="type1">Type</label>
-              <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
-                </option>
-                <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
-                </option>
-                <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
-                  Leisure</option>
-                <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
-                </option>
-              </select>
+      <!-- Start Task 3 -->
+      <div class="card row mx-auto text-center">
+        <div class="col">
+          <div class="row bg-dark mx-n3 pt-3">
+      
+            <!-- Type -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="type1">Type</label>
+                <select id="type1" class="selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
+                  </option>
+                  <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
+                  </option>
+                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
+                    Leisure</option>
+                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Task/Description -->
-          <div class="col-2 bg-dark pdesc">
-            <div class="input-group">
-              <label for="desc1">Task/Description</label>
-              <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+          
+            <!-- Task/Description -->
+            <div class="col-2 bg-dark pdesc">
+              <div class="input-group">
+                <label for="desc1">Task/Description</label>
+                <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+              </div>
             </div>
-          </div>
-        
-          <!-- Assigned to -->
-          <div class="col-2 bg-dark text-center">
-            <div class="form-group">
-              <label for="assigned1">Assigned</label>
-              <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
-                </option>
-                <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
-              </select>
+          
+            <!-- Assigned to -->
+            <div class="col-2 bg-dark text-center">
+              <div class="form-group">
+                <label for="assigned1">Assigned</label>
+                <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
+                  </option>
+                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Priority -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="priority1">Priority</label>
-              <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
-                <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
-                </option>
-                <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
-              </select>
+          
+            <!-- Priority -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="priority1">Priority</label>
+                <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
+                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Status -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="status1">Status</label>
-              <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
-                  Started</option>
-                <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
-                  Progress</option>
-                <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
-                  Completed</option>
-              </select>
+          
+            <!-- Status -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="status1">Status</label>
+                <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
+                    Started</option>
+                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
+                    Progress</option>
+                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
+                    Completed</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Due Date -->
-          <div class="col-2 bg-dark text-white">
-            <div class="form-group mt-n1">
-              <label for="date1">Due Date</label>
-              <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+          
+            <!-- Due Date -->
+            <div class="col-2 bg-dark text-white">
+              <div class="form-group mt-n1">
+                <label for="date1">Due Date</label>
+                <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+              </div>
             </div>
-          </div>
-        
-          <!-- Delete -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="delete1">Delete</label>
-              <p id="delete1" class="text-center pt-1">🗑</p>
+          
+            <!-- Delete -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="delete1">Delete</label>
+                <p id="delete1" class="text-center pt-1">🗑</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Task 3 -->
+      <!-- End Task 3 -->
 
-    <!-- Start Task 4 -->
-    <div class="card row mx-auto text-center">
-      <div class="col">
-        <div class="row bg-dark mx-n3 pt-3">
-    
-          <!-- Type -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="type1">Type</label>
-              <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
-                </option>
-                <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
-                </option>
-                <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
-                  Leisure</option>
-                <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
-                </option>
-              </select>
+      <!-- Start Task 4 -->
+      <div class="card row mx-auto text-center">
+        <div class="col">
+          <div class="row bg-dark mx-n3 pt-3">
+      
+            <!-- Type -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="type1">Type</label>
+                <select id="type1" class="selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
+                  </option>
+                  <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
+                  </option>
+                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
+                    Leisure</option>
+                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Task/Description -->
-          <div class="col-2 bg-dark pdesc">
-            <div class="input-group">
-              <label for="desc1">Task/Description</label>
-              <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+          
+            <!-- Task/Description -->
+            <div class="col-2 bg-dark pdesc">
+              <div class="input-group">
+                <label for="desc1">Task/Description</label>
+                <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+              </div>
             </div>
-          </div>
-        
-          <!-- Assigned to -->
-          <div class="col-2 bg-dark text-center">
-            <div class="form-group">
-              <label for="assigned1">Assigned</label>
-              <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
-                </option>
-                <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
-              </select>
+          
+            <!-- Assigned to -->
+            <div class="col-2 bg-dark text-center">
+              <div class="form-group">
+                <label for="assigned1">Assigned</label>
+                <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
+                  </option>
+                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Priority -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="priority1">Priority</label>
-              <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
-                <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
-                </option>
-                <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
-              </select>
+          
+            <!-- Priority -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="priority1">Priority</label>
+                <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
+                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Status -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="status1">Status</label>
-              <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
-                  Started</option>
-                <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
-                  Progress</option>
-                <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
-                  Completed</option>
-              </select>
+          
+            <!-- Status -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="status1">Status</label>
+                <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
+                    Started</option>
+                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
+                    Progress</option>
+                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
+                    Completed</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Due Date -->
-          <div class="col-2 bg-dark text-white">
-            <div class="form-group mt-n1">
-              <label for="date1">Due Date</label>
-              <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+          
+            <!-- Due Date -->
+            <div class="col-2 bg-dark text-white">
+              <div class="form-group mt-n1">
+                <label for="date1">Due Date</label>
+                <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+              </div>
             </div>
-          </div>
-        
-          <!-- Delete -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="delete1">Delete</label>
-              <p id="delete1" class="text-center pt-1">🗑</p>
+          
+            <!-- Delete -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="delete1">Delete</label>
+                <p id="delete1" class="text-center pt-1">🗑</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Task 4 -->
+      <!-- End Task 4 -->
 
-    <!-- Start Task 5 -->
-    <div class="card row mx-auto text-center">
-      <div class="col">
-        <div class="row bg-dark mx-n3 pt-3">
-    
-          <!-- Type -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="type1">Type</label>
-              <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
-                </option>
-                <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
-                </option>
-                <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
-                  Leisure</option>
-                <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
-                </option>
-              </select>
+      <!-- Start Task 5 -->
+      <div class="card row mx-auto text-center">
+        <div class="col">
+          <div class="row bg-dark mx-n3 pt-3">
+      
+            <!-- Type -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="type1">Type</label>
+                <select id="type1" class="selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark btn-pad" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary'>Work</span>">Work
+                  </option>
+                  <option class="bg-dark" value="home" data-content="<span class='btn btn-outline-primary'>Home</span>">Home
+                  </option>
+                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary'>Leisure</span>">
+                    Leisure</option>
+                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary'>Other</span>">Other
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Task/Description -->
-          <div class="col-2 bg-dark pdesc">
-            <div class="input-group">
-              <label for="desc1">Task/Description</label>
-              <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+          
+            <!-- Task/Description -->
+            <div class="col-2 bg-dark pdesc">
+              <div class="input-group">
+                <label for="desc1">Task/Description</label>
+                <input id="desc1" type="text" class="form-control bg-dark text-white input-mt rounded mr-n2">
+              </div>
             </div>
-          </div>
-        
-          <!-- Assigned to -->
-          <div class="col-2 bg-dark text-center">
-            <div class="form-group">
-              <label for="assigned1">Assigned</label>
-              <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
-                </option>
-                <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
-              </select>
+          
+            <!-- Assigned to -->
+            <div class="col-2 bg-dark text-center">
+              <div class="form-group">
+                <label for="assigned1">Assigned</label>
+                <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria'>Victoria</span>">Victoria
+                  </option>
+                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani'>Dani</span>">Dani</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Priority -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="priority1">Priority</label>
-              <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
-                <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
-                </option>
-                <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
-              </select>
+          
+            <!-- Priority -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="priority1">Priority</label>
+                <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success'>Low</span>">Low</option>
+                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning'>Medium</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger'>High</span>">High</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Status -->
-          <div class="col-2 bg-dark">
-            <div class="form-group">
-              <label for="status1">Status</label>
-              <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
-                </option>
-                <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
-                  Started</option>
-                <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
-                  Progress</option>
-                <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
-                  Completed</option>
-              </select>
+          
+            <!-- Status -->
+            <div class="col-2 bg-dark">
+              <div class="form-group">
+                <label for="status1">Status</label>
+                <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
+                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary'>None</span>">None
+                  </option>
+                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger'>Not Started</span>">Not
+                    Started</option>
+                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning'>In Progress</span>">In
+                    Progress</option>
+                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success'>Completed</span>">
+                    Completed</option>
+                </select>
+              </div>
             </div>
-          </div>
-        
-          <!-- Due Date -->
-          <div class="col-2 bg-dark text-white">
-            <div class="form-group mt-n1">
-              <label for="date1">Due Date</label>
-              <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+          
+            <!-- Due Date -->
+            <div class="col-2 bg-dark text-white">
+              <div class="form-group mt-n1">
+                <label for="date1">Due Date</label>
+                <input id="date1" type="date" class="date bg-light text-center text-secondary rounded border-0 mr-n3" style="width: 150px;">
+              </div>
             </div>
-          </div>
-        
-          <!-- Delete -->
-          <div class="col-1 bg-dark">
-            <div class="form-group">
-              <label for="delete1">Delete</label>
-              <p id="delete1" class="text-center pt-1">🗑</p>
+          
+            <!-- Delete -->
+            <div class="col-1 bg-dark">
+              <div class="form-group">
+                <label for="delete1">Delete</label>
+                <p id="delete1" class="text-center pt-1">🗑</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Task 5 -->
-
-
-
+      <!-- End Task 5 -->
     
+    </div>
   </div>
-</div>
-    <!-- End Main Container -->
+  <!-- End Main Container -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -586,5 +583,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
  
 </body>
-
 </html>
