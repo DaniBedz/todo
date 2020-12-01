@@ -1,6 +1,7 @@
 :root {
   --grey: #484848;
   --darkgrey: #343a40;
+  --blue: #106cfc;
 }
 
 html {
@@ -19,13 +20,10 @@ body {
   background-color: var(--darkgrey);
 }
 
-.dropdown-toggle {
-  color: RGBA(0, 0, 0, 0) !important;
-}
-
 .btn-victoria {
   background-color: violet;
 }
+
 .btn-dani {
   background-color: skyblue;
 }
@@ -36,7 +34,7 @@ button {
 
 .btn-light {
   background: transparent !important;
-  border: 0px solid #000 !important;
+  border: 0px solid #000;
 }
 
 .btn:focus {
@@ -44,28 +42,57 @@ button {
   box-shadow: none !important;
 }
 
-.bootstrap-select > .dropdown-toggle:focus {
-  outline: none !important;
+.btn-status {
+  font-size: 0.8rem;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
 }
 
-ul.dropdown-menu > li {
-  text-align: center;
+.plus {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.input {
+  margin-top: -0.35rem;
+  border: 1px solid #696969;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+label {
+  display: none;
+}
+
+.task-width {
+  width: 100vw;
+}
+
+.row {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .dropdown-menu {
   background-color: var(--darkgrey);
 }
 
+ul.dropdown-menu > li {
+  text-align: center;
+}
+
+.dropdown-toggle {
+  color: RGBA(0, 0, 0, 0) !important;
+}
+
+.bootstrap-select > .dropdown-toggle:focus {
+  outline: none !important;
+}
+
 .pdesc {
-  padding-top: 0.38rem !important;
-}
-
-.date {
-  margin-top: 0.5rem !important;
-}
-
-label {
-  display: none;
+  padding-top: 0.38rem;
 }
 
 .container * {
@@ -79,35 +106,49 @@ label {
   border-bottom: 0px;
 }
 
-.plus {
-  padding-top: 0.6rem !important;
-  padding-bottom: 0.6rem !important;
-}
-
 .top-rounded {
-  border-top-left-radius: 0.25rem !important;
-  border-top-right-radius: 0.25rem !important;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .left-rounded {
-  border-top-left-radius: 0.25rem !important;
-  border-bottom-left-radius: 0.25rem !important;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .right-rounded {
-  border-top-right-radius: 0.25rem !important;
-  border-bottom-right-radius: 0.25rem !important;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
-.task-width {
-  width: 100vw;
+.date {
+  margin-top: 0.5rem;
+  width: 150px;
+  height: 50px;
 }
 
-.row {
-  margin-top: 0;
-  margin-bottom: 0;
+.date::placeholder {
+  margin-top: 0.5rem;
+  width: 150px;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 2.35rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  opacity: 1;
+  color: #106cfc;
 }
 
-.input-mt {
-  margin-top: -0.35rem !important;
+.m-date-form {
+  margin-top: -0.3rem !important;
+}
+
+.bin {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 2.35rem;
+  color: #106cfc;
+  text-align: center;
+  margin-top: -0.7rem !important;
 }
