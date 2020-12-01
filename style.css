@@ -6,6 +6,10 @@ html {
   background-color: rgb(188, 188, 188) !important;
 }
 
+.task-list-bg {
+  background-color: rgb(52, 58, 64);
+}
+
 .dropdown-toggle {
   color: RGBA(0, 0, 0, 0) !important;
 }
@@ -29,7 +33,7 @@ html {
 }
 
 .date {
-  margin-top: 0.6rem !important;
+  margin-top: 0.5rem !important;
 }
 
 button {
@@ -55,3 +59,62 @@ ul.dropdown-menu > li {
 label {
   display: none;
 }
+
+.container * {
+  box-sizing: border-box;
+  font-size: 15px;
+  word-wrap: break-word;;
+}
+
+.container-fluid {
+  padding: 20px;
+}
+
+
+.card-body {
+  /* background-color: rgb(52, 58, 64); */
+  background-color: rgba(0, 0, 0, 0);
+  left: 5px;
+  padding-left: 10px;
+  bottom: 37px;
+}
+
+.card {
+  background-color: RGBA(0, 0, 0, 0);
+  height: 3.5rem;
+}
+
+.add-task { 
+  display: inline-block !important;
+  height: 100% !important;
+}
+
+.task-width {
+  width: 30vw;
+}
+
+.plus {
+  margin-left: -1.9rem !important;
+  margin-top: 50px !important;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+}
+
+.row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.top-rounded {
+  border-top-left-radius: .25rem !important;
+  border-top-right-radius: .25rem !important;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
