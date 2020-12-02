@@ -151,4 +151,5 @@ ul.dropdown-menu > li {
   color: #106cfc;
   text-align: center;
   margin-top: -0.7rem !important;
+  -webkit-margin-before: -1.05rem !important;
 }
