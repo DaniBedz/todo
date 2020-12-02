@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
   <!-- Start Main Container -->
   <div class="container-fluid bg-grey">
 
@@ -34,9 +35,9 @@
 
     <div class="bg-dark rounded m-0">
 
-      <div class="row bg-primary text-white py-3 pr-3 mt-3 mx-auto top-rounded justify-content-between">
+      <div class="row bg-primary text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
         <div class="col-7">
-          <h4 class="mt-2 mb-1 pl-3 w-100 d-none d-md-block"">Victoria and Dani's To Do List:</h4>
+          <h4 class="mt-2 mb-1 pl-3 w-100 d-none d-md-block">Victoria and Dani's To Do List:</h4>
         </div>
         <div class="col-sm-12 col-md-5">
           <div class="input-group d-flex flex-nowrap">
@@ -50,31 +51,31 @@
       <!-- Start Task Header Bar -->
       <div class="row pt-3 text-center bg-dark text-white mx-auto mb-n3">
 
-        <div class="col-1 container">
+        <div class="col-sm-2 col-md-1 container tasklist-headers">
             <p><b>Type</b></p>
         </div>
 
-        <div class="col-5 container">
+        <div class="col-sm-2 col-md-5 container tasklist-headers">
             <p><b>Task</b></p>
         </div>
 
-        <div class="col-1 container">
-            <p><b>Assignee</b></p>
+        <div class="col-sm-2 col-md-1 container tasklist-headers">
+            <p class="pl-0"><b>Assignee</b></p>
         </div>
 
-        <div class="col-1 container">
-            <p><b>Priority</b></p>
+        <div class="col-sm-2 col-md-1 container tasklist-headers">
+            <p class="pl-1"><b>Priority</b></p>
         </div>
 
-        <div class="col-1 container">
-            <p class="pl-1"><b>Status</b></p>
+        <div class="col-sm-1 col-md-1 container tasklist-headers">
+            <p class="pl-0"><b>Status</b></p>
         </div>
 
-        <div class="col-2 container">
-            <p class="pl-3"><b>Due Date</b></p>
+        <div class="col-sm-2 container tasklist-headers">
+            <p class="pl-sm-3 pl-md-5 pl-xl-3"><b>Due Date</b></p>
         </div>
 
-        <div class="col-1 container">
+        <div class="col-sm-1 col-md-1 container tasklist-headers">
         </div>
         
       </div>
@@ -162,7 +163,7 @@
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white rounded border-0 mr-n3 m-date-form" type="text">
+                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 mr-n3 m-date-form" type="text">
               </div>
             </div>
           
@@ -260,7 +261,7 @@
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white rounded border-0 mr-n3 m-date-form" type="text">
+                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 mr-n3 m-date-form" type="text">
               </div>
             </div>
           
@@ -358,7 +359,7 @@
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white rounded border-0 mr-n3 m-date-form" type="text">
+                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 mr-n3 m-date-form" type="text">
               </div>
             </div>
           
@@ -456,7 +457,7 @@
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white rounded border-0 mr-n3 m-date-form" type="text">
+                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 mr-n3 m-date-form" type="text">
               </div>
             </div>
           
@@ -554,7 +555,7 @@
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white rounded border-0 mr-n3 m-date-form" type="text">
+                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 mr-n3 m-date-form" type="text">
               </div>
             </div>
           
@@ -582,7 +583,7 @@
   integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.js"></script>
-<script src="datePicker.js"></script>
+<script src="utils.js"></script>
  
 </body>
 </html>

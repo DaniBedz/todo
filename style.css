@@ -95,12 +95,6 @@ ul.dropdown-menu > li {
   padding-top: 0.38rem;
 }
 
-.container * {
-  box-sizing: border-box;
-  font-size: 15px;
-  word-wrap: break-word;
-}
-
 .card {
   border-top: 0px;
   border-bottom: 0px;
@@ -152,4 +146,11 @@ ul.dropdown-menu > li {
   text-align: center;
   margin-top: -0.7rem !important;
   -webkit-margin-before: -1.05rem !important;
+}
+
+.tasklist-headers {
+  font-size: calc(9px + 0.3vw) !important;
+  width: 0vw;
+  white-space: nowrap;
+  margin-left: 0rem !important;
 }
