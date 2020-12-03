@@ -30,10 +30,9 @@
 
   <!-- Start Main Container -->
   <div class="container-fluid bg-grey">
-
-    <!-- Start Top Bar -->
-
     <div class="bg-dark rounded m-0">
+
+      <!-- Start Top Bar -->
 
       <div class="row bg-primary text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
         <div class="col-7">
@@ -71,9 +70,8 @@
         </div>
         
         <div class="col-2 container tasklist-headers">
-          <p class="ml-2 ml-sm-3"><b>Due Date</b></p>
+          <p id="due-date" class="ml-2 ml-sm-3"><b>Due Date</b></p>
         </div>
-        <!-- pl-sm-3 pl-md-5 pl-xl-3 -->
         
         <div class="col-sm-1 col-md-1 container tasklist-headers">
         </div>
@@ -90,18 +88,22 @@
               <div class="form-group">
                 <label for="type1">Type</label>
                 <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
                   </option>
-                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
+                  <option class="bg-dark" value="work"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
                   </option>
-                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
+                  <option class="bg-dark" value="leisure"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
                     Leisure</option>
-                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
+                  <option class="bg-dark" value="other"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
                   </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Task/Description -->
             <div class="col-5 bg-dark p-desc">
               <div class="input-group">
@@ -109,61 +111,78 @@
                 <input id="desc1" type="text" class="form-control bg-dark text-white input rounded mr-n2 task-desc">
               </div>
             </div>
-          
+      
             <!-- Assigned to -->
             <div class="col-1 bg-dark text-center">
               <div class="form-group">
                 <label for="assigned1">Assigned</label>
                 <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>Victoria</span>">Victoria
+                  <option class="bg-dark" value="victoria"
+                    data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;Victoria&nbsp;</span>">Victoria
                   </option>
-                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani btn-shrink'>Dani</span>">Dani</option>
+                  <option class="bg-dark" value="dani"
+                    data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani
+                  </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Priority -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="priority1">Priority</label>
                 <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success btn-shrink'>Low</span>">Low</option>
-                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning btn-shrink'>Medium</span>">Medium
+                  <option class="bg-dark" value="low"
+                    data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low
                   </option>
-                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger btn-shrink'>High</span>">High</option>
+                  <option class="bg-dark" value="medium"
+                    data-content="<span class='btn btn-warning btn-shrink'>&nbsp;Medium&nbsp;</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high"
+                    data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">
+                    High</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Status -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="status1">Status</label>
                 <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger btn-status btn-shrink'>Not Started</span>">Not
+                  <option class="bg-dark" value="not-started"
+                    data-content="<span class='btn btn-danger btn-status btn-shrink btn-wider'>Not Started</span>">
+                    Not
                     Started</option>
-                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning btn-status btn-shrink'>In Progress</span>">In
+                  <option class="bg-dark" value="in-progress"
+                    data-content="<span class='btn btn-warning btn-status btn-shrink btn-wider'>In Progress</span>">
+                    In
                     Progress</option>
-                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success btn-status btn-shrink'>Done</span>">
+                  <option class="bg-dark" value="completed"
+                    data-content="<span class='btn btn-success btn-status btn-shrink'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">
                     Completed</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Due Date -->
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
+                <input id="date1" placeholder="&#xf271;"
+                  class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
               </div>
             </div>
-          
+      
             <!-- Delete -->
             <div class="col-1 bg-dark">
               <div class="form-group">
@@ -175,7 +194,7 @@
         </div>
       </div>
       <!-- End Task 1 -->
-
+      
       <!-- Start Task 2 -->
       <div class="card row mx-auto text-center">
         <div class="col">
@@ -186,18 +205,22 @@
               <div class="form-group">
                 <label for="type1">Type</label>
                 <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
                   </option>
-                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
+                  <option class="bg-dark" value="work"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
                   </option>
-                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
+                  <option class="bg-dark" value="leisure"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
                     Leisure</option>
-                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
+                  <option class="bg-dark" value="other"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
                   </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Task/Description -->
             <div class="col-5 bg-dark p-desc">
               <div class="input-group">
@@ -205,61 +228,78 @@
                 <input id="desc1" type="text" class="form-control bg-dark text-white input rounded mr-n2 task-desc">
               </div>
             </div>
-          
+      
             <!-- Assigned to -->
             <div class="col-1 bg-dark text-center">
               <div class="form-group">
                 <label for="assigned1">Assigned</label>
                 <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>Victoria</span>">Victoria
+                  <option class="bg-dark" value="victoria"
+                    data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;Victoria&nbsp;</span>">Victoria
                   </option>
-                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani btn-shrink'>Dani</span>">Dani</option>
+                  <option class="bg-dark" value="dani"
+                    data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani
+                  </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Priority -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="priority1">Priority</label>
                 <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success btn-shrink'>Low</span>">Low</option>
-                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning btn-shrink'>Medium</span>">Medium
+                  <option class="bg-dark" value="low"
+                    data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low
                   </option>
-                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger btn-shrink'>High</span>">High</option>
+                  <option class="bg-dark" value="medium"
+                    data-content="<span class='btn btn-warning btn-shrink'>&nbsp;Medium&nbsp;</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high"
+                    data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">
+                    High</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Status -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="status1">Status</label>
                 <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger btn-status btn-shrink'>Not Started</span>">Not
+                  <option class="bg-dark" value="not-started"
+                    data-content="<span class='btn btn-danger btn-status btn-shrink btn-wider'>Not Started</span>">
+                    Not
                     Started</option>
-                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning btn-status btn-shrink'>In Progress</span>">In
+                  <option class="bg-dark" value="in-progress"
+                    data-content="<span class='btn btn-warning btn-status btn-shrink btn-wider'>In Progress</span>">
+                    In
                     Progress</option>
-                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success btn-status btn-shrink'>Done</span>">
+                  <option class="bg-dark" value="completed"
+                    data-content="<span class='btn btn-success btn-status btn-shrink'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">
                     Completed</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Due Date -->
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
+                <input id="date1" placeholder="&#xf271;"
+                  class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
               </div>
             </div>
-          
+      
             <!-- Delete -->
             <div class="col-1 bg-dark">
               <div class="form-group">
@@ -271,7 +311,7 @@
         </div>
       </div>
       <!-- End Task 2 -->
-
+      
       <!-- Start Task 3 -->
       <div class="card row mx-auto text-center">
         <div class="col">
@@ -282,18 +322,22 @@
               <div class="form-group">
                 <label for="type1">Type</label>
                 <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
                   </option>
-                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
+                  <option class="bg-dark" value="work"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
                   </option>
-                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
+                  <option class="bg-dark" value="leisure"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
                     Leisure</option>
-                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
+                  <option class="bg-dark" value="other"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
                   </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Task/Description -->
             <div class="col-5 bg-dark p-desc">
               <div class="input-group">
@@ -301,61 +345,78 @@
                 <input id="desc1" type="text" class="form-control bg-dark text-white input rounded mr-n2 task-desc">
               </div>
             </div>
-          
+      
             <!-- Assigned to -->
             <div class="col-1 bg-dark text-center">
               <div class="form-group">
                 <label for="assigned1">Assigned</label>
                 <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>Victoria</span>">Victoria
+                  <option class="bg-dark" value="victoria"
+                    data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;Victoria&nbsp;</span>">Victoria
                   </option>
-                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani btn-shrink'>Dani</span>">Dani</option>
+                  <option class="bg-dark" value="dani"
+                    data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani
+                  </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Priority -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="priority1">Priority</label>
                 <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success btn-shrink'>Low</span>">Low</option>
-                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning btn-shrink'>Medium</span>">Medium
+                  <option class="bg-dark" value="low"
+                    data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low
                   </option>
-                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger btn-shrink'>High</span>">High</option>
+                  <option class="bg-dark" value="medium"
+                    data-content="<span class='btn btn-warning btn-shrink'>&nbsp;Medium&nbsp;</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high"
+                    data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">
+                    High</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Status -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="status1">Status</label>
                 <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger btn-status btn-shrink'>Not Started</span>">Not
+                  <option class="bg-dark" value="not-started"
+                    data-content="<span class='btn btn-danger btn-status btn-shrink btn-wider'>Not Started</span>">
+                    Not
                     Started</option>
-                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning btn-status btn-shrink'>In Progress</span>">In
+                  <option class="bg-dark" value="in-progress"
+                    data-content="<span class='btn btn-warning btn-status btn-shrink btn-wider'>In Progress</span>">
+                    In
                     Progress</option>
-                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success btn-status btn-shrink'>Done</span>">
+                  <option class="bg-dark" value="completed"
+                    data-content="<span class='btn btn-success btn-status btn-shrink'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">
                     Completed</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Due Date -->
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
+                <input id="date1" placeholder="&#xf271;"
+                  class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
               </div>
             </div>
-          
+      
             <!-- Delete -->
             <div class="col-1 bg-dark">
               <div class="form-group">
@@ -367,7 +428,7 @@
         </div>
       </div>
       <!-- End Task 3 -->
-
+      
       <!-- Start Task 4 -->
       <div class="card row mx-auto text-center">
         <div class="col">
@@ -378,18 +439,22 @@
               <div class="form-group">
                 <label for="type1">Type</label>
                 <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
                   </option>
-                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
+                  <option class="bg-dark" value="work"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
                   </option>
-                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
+                  <option class="bg-dark" value="leisure"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
                     Leisure</option>
-                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
+                  <option class="bg-dark" value="other"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
                   </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Task/Description -->
             <div class="col-5 bg-dark p-desc">
               <div class="input-group">
@@ -397,61 +462,78 @@
                 <input id="desc1" type="text" class="form-control bg-dark text-white input rounded mr-n2 task-desc">
               </div>
             </div>
-          
+      
             <!-- Assigned to -->
             <div class="col-1 bg-dark text-center">
               <div class="form-group">
                 <label for="assigned1">Assigned</label>
                 <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>Victoria</span>">Victoria
+                  <option class="bg-dark" value="victoria"
+                    data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;Victoria&nbsp;</span>">Victoria
                   </option>
-                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani btn-shrink'>Dani</span>">Dani</option>
+                  <option class="bg-dark" value="dani"
+                    data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani
+                  </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Priority -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="priority1">Priority</label>
                 <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success btn-shrink'>Low</span>">Low</option>
-                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning btn-shrink'>Medium</span>">Medium
+                  <option class="bg-dark" value="low"
+                    data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low
                   </option>
-                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger btn-shrink'>High</span>">High</option>
+                  <option class="bg-dark" value="medium"
+                    data-content="<span class='btn btn-warning btn-shrink'>&nbsp;Medium&nbsp;</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high"
+                    data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">
+                    High</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Status -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="status1">Status</label>
                 <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger btn-status btn-shrink'>Not Started</span>">Not
+                  <option class="bg-dark" value="not-started"
+                    data-content="<span class='btn btn-danger btn-status btn-shrink btn-wider'>Not Started</span>">
+                    Not
                     Started</option>
-                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning btn-status btn-shrink'>In Progress</span>">In
+                  <option class="bg-dark" value="in-progress"
+                    data-content="<span class='btn btn-warning btn-status btn-shrink btn-wider'>In Progress</span>">
+                    In
                     Progress</option>
-                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success btn-status btn-shrink'>Done</span>">
+                  <option class="bg-dark" value="completed"
+                    data-content="<span class='btn btn-success btn-status btn-shrink'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">
                     Completed</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Due Date -->
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
+                <input id="date1" placeholder="&#xf271;"
+                  class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
               </div>
             </div>
-          
+      
             <!-- Delete -->
             <div class="col-1 bg-dark">
               <div class="form-group">
@@ -463,7 +545,7 @@
         </div>
       </div>
       <!-- End Task 4 -->
-
+      
       <!-- Start Task 5 -->
       <div class="card row mx-auto text-center">
         <div class="col">
@@ -474,18 +556,22 @@
               <div class="form-group">
                 <label for="type1">Type</label>
                 <select id="type1" class="selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
                   </option>
-                  <option class="bg-dark" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
+                  <option class="bg-dark" value="work"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
                   </option>
-                  <option class="bg-dark" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
+                  <option class="bg-dark" value="leisure"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
                     Leisure</option>
-                  <option class="bg-dark" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
+                  <option class="bg-dark" value="other"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
                   </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Task/Description -->
             <div class="col-5 bg-dark p-desc">
               <div class="input-group">
@@ -493,61 +579,78 @@
                 <input id="desc1" type="text" class="form-control bg-dark text-white input rounded mr-n2 task-desc">
               </div>
             </div>
-          
+      
             <!-- Assigned to -->
             <div class="col-1 bg-dark text-center">
               <div class="form-group">
                 <label for="assigned1">Assigned</label>
                 <select id="assigned1" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>Victoria</span>">Victoria
+                  <option class="bg-dark" value="victoria"
+                    data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;Victoria&nbsp;</span>">Victoria
                   </option>
-                  <option class="bg-dark" value="dani" data-content="<span class='btn btn-dani btn-shrink'>Dani</span>">Dani</option>
+                  <option class="bg-dark" value="dani"
+                    data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani
+                  </option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Priority -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="priority1">Priority</label>
                 <select id="priority1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="low" data-content="<span class='btn btn-success btn-shrink'>Low</span>">Low</option>
-                  <option class="bg-dark" value="medium" data-content="<span class='btn btn-warning btn-shrink'>Medium</span>">Medium
+                  <option class="bg-dark" value="low"
+                    data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low
                   </option>
-                  <option class="bg-dark" value="high" data-content="<span class='btn btn-danger btn-shrink'>High</span>">High</option>
+                  <option class="bg-dark" value="medium"
+                    data-content="<span class='btn btn-warning btn-shrink'>&nbsp;Medium&nbsp;</span>">Medium
+                  </option>
+                  <option class="bg-dark" value="high"
+                    data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">
+                    High</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Status -->
             <div class="col-1 bg-dark">
               <div class="form-group">
                 <label for="status1">Status</label>
                 <select id="status1" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
+                  <option class="bg-dark" value="none"
+                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
                   </option>
-                  <option class="bg-dark" value="not-started" data-content="<span class='btn btn-danger btn-status btn-shrink'>Not Started</span>">Not
+                  <option class="bg-dark" value="not-started"
+                    data-content="<span class='btn btn-danger btn-status btn-shrink btn-wider'>Not Started</span>">
+                    Not
                     Started</option>
-                  <option class="bg-dark" value="in-progress" data-content="<span class='btn btn-warning btn-status btn-shrink'>In Progress</span>">In
+                  <option class="bg-dark" value="in-progress"
+                    data-content="<span class='btn btn-warning btn-status btn-shrink btn-wider'>In Progress</span>">
+                    In
                     Progress</option>
-                  <option class="bg-dark" value="completed" data-content="<span class='btn btn-success btn-status btn-shrink'>Done</span>">
+                  <option class="bg-dark" value="completed"
+                    data-content="<span class='btn btn-success btn-status btn-shrink'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">
                     Completed</option>
                 </select>
               </div>
             </div>
-          
+      
             <!-- Due Date -->
             <div class="col-2 bg-dark text-white">
               <div class="form-group">
                 <label for="date1">Due Date</label>
-                <input id="date1" placeholder="&#xf271;" class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
+                <input id="date1" placeholder="&#xf271;"
+                  class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
               </div>
             </div>
-          
+      
             <!-- Delete -->
             <div class="col-1 bg-dark">
               <div class="form-group">
@@ -559,7 +662,10 @@
         </div>
       </div>
       <!-- End Task 5 -->
-
+      
+      
+      <!-- End Main Container -->
+    
     </div>
   </div>
   <!-- End Main Container -->
