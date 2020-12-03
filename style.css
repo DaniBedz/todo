@@ -141,10 +141,10 @@ ul.dropdown-menu > li {
 .bin {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  font-size: calc(1rem + 1vw) !important;
+  font-size: calc(0.9rem + 1vw) !important;
   color: #106cfc;
-  margin-top: -0.7rem !important;
-  -webkit-margin-before: -1.05rem !important;
+  margin-top: -0.6rem !important;
+  -webkit-margin-before: -0.85rem !important;
   padding-top: calc(1.05rem) !important;
   margin-left: calc(-1.9rem + 5vw) !important;
   white-space: nowrap;
@@ -154,7 +154,6 @@ ul.dropdown-menu > li {
   font-size: calc(5.5px + 0.4vw) !important;
   width: 0vw;
   white-space: nowrap;
-  margin-left: 0rem !important;
 }
 
 .btn-shrink {
@@ -169,6 +168,10 @@ ul.dropdown-menu > li {
   font-size: calc(0.2rem + 0.7vw) !important;
 }
 
+#due-date {
+  -webkit-margin-start: calc(0.3rem + -0.75vw) !important;
+}
+
 @media (max-width: 768px) {
   div.filter-option-inner span {
     color: RGBA(0, 0, 0, 0) !important;
@@ -181,13 +184,23 @@ ul.dropdown-menu > li {
   }
 }
 
+[id^='bs-select'] span.text span {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+[id^='bs-select'] span.text span.btn-none {
+  border: 1px solid var(--blue);
+  display: inline-block;
+}
+
 @media (max-width: 992px) {
   .btn {
-    border: hidden !important;
+    border: hidden;
   }
   .btn-shrink {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
