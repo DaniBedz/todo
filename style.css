@@ -59,7 +59,17 @@ button {
 }
 
 .form-group {
-  margin-bottom: 0;
+  font-size: calc(1rem + 1vw) !important;
+}
+
+.p-desc {
+  padding-top: 0.38rem !important;
+}
+
+.task-desc {
+  height: calc(1.5rem + 1.3vw) !important;
+  margin-top: auto !important;
+  margin-bottom: 1vw !important;
 }
 
 label {
@@ -91,10 +101,6 @@ ul.dropdown-menu > li {
   outline: none !important;
 }
 
-.pdesc {
-  padding-top: 0.38rem;
-}
-
 .card {
   border-top: 0px;
   border-bottom: 0px;
@@ -115,42 +121,79 @@ ul.dropdown-menu > li {
   border-bottom-right-radius: 0.25rem;
 }
 
-.date {
-  margin-top: 0.5rem;
-  width: 150px;
-  height: 50px;
-}
-
 .date::placeholder {
-  margin-top: 0.5rem;
-  width: 150px;
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  font-size: 2.35rem;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
   opacity: 1;
-  color: #106cfc;
+  -webkit-margin-before: -1.05rem !important;
+  font-size: calc(0.75rem + 1.5vw) !important;
+  color: #106cfc !important;
+  margin-left: calc(-1rem + 7.75vw) !important;
+  overflow: visible;
 }
 
-.m-date-form {
-  margin-top: -0.3rem !important;
+.date {
+  font-size: calc(1.25vw) !important;
+  margin-left: calc(-0.3rem + 0.05vw) !important;
+  outline: none !important;
 }
 
 .bin {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  font-size: 2.35rem;
+  font-size: calc(1rem + 1vw) !important;
   color: #106cfc;
-  text-align: center;
   margin-top: -0.7rem !important;
   -webkit-margin-before: -1.05rem !important;
+  padding-top: calc(1.05rem) !important;
+  margin-left: calc(-1.9rem + 5vw) !important;
+  white-space: nowrap;
 }
 
 .tasklist-headers {
-  font-size: calc(9px + 0.3vw) !important;
+  font-size: calc(5.5px + 0.4vw) !important;
   width: 0vw;
   white-space: nowrap;
   margin-left: 0rem !important;
+}
+
+.btn-shrink {
+  padding-top: calc(0.49rem + 0.15vw) !important;
+  padding-bottom: calc(0.49rem + 0.15vw) !important;
+  padding-left: calc(1px + 0.9vw) !important;
+  padding-right: calc(1px + 0.9vw) !important;
+  margin-top: calc(-5px + 0.6vw) !important;
+  margin-bottom: calc(-5px + 0.6vw) !important;
+  margin-left: calc(-5px + 0.5vw) !important;
+  margin-right: calc(-5px + 0.5vw) !important;
+  font-size: calc(0.2rem + 0.7vw) !important;
+}
+
+@media (max-width: 768px) {
+  div.filter-option-inner span {
+    color: RGBA(0, 0, 0, 0) !important;
+    padding-left: calc(1px + 0.9vw) !important;
+    padding-right: calc(1px + 0.9vw) !important;
+  }
+
+  div.filter-option-inner span.btn-none {
+    color: var(--blue) !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .btn {
+    border: hidden !important;
+  }
+  .btn-shrink {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+@media (max-width: 1450px) {
+  .btn-shrink {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
 }
