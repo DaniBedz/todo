@@ -16,12 +16,53 @@ body {
   background-color: var(--darkgrey);
 }
 
+.modal-header, .modal-footer {
+  border: 0px;
+}
+
+.modal-title {
+  color: white;
+}
+
+#closeModal {
+  color: white;
+}
+
+#modalLink {
+  width: 100%;
+}
+
+.btn-modal {
+  background-color: var(--darkgrey);
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  padding: 10px 20px 10px 20px !important;
+}
+
+.btn-modal:hover {
+  color: white;
+}
+
 .bg-grey {
   background-color: var(--grey);
 }
 
 .task-list-bg {
   background-color: var(--darkgrey);
+}
+
+.more {
+  background-color: var(--darkgrey);
+  border: 1px solid #696969;
+  height: calc(1.5rem + 1.3vw) !important;
+  margin-top: auto !important;
+  margin-bottom: 1vw !important;
+  padding-top: 0 !important;
+  right: 3px !important;
+}
+
+.description {
+  background-color: var(--grey);
 }
 
 .btn-victoria {
@@ -54,7 +95,10 @@ button {
 
 .input {
   margin-top: -0.35rem;
-  border: 1px solid #696969;
+  border-top: 1px solid #696969;
+  border-bottom: 1px solid #696969;
+  border-left: 1px solid #696969;
+  border-right: 1px solid #696969;
 }
 
 .form-group {
