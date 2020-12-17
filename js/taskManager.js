@@ -5,21 +5,21 @@ class taskManager {
     }
     
     // Adds task
-  createTask(taskType, taskName, taskDescription, assignee, priority, status, dueDate) {
-    const newTask = {
-        taskId: this.tasks.length+1,
-        taskType,        
-        taskName,
-        taskDescription,
-        assignee,
-        priority,
-        status,
-        dueDate,
+    createTask(taskType, taskName, taskDescription, assignee, priority, status, dueDate) {
+        const newTask = {
+            taskId: this.tasks.length+1,
+            taskType,        
+            taskName,
+            taskDescription,
+            assignee,
+            priority,
+            status,
+            dueDate,
+        }
+        this.tasks.push(newTask);
+        //this.renderTask(newTask.taskId,newTask.taskName);
+        return newTask.taskId;
     }
-    this.tasks.push(newTask);
-    //this.renderTask(newTask.taskId,newTask.taskName);
-    return newTask.taskId;
-  }
 
     getTasks() {
         return this.tasks;
@@ -70,8 +70,7 @@ class taskManager {
     // Deletes Task
     deleteTask(taskId) {
         let index= this.findTask(taskId);
-        this.tasks.splice(index,1);  
-        renderDeleteTask(taskId);
+        this.tasks.splice(index,1);          
     }
 
     //find the index of the task in task array by taskId
@@ -81,22 +80,23 @@ class taskManager {
                 return i;
             }
         }
-    }
-
-    renderDeleteTask(taskId)
+    } 
+    getTask(taskId)
     {
-        $("#"+taskId).parent().remove();
+        for(let i=0;i<this.tasks.length;i++) {
+            if(this.tasks[i].taskId==taskId) {
+                return this.tasks[i];
+            }
+        }
     }
-
-    // Display Tasks by render method
-
-    
+  
 }
 
 
-//Testing for console.
-    /*
-    taskManager1.createTask('work','test task 3','victoria', 'low', 'not started', '12/12/2020');
+//Testing for console
+/*
+let taskManager1 = new taskManager();
+taskManager1.createTask('work','task 3','victoria', 'low', 'not started', '12/12/2020');
     
     let tasks = taskManager1.getTasks();
     for(let i = 0; i < tasks.length; i++){
@@ -106,16 +106,10 @@ class taskManager {
         console.log(tasks[i].dueDate);
     }
 
-    console.log('update for task id=1');
+    console.log('get task id=1');
 
-    taskManager1.updateDueDate(1,'13/12/2020');
-
-    tasks = taskManager1.getTasks();
-
-    for(let i = 0; i < tasks.length; i++){
-        console.log(tasks[i].taskId);
-        console.log(tasks[i].taskName);
-        console.log(tasks[i].taskType);
-        console.log(tasks[i].dueDate);
-    }
-    */
+    let t=taskManager1.getTask(1);
+    console.log(t.taskType);
+*/
+    
+   
