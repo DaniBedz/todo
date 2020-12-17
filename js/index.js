@@ -11,18 +11,12 @@ newTaskForm.addEventListener('submit', (event) => {
 function isValidTaskInput(data) {
   return data !== null && data !== '';
 }
+
 function isValidDateInput(data) {
   return /\w\w\w\s\d\d.\d\d.\d\d/i.test(data);
 }
 
-function addDescriptionHtml()
-{
-  $('.description button').on('click', function () {
-    $(this).parent().parent().find('div.descriptionDiv').toggle();
-    }
-   )
-}
-
+//Render Function of 1 Task Card
 function renderTask(taskId,taskName) {
   $('#mainContainer')
       .append($([
@@ -40,7 +34,7 @@ function renderTask(taskId,taskName) {
           '      data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Work</span>">Work',
           '  </option>',
           '  <option class="bg-dark" value="leisure"',
-          '      data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Play</span>">',
+          '      data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Leisure</span>">',
           '      Leisure</option>',
           '  <option class="bg-dark" value="other"',
           '       data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Other</span>">Other',
@@ -52,7 +46,7 @@ function renderTask(taskId,taskName) {
            '   <div class="col-5 bg-dark p-desc description">',
          '                       <div class="input-group">',
            '                           <label for="desc'+taskId+'">Task/Description</label>',
-           '                           <input id="desc'+taskId+'" type="text" class="form-control bg-dark text-white input rounded mr-n2 task-desc cardTag" placeholder="Type Task Name here..." value="'+taskName+'">',
+           '                           <input id="desc'+taskId+'" type="text" class="form-control bg-dark text-white input rounded task-desc cardTag" placeholder="Type Task Name here..." value="'+taskName+'">',
            '<button id="btn-description" type="button"',
            ' class="more text-white px-3 py-2 rounded">...</button>',
            '     </div>',
@@ -115,7 +109,7 @@ function renderTask(taskId,taskName) {
            '                                     In',
            '         Progress</option>',
            '                                 <option class="bg-dark" value="completed"',
-           '                                     data-content="<span class=\'btn btn-success btn-status btn-shrink\'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">',
+           '                                     data-content="<span class=\'btn btn-success btn-status btn-shrink\'> Complete </span>">',
            '                                     Completed</option>',
            '                             </select>',
            '                        </div>',
@@ -132,7 +126,7 @@ function renderTask(taskId,taskName) {
            ' <div class="col-1 bg-dark">',
            '                             <div class="form-group">',
            '                                 <label for="delete1">Delete</label>',
-           '                                 <a id="delete1" class="bin" onclick="deleteTask('+taskId+')">&#xf2ed;</a>',
+           '                                 <p id="delete1" class="bin" >&#xf2ed;</p>',
            '                             </div>',
            '                        </div>',
            '                   </div > ',
@@ -145,12 +139,70 @@ function renderTask(taskId,taskName) {
 
 }
 
+function addEventHandlers(taskId,taskManager1) {
+  //Hook bin button handling
+  $('#'+taskId+' .bin').on('click', function () {  
+    taskManager1.deleteTask(taskId);
+  $("#"+taskId).remove();
+  })
+
+  //Hook type selection handling
+  $('#type'+taskId).on('change', function () {  
+    alert(taskId);
+    taskManager1.updateTaskType(taskId,$(this).val()); 
+    let t=taskManager1.getTask(taskId);
+    console.log("New task type: "+t.taskType);
+  })
+
+  //Hook assignee selection handling
+  $('#assigned'+taskId).on('change', function () {  
+    console.log('Assignee');
+    taskManager1.updateAssignee(taskId,$(this).val()); 
+    let t=taskManager1.getTask(taskId);
+    console.log("New task assignee: "+t.assignee);
+  })
+
+  //Hook priority selection handling
+  $('#priority'+taskId).on('change', function () {  
+    console.log('Priority');
+    taskManager1.updatePriority(taskId,$(this).val()); 
+    let t=taskManager1.getTask(taskId);
+    console.log("New task priority: "+t.priority);
+  })
+
+  //Hook status selection handling
+  $('#status'+taskId).on('change', function () {  
+    console.log('Status');
+    taskManager1.updateStatus(taskId,$(this).val()); 
+    let t=taskManager1.getTask(taskId);
+    console.log("New task status: "+t.status);
+  })
+
+  //Hook date selection handling
+  $('#date'+taskId).on('change', function () {  
+    console.log('Date');
+    taskManager1.updateDueDate(taskId,$(this).val()); 
+    let t=taskManager1.getTask(taskId);
+    console.log("New task date: "+t.dueDate);
+  })
+
+}
+
+//Document Ready
 $(document).ready(function () {
   let taskManager1 = new taskManager();
   let $newTask = $('#newTaskNameInput');
   let taskId=taskManager1.createTask('none', $newTask.val(), 'none', 'none', 'none', 'none', null);
   renderTask(taskId,$newTask.val());
+//Hook description button handling
+$('.description button').on('click', function () {
+  $(this).parent().parent().find('div.descriptionDiv').toggle();
+  }
+ )
 
+ addEventHandlers(taskId,taskManager1);
+
+  //Validation for create task
   $('#btn-add-task').on("click", function () {
     let emptyTask = false;
     if ($newTask.val().length > 1) {
@@ -161,23 +213,31 @@ $(document).ready(function () {
           break;
         }
       }
-      //change this condition to only false for 
+      //change this condition to only false for validation of using provided cards 
       if (emptyTask == false || emptyTask == true) {
         $('#alertMessage').hide();
-                  
+        //creating a default task         
         let taskId=taskManager1.createTask('none', $newTask.val(), 'none', 'none', 'none', 'none', null);
         renderTask(taskId,$newTask.val());
+
         $('#'+taskId+' .description button').on('click', function () {
           $(this).parent().parent().find('div.descriptionDiv').toggle();
-          }
-         )
+          })
 
-        $newTask.val("");
-        $('select').selectpicker();
-        getCalendar();
-        
-        
-      }
+         //Deleting task on Bin click
+         $('#'+taskId+' .bin').on('click', function () {                
+          taskManager1.deleteTask(taskId);
+          $("#"+taskId).remove();
+          })
+
+         //Event Handler
+         addEventHandlers(taskId,taskManager1);
+
+          $newTask.val("");
+          $('select').selectpicker();
+          getCalendar();
+        }
+
       else {
         $('#alertMessage').text('Please use the empty slots provided')
           .show();
@@ -186,9 +246,8 @@ $(document).ready(function () {
     else {
       $('#alertMessage').show();
     }
-    
-  });
- 
-  addDescriptionHtml();
+
+  }); 
+
   
 });

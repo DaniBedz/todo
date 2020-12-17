@@ -1,3 +1,20 @@
+/* Starting work on light-mode */
+/* :root[color-mode="dark"] {
+  --grey: #484848;
+  --darkgrey: #343a40;
+  --blue: #106cfc;
+
+  --page-background: #484848;
+  --darkgrey: #343a40;
+  --blue: #106cfc;
+}
+
+:root[color-mode="light"] {
+  --grey: #484848;
+  --darkgrey: #343a40;
+  --blue: #106cfc;
+} */
+
 :root {
   --grey: #484848;
   --darkgrey: #343a40;
@@ -13,34 +30,7 @@ html {
 }
 
 body {
-  background-color: var(--darkgrey);
-}
-
-.modal-header, .modal-footer {
-  border: 0px;
-}
-
-.modal-title {
-  color: white;
-}
-
-#closeModal {
-  color: white;
-}
-
-#modalLink {
-  width: 100%;
-}
-
-.btn-modal {
-  background-color: var(--darkgrey);
-  border: 1px solid var(--blue);
-  color: var(--blue);
-  padding: 10px 20px 10px 20px !important;
-}
-
-.btn-modal:hover {
-  color: white;
+  background-color: transparent;
 }
 
 .bg-grey {
@@ -125,6 +115,8 @@ label {
 .task-width {
   justify-self: flex-end !important;
   width: 100% !important;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .row {
@@ -256,4 +248,26 @@ ul.dropdown-menu > li {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
+}
+
+.toggler {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: calc(0.9rem + 1vw) !important;
+  margin-top: -0.6rem !important;
+  -webkit-margin-before: -0.6rem !important;
+  white-space: nowrap;
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+  color: var(--grey);
+}
+
+.toggler:hover {
+  color: white;
 }
