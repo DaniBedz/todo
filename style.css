@@ -292,13 +292,12 @@ ul.dropdown-menu > li {
   margin: auto;
 }
 
-li.selected .active {
-  background-color: var(--lightgrey);
+.dropdown-item.active {
+  background-color: transparent !important;
 }
 
-.dropdown-item:focus,
 .dropdown-item:hover {
-  background-color: var(--lightgrey);
+  background-color: var(--lightgrey) !important;
 }
 
 span > .btn-outline-primary.btn-none {
