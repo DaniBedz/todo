@@ -196,6 +196,7 @@ ul.dropdown-menu > li {
   padding-top: calc(1.05rem) !important;
   margin-left: calc(-1.9rem + 5vw) !important;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tasklist-headers {
