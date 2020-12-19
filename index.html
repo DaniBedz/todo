@@ -23,7 +23,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css">
 
-  <title>To Do</title>
+  <title>To-do</title>
 </head>
 
 <body>
@@ -32,8 +32,8 @@
   </div>
 
   <!-- Start Main Container -->
-  <div id="taskContainer" class="container-fluid bg-grey">
-    <div class="bg-dark rounded m-0" id="mainContainer">
+  <div id="taskContainer" class="container-fluid">
+    <div id="mainContainer" class="rounded m-0">
 
       <!-- Start Top Bar -->
       <div class="row bg-primary text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
@@ -45,7 +45,7 @@
         <div class="col-sm-11 col-md-5">
           <div class="input-group d-flex flex-nowrap justify-content-end">
             <form id="newTaskForm">
-              <input id="newTaskNameInput" type="text" class="bg-dark text-white border-0 pl-3 task-width left-rounded" placeholder="Create New Task...">
+              <input id="newTaskNameInput" type="text" class="text-white border-0 pl-3 task-width left-rounded" placeholder="Create New Task..">
             </form>
             <button id="btn-add-task" type='submit' class="bg-success border-0 text-white px-3 py-2 m-0 plus right-rounded" >+</button>
             <span class='toggler'>&#xf186;</span> 
@@ -56,7 +56,7 @@
       <!-- End of Top Bar -->
 
       <!-- Start Task Header Bar -->
-      <div class="row pt-3 text-center bg-dark text-white mx-auto mb-n3">
+      <div class="row pt-3 text-center text-white mx-auto mb-n3">
         <div class="col-1 container tasklist-headers">
           <p><b>Type</b></p>
         </div>
@@ -86,127 +86,15 @@
       </div>
       <!-- End Task Header Bar -->
 
-      <!-- Start Task 1 -->
-      <div class="card row mx-auto text-center" id='cardLoop'>
-        <div class="col">
-          <div class="row bg-dark mx-n3 pt-3">
-      
-            <!-- Type -->
-            <div class="col-1 bg-dark">
-              <div class="form-group">
-                <label for="typeX">Type</label>
-                <select id="typeX" class="selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None
-                  </option>
-                  <option class="bg-dark" value="work"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work
-                  </option>
-                  <option class="bg-dark" value="leisure"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Play</span>">
-                    Leisure</option>
-                  <option class="bg-dark" value="other"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other
-                  </option>
-                </select>
-              </div>
-            </div>
-      
-            <!-- Task/Description -->
-            <div class="col-5 bg-dark p-desc description">
-              <div class="input-group">
-                <label for="descX">Task/Description</label>
-                <input id="descX" type="text" class="form-control bg-dark text-white input rounded task-desc cardTag" placeholder="Type Task Name here..">
-                <button id="btn-description" type='button'
-                  class="more text-white px-3 py-2 rounded">...</button>
-              </div>
-              <div class="descriptionDiv" style="display: none">
-                <input id="description1" type="text" class="form-control bg-dark text-white input rounded task-desc cardTag" placeholder="Description..">
-              </div>
-            </div>
-      
-            <!-- Assigned to -->
-            <div class="col-1 bg-dark text-center">
-              <div class="form-group">
-                <label for="assignedX">Assigned</label>
-                <select id="assignedX" class="bg-dark selectpicker text-center mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
-                  </option>
-                  <option class="bg-dark" value="victoria"
-                    data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;Victoria&nbsp;</span>">Victoria
-                  </option>
-                  <option class="bg-dark" value="dani"
-                    data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani
-                  </option>
-                </select>
-              </div>
-            </div>
-      
-            <!-- Priority -->
-            <div class="col-1 bg-dark">
-              <div class="form-group">
-                <label for="priorityX">Priority</label>
-                <select id="priorityX" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
-                  </option>
-                  <option class="bg-dark" value="low"
-                    data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low
-                  </option>
-                  <option class="bg-dark" value="medium"
-                    data-content="<span class='btn btn-warning btn-shrink'>&nbsp;Medium&nbsp;</span>">Medium
-                  </option>
-                  <option class="bg-dark" value="high"
-                    data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">
-                    High</option>
-                </select>
-              </div>
-            </div>
-      
-            <!-- Status -->
-            <div class="col-1 bg-dark">
-              <div class="form-group">
-                <label for="statusX">Status</label>
-                <select id="statusX" class="bg-dark selectpicker mr-n3" data-width="fit">
-                  <option class="bg-dark" value="none"
-                    data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;None&nbsp;</span>">None
-                  </option>
-                  <option class="bg-dark" value="not-started"
-                    data-content="<span class='btn btn-danger btn-status btn-shrink btn-wider'>Not Started</span>">
-                    Not
-                    Started</option>
-                  <option class="bg-dark" value="in-progress"
-                    data-content="<span class='btn btn-warning btn-status btn-shrink btn-wider'>In Progress</span>">
-                    In
-                    Progress</option>
-                  <option class="bg-dark" value="completed"
-                    data-content="<span class='btn btn-success btn-status btn-shrink'>&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;</span>">
-                    Completed</option>
-                </select>
-              </div>
-            </div>
-      
-            <!-- Due Date -->
-            <div class="col-2 bg-dark text-white">
-              <div class="form-group">
-                <label for="dateX">Due Date</label>
-                <input id="dateX" placeholder="&#xf271;"
-                  class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">
-              </div>
-            </div>
-      
-            <!-- Delete -->
-            <div class="col-1 bg-dark">
-              <div class="form-group">
-                <label for="deleteX">Delete</label>
-                <p id="deleteX" class="bin">&#xf2ed;</p>
-              </div>
-            </div>
-          </div>
+      <!-- Start Main Task List -->
+      <div id="taskList" class="col-12 taskList">
+       <!-- Content injected here  -->
+        <div id="intro">
+          You currently have no tasks added. Click the green '+' button to add a task.
         </div>
       </div>
-      <!-- End Task 1 -->
+      <!-- End Main Task List -->
+
     </div>
   <!-- End Main Container -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -224,7 +112,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
   <!-- Date Picker -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.js"></script>
-
-
 </body>
 </html>

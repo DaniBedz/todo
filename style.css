@@ -18,6 +18,7 @@
 :root {
   --grey: #484848;
   --darkgrey: #343a40;
+  --lightgrey: #929292;
   --blue: #106cfc;
 }
 
@@ -25,12 +26,20 @@
   display: none;
 }
 
-html {
+body {
+  background-color: var(--darkgrey);
+}
+
+#mainContainer {
   background-color: var(--grey);
 }
 
-body {
-  background-color: transparent;
+#newTaskNameInput {
+  background-color: var(--grey);
+}
+
+.bg-darkgrey {
+  background-color: var(--darkgrey);
 }
 
 .bg-grey {
@@ -38,11 +47,11 @@ body {
 }
 
 .task-list-bg {
-  background-color: var(--darkgrey);
+  background-color: var(--grey);
 }
 
 .more {
-  background-color: var(--darkgrey);
+  background-color: var(--grey);
   border: 1px solid #696969;
   height: calc(1.5rem + 1.3vw) !important;
   margin-top: auto !important;
@@ -125,7 +134,7 @@ label {
 }
 
 .dropdown-menu {
-  background-color: var(--darkgrey);
+  background-color: var(--grey);
 }
 
 ul.dropdown-menu > li {
@@ -270,4 +279,63 @@ ul.dropdown-menu > li {
 
 .toggler:hover {
   color: white;
+}
+
+#taskContainer {
+  background-color: var(--darkgrey);
+  padding-bottom: 1rem;
+}
+
+.taskList {
+  height: 50vh;
+  display: grid;
+  margin: auto;
+}
+
+li.selected .active {
+  background-color: var(--lightgrey);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: var(--lightgrey);
+}
+
+span > .btn-outline-primary.btn-none {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+span > .btn-outline-primary.btn-none:hover {
+  color: #fff;
+  background-color: #005cbe;
+  border-color: #005cbe;
+}
+span > .btn-dani {
+  background-color: skyblue;
+}
+
+span > .btn-dani:hover {
+  background-color: rgb(91, 181, 217);
+}
+
+span > .btn-victoria {
+  background-color: violet;
+}
+
+span > .btn-victoria:hover {
+  background-color: rgb(237, 187, 237);
+}
+
+#intro {
+  border-radius: 15px;
+  background-color: var(--lightgrey);
+  color: white;
+  width: 50rem;
+  margin: auto;
+  text-align: center;
+  margin: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
