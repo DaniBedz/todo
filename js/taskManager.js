@@ -3,16 +3,16 @@ class TaskManager {
         this.tasks = [];
     }
 
-    addTask(taskId, type = 'none', name, description, assignedTo = 'none', priority = 'none', dueDate = '') {
+    addTask(taskId, taskType = 'none', taskName, taskDescription, taskAssignedTo = 'none', taskPriority = 'none', taskStatus = 'none', taskDueDate = '') {
         const task = {
             taskId: taskId,
-            type: type,
-            name: name,
-            description: description,
-            assignedTo: assignedTo,
-            priority: priority,
-            status: status,
-            dueDate: dueDate,
+            taskType: taskType,
+            taskName: taskName,
+            taskDescription: taskDescription,
+            taskAssignedTo: taskAssignedTo,
+            taskPriority: taskPriority,
+            taskStatus: taskStatus,
+            taskDueDate: taskDueDate,
         };
 
         this.tasks.push(task);
@@ -34,44 +34,37 @@ class TaskManager {
       
     // Update task type
     updateTaskType(taskId, taskType) {
-        let index= this.findTask(taskId);
         this.tasks[index].taskType = taskType;
     }
     
     // Update task name
     updateTaskName(taskId, taskName) {
-        let index= this.findTask(taskId);
-        this.tasks[index].taskName = taskName;
+        this.tasks[taskId].taskName = taskName;
     }
 
     // Update task description
     updateTaskDescription(taskId, taskDescription) {
-        let index= this.findTask(taskId);
-        this.tasks[index].taskDescription = taskDescription;
+        this.tasks[taskId].taskDescription = taskDescription;
     }
     
     // Update assignee
-    updateAssignee(taskId, assignee) {
-        let index= this.findTask(taskId);
-        this.tasks[index].assignee = assignee;
+    updateAssignee(taskId, taskAssignee) {
+        this.tasks[taskId].taskAssignee = taskAssignee;
     }
   
     // Update priority
-    updatePriority(taskId, priority) {
-        let index= this.findTask(taskId);
-        this.tasks[index].priority = priority;
+    updatePriority(taskId, taskPriority) {
+        this.tasks[taskId].taskPriority = taskPriority;
     }
     
     // Update status
-    updateStatus(taskId, status) {
-        let index= this.findTask(taskId);
-        this.tasks[index].status = status;
+    updateStatus(taskId, taskStatus) {
+        this.tasks[taskId].taskStatus = taskStatus;
     }
     
     // Update due date
-    updateDueDate(taskId, dueDate) {
-        let index= this.findTask(taskId);
-        this.tasks[index].dueDate = dueDate;
+    updateDueDate(taskId, taskDueDate) {
+        this.tasks[taskId].taskDueDate = taskDueDate;
     }
     
     // Delete task
@@ -90,7 +83,7 @@ class TaskManager {
           const task = this.tasks[i];
 
           // Create the task html
-          const taskHtml = createTaskHtml(task.taskId, task.type, task.name, task.description, task.assignedTo, task.priority, task.status, task.dueDate);
+          const taskHtml = createTaskHtml(task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
 
           // Push it to the tasksHtmlList array
           tasksHtmlList.push(taskHtml);
@@ -113,7 +106,7 @@ class TaskManager {
 }
 
 // Create the HTML for a task
-const createTaskHtml = (taskId, type, name, description, assignedTo, priority, status, dueDate) => `
+const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
 <div class="card row mx-auto text-center" id="${taskId}">
   <div class="col">
     <div class="row bg-grey mx-n3 pt-3">
@@ -132,7 +125,7 @@ const createTaskHtml = (taskId, type, name, description, assignedTo, priority, s
       <div class="col-5 bg-grey p-desc description">
         <div class="input-group">
           <label for="name${taskId}">Task/Description</label>
-          <input id="name${taskId}" type="text" class="form-control bg-grey text-white input rounded task-desc" placeholder="Type task name here.." value="${name}">
+          <input id="name${taskId}" type="text" class="form-control bg-grey text-white input rounded task-desc" placeholder="Type task name here.." value="${taskName}">
           <button id="descriptionBtn${taskId}" type="button" class="more text-white px-3 py-2 rounded">...</button>
         </div>
           <div id="descriptionDiv${taskId} class="descriptionDiv" style="display: none">

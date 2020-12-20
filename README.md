@@ -34,7 +34,7 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 - Re-add field validation
 
-- Save button for updating task name/description
+- Save button for updating description
 
 - Add light mode
 

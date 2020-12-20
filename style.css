@@ -343,3 +343,8 @@ span > .btn-victoria:hover {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+
+.save {
+  background-color: #28a745;
+  padding-top: 5px !important;
+}
