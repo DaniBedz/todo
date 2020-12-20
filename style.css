@@ -104,6 +104,10 @@ button {
   font-size: calc(1rem + 1vw) !important;
 }
 
+.form-control:focus {
+  background-color: transparent;
+}
+
 .p-desc {
   padding-top: 0.38rem !important;
 }

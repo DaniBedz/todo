@@ -20,8 +20,6 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 ### Planned fixes:
 
-- Change mouseover for bin icon from text to pointer (links)
-
 - Make enter key submit new task
 
 - Update tasks on dropdown selection (e.g, choose a priority from the selector, it updates the value in the array)

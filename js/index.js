@@ -50,3 +50,14 @@ document.body.addEventListener('click', function (event) {
     }
   };
 });
+
+// Show/hide description
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('more')) {
+    if (event.target.parentNode.nextElementSibling.style.display === 'none') {
+      event.target.parentNode.nextElementSibling.style.display = 'block';
+    } else {
+      event.target.parentNode.nextElementSibling.style.display = 'none';
+    }
+  }
+});
