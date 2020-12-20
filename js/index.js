@@ -51,6 +51,15 @@ document.body.addEventListener('click', function (event) {
   };
 });
 
+// Enter button in new task field adds new task
+newTaskNameInput.addEventListener('keypress', function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    newTaskForm.click();
+  }
+});
+
+
 // Show/hide description
 document.body.addEventListener('click', function (event) {
   if (event.target.classList.contains('more')) {
