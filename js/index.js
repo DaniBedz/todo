@@ -53,20 +53,45 @@ document.body.addEventListener('click', function (event) {
 
 // Enter button in new task field adds new task
 newTaskNameInput.addEventListener('keypress', function (event) {
-  if (event.keyCode === 13) {
+  if (event.key === 'Enter') {
     event.preventDefault();
     newTaskForm.click();
   }
 });
 
+// Clicking into task field changes ... button to "Save" button
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('form-control')) {
+    event.target.nextSibling.nextSibling.innerText = "Save";
+    event.target.nextSibling.nextSibling.classList.add("save");
+  }
+});
 
 // Show/hide description
 document.body.addEventListener('click', function (event) {
-  if (event.target.classList.contains('more')) {
+  if (event.target.innerText === '...') {
     if (event.target.parentNode.nextElementSibling.style.display === 'none') {
       event.target.parentNode.nextElementSibling.style.display = 'block';
     } else {
       event.target.parentNode.nextElementSibling.style.display = 'none';
     }
+  }
+});
+
+// Clicking "Save" button updates the task name
+document.body.addEventListener('click', function (event) {
+  if (event.target.innerText === 'Save') {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskName(taskId, event.target.previousElementSibling.value)
+    event.target.classList.remove("save"); 
+    event.target.innerText = '...';
+  }
+});
+
+// Enter button updates the task name
+document.body.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter' && event.target.classList.contains('form-control')) {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskName(taskId, event.target.value);
   }
 });
