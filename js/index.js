@@ -93,5 +93,8 @@ document.body.addEventListener('keypress', function (event) {
   if (event.key === 'Enter' && event.target.classList.contains('form-control')) {
     let taskId = event.target.id.replace(/\D/g, '')
     taskManager.updateTaskName(taskId, event.target.value);
+    event.target.nextElementSibling.classList.remove("save"); 
+    event.target.nextElementSibling.innerText = '...';
+    event.target.blur();
   }
 });
