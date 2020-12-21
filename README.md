@@ -20,7 +20,9 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 ### Planned fixes:
 
-- Update tasks on dropdown selection (e.g, choose a priority from the selector, it updates the value in the array)
+- Delete button always deletes the first task in the list(?!)
+
+- render() method selects the correct selector options based on the value in the array
 
 - Fix padding on Chrome (webkit)
 

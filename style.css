@@ -333,7 +333,7 @@ span > .btn-victoria:hover {
 }
 
 #intro {
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: var(--lightgrey);
   color: white;
   width: 50rem;

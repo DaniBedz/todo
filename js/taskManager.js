@@ -34,7 +34,7 @@ class TaskManager {
       
     // Update task type
     updateTaskType(taskId, taskType) {
-        this.tasks[index].taskType = taskType;
+        this.tasks[taskId].taskType = taskType;
     }
     
     // Update task name
@@ -48,8 +48,8 @@ class TaskManager {
     }
     
     // Update assignee
-    updateAssignee(taskId, taskAssignee) {
-        this.tasks[taskId].taskAssignee = taskAssignee;
+    updateAssignedTo(taskId, taskAssignedTo) {
+        this.tasks[taskId].taskAssignedTo = taskAssignedTo;
     }
   
     // Update priority
@@ -68,6 +68,9 @@ class TaskManager {
     }
     
     // Delete task
+    // deleteTask(taskId) {
+    //     this.tasks.splice(taskId, 1);        
+    // }
     deleteTask(taskId) {
         this.tasks.splice(taskId, 1);        
     }
