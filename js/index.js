@@ -30,7 +30,7 @@ newTaskForm.addEventListener('click', event => {
 // Delete button event listener
 document.body.addEventListener('click', function (event) {
   if (event.target.classList == 'bin') {
-    taskManager.deleteTask(this.taskId);
+    taskManager.deleteTask((this.taskId + 1));
     taskManager.render();
   };
 });
@@ -131,5 +131,27 @@ document.body.addEventListener('click', function (event) {
   if (event.target.innerText === '...') {
     let taskId = event.target.id.replace(/\D/g, '');
     event.target.parentNode.nextElementSibling.children[0].value = taskManager.tasks[taskId].taskDescription;
+  }
+});
+
+// Handle selector updates
+document.body.addEventListener('click', function (event) {
+  if (event.target.id == 'btn-add-task') {
+    let selectors = document.getElementsByClassName('selectpicker');
+    for (selector of selectors) {
+      selector.addEventListener('change', event => {
+        event.preventDefault();
+        let taskId = event.target.id.replace(/\D/g, '');
+        if (event.target.id.includes('type')) {
+          taskManager.updateTaskType(taskId, event.target.value);
+        } else if (event.target.id.includes('assigned')) {
+          taskManager.updateAssignedTo(taskId, event.target.value);
+        } else if (event.target.id.includes('priority')) {
+          taskManager.updatePriority(taskId, event.target.value);
+        } else if (event.target.id.includes('status')) {
+          taskManager.updateStatus(taskId, event.target.value);
+        } 
+      });
+    };
   }
 });
