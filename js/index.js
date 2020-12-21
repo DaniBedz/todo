@@ -59,28 +59,35 @@ newTaskNameInput.addEventListener('keypress', function (event) {
   }
 });
 
-// Clicking into task field changes ... button to "Save" button
+// Clicking into task field changes '...' button to 'Save' button
 document.body.addEventListener('click', function (event) {
-  if (event.target.classList.contains('form-control')) {
+  if (event.target.classList.contains('form-control') && event.target.nextSibling.nextSibling.innerText === "...") {
     event.target.nextSibling.nextSibling.innerText = "Save";
     event.target.nextSibling.nextSibling.classList.add("save");
   }
 });
 
-// Show/hide description
+// Show/hide description field
 document.body.addEventListener('click', function (event) {
   if (event.target.innerText === '...') {
     if (event.target.parentNode.nextElementSibling.style.display === 'none') {
-      event.target.parentNode.nextElementSibling.style.display = 'block';
+      event.target.parentNode.nextElementSibling.style.display = 'flex';
     } else {
       event.target.parentNode.nextElementSibling.style.display = 'none';
     }
   }
 });
 
-// Clicking "Save" button updates the task name
+// Show/hide description save button
 document.body.addEventListener('click', function (event) {
-  if (event.target.innerText === 'Save') {
+  if (event.target.placeholder == 'Description..') {
+    event.target.nextSibling.nextSibling.style.display = 'flex';
+  }
+});
+
+// Clicking 'Save' button updates the task name
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('save')) {
     let taskId = event.target.id.replace(/\D/g, '')
     taskManager.updateTaskName(taskId, event.target.previousElementSibling.value)
     event.target.classList.remove("save"); 
@@ -88,13 +95,41 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
+// Clicking 'Save' button updates the task description
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('desc-save')) {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskDescription(taskId, event.target.previousElementSibling.value)
+    event.target.style.display = 'none';
+  }
+});
+
 // Enter button updates the task name
 document.body.addEventListener('keypress', function (event) {
-  if (event.key === 'Enter' && event.target.classList.contains('form-control')) {
+  if (event.key === 'Enter' && event.target.placeholder === 'Type task name here..') {
     let taskId = event.target.id.replace(/\D/g, '')
     taskManager.updateTaskName(taskId, event.target.value);
-    event.target.nextElementSibling.classList.remove("save"); 
+    event.target.nextElementSibling.classList.contains('more');
+    event.target.nextElementSibling.classList.remove("save");
     event.target.nextElementSibling.innerText = '...';
     event.target.blur();
+  }
+});
+
+// Enter button updates the task description
+document.body.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter' && event.target.placeholder === 'Description..') {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskDescription(taskId, event.target.value);
+    event.target.nextElementSibling.style.display = "none";
+    event.target.blur();
+  }
+});
+
+// Display description value from array in description field
+document.body.addEventListener('click', function (event) {
+  if (event.target.innerText === '...') {
+    let taskId = event.target.id.replace(/\D/g, '');
+    event.target.parentNode.nextElementSibling.children[0].value = taskManager.tasks[taskId].taskDescription;
   }
 });

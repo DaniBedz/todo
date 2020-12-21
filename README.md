@@ -22,7 +22,7 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 - Update tasks on dropdown selection (e.g, choose a priority from the selector, it updates the value in the array)
 
-- Fix padding on chrome (webkit)
+- Fix padding on Chrome (webkit)
 
 - Clean up duplicate CSS
 
@@ -33,8 +33,6 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 ### Features to add:
 
 - Re-add field validation
-
-- Save button for updating description
 
 - Add light mode
 
