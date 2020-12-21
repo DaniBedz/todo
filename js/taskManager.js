@@ -128,9 +128,10 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
           <input id="name${taskId}" type="text" class="form-control bg-grey text-white input rounded task-desc" placeholder="Type task name here.." value="${taskName}">
           <button id="descriptionBtn${taskId}" type="button" class="more text-white px-3 py-2 rounded">...</button>
         </div>
-          <div id="descriptionDiv${taskId} class="descriptionDiv" style="display: none">
-            <input id="description${taskId}" type="text" class="form-control bg-grey text-white input rounded task-desc" placeholder="Description..">
-          </div>
+        <div id="descriptionDiv${taskId} class="input-group descriptionDiv" style="display: none">
+          <input id="description${taskId}" type="text" class="form-control bg-grey text-white input rounded task-desc" placeholder="Description..">
+          <button id="descriptionSaveBtn${taskId}" type="button" class="text-white px-3 py-2 rounded pull-right desc-save">Save</button>
+        </div>
       </div>
 
       <div class="col-1 bg-grey text-center">
