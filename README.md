@@ -20,8 +20,6 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 ### Planned fixes:
 
-- Date field inserted on render
-
 - Fix padding on Chrome (webkit)
 
 - Clean up duplicate CSS
