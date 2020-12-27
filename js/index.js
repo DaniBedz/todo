@@ -11,14 +11,14 @@ newTaskForm.addEventListener('click', event => {
   // New task values template
   const newTaskNameInput = document.querySelector('#newTaskNameInput');
   const name = newTaskNameInput.value;
-  const taskId = taskManager.tasks.length;
-  const type = '';
+  const type = 'none';
   const description = '';
-  const assignedTo = '';
-  const priority = '';
+  const assignedTo = 'none';
+  const priority = 'none';
+  const status = 'none';
   const dueDate = '';
 
-  taskManager.addTask(taskId, type, name, description, assignedTo, priority, dueDate);
+  taskManager.addTask(type, name, description, assignedTo, priority, status, dueDate);
 
   // Render the tasks
   taskManager.render();
@@ -30,8 +30,8 @@ newTaskForm.addEventListener('click', event => {
 // Delete button event listener
 document.body.addEventListener('click', function (event) {
   if (event.target.classList == 'bin') {
-    taskManager.deleteTask((this.taskId + 1));
-    taskManager.render();
+    let taskId = event.target.id.replace(/\D/g, '');
+    taskManager.deleteTask(taskId);
   };
 });
 
@@ -56,6 +56,7 @@ newTaskNameInput.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     newTaskForm.click();
+    newTaskNameInput.value = '';
   }
 });
 
@@ -130,15 +131,15 @@ document.body.addEventListener('keypress', function (event) {
 document.body.addEventListener('click', function (event) {
   if (event.target.innerText === '...') {
     let taskId = event.target.id.replace(/\D/g, '');
-    event.target.parentNode.nextElementSibling.children[0].value = taskManager.tasks[taskId].taskDescription;
+    event.target.parentNode.nextElementSibling.children[0].value = taskManager.tasks[taskManager.findTask(taskId)].taskDescription;
   }
 });
 
 // Handle selector updates
 document.body.addEventListener('click', function (event) {
-  if (event.target.id == 'btn-add-task') {
+  if (taskManager.tasks.length > 0) {
     let selectors = document.getElementsByClassName('selectpicker');
-    for (selector of selectors) {
+    for (let selector of selectors) {
       selector.addEventListener('change', event => {
         event.preventDefault();
         let taskId = event.target.id.replace(/\D/g, '');
@@ -155,3 +156,7 @@ document.body.addEventListener('click', function (event) {
     };
   }
 });
+
+// // Add test tasks
+// taskManager.addTask('work', 'Task 1', 'Task Description 1', 'dani', 'high', 'in-progress', '');
+// taskManager.addTask('leisure', 'Task 2', 'Task Description 2', 'victoria', 'low', 'completed', '');

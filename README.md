@@ -20,10 +20,6 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 ### Planned fixes:
 
-- Delete button always deletes the first task in the list(?!)
-
-- render() method selects the correct selector options based on the value in the array
-
 - Fix padding on Chrome (webkit)
 
 - Clean up duplicate CSS
