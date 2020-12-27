@@ -139,6 +139,13 @@ class TaskManager {
 
     // Make selectors active
     $('select').selectpicker();
+
+    // Show correct value for dueDate
+    for (let task of taskManager.tasks) {
+      let taskId = task.taskId;
+      let dueDate = document.querySelector('#date' + taskId);
+      dueDate.value = task.taskDueDate;
+    }
   }
 }
 

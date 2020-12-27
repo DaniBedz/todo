@@ -158,5 +158,5 @@ document.body.addEventListener('click', function (event) {
 });
 
 // // Add test tasks
-// taskManager.addTask('work', 'Task 1', 'Task Description 1', 'dani', 'high', 'in-progress', '');
-// taskManager.addTask('leisure', 'Task 2', 'Task Description 2', 'victoria', 'low', 'completed', '');
+// taskManager.addTask('work', 'Task 1', 'Task Description 1', 'dani', 'high', 'in-progress', 'Sun 27/12/20');
+// taskManager.addTask('leisure', 'Task 2', 'Task Description 2', 'victoria', 'low', 'completed', 'Sat 26/12/20');
