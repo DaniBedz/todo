@@ -1,116 +1,150 @@
 class TaskManager {
-    constructor() {
-        this.tasks = [];
-    }
+  constructor() {
+    this.tasks = [];
+  }
 
-    addTask(taskId, taskType = 'none', taskName, taskDescription, taskAssignedTo = 'none', taskPriority = 'none', taskStatus = 'none', taskDueDate = '') {
-        const task = {
-            taskId: taskId,
-            taskType: taskType,
-            taskName: taskName,
-            taskDescription: taskDescription,
-            taskAssignedTo: taskAssignedTo,
-            taskPriority: taskPriority,
-            taskStatus: taskStatus,
-            taskDueDate: taskDueDate,
-        };
+  // taskId creation
+  taskIdGenerator() {
+    let newTaskId;
+    if (this.tasks[0] === undefined) {
+      newTaskId = 1;
+    } else {
+      newTaskId = this.tasks.sort((a, b) => b.taskId - a.taskId)[0].taskId + 1
+    }
+    return newTaskId;
+  }
 
-        this.tasks.push(task);
-    }
+  addTask(taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) {
+    const task = {
+      taskId: this.taskIdGenerator(),
+      taskType: taskType,
+      taskName: taskName,
+      taskDescription: taskDescription,
+      taskAssignedTo: taskAssignedTo,
+      taskPriority: taskPriority,
+      taskStatus: taskStatus,
+      taskDueDate: taskDueDate,
+    };
+    this.tasks.push(task);
+    this.tasks.sort((a, b) => a.taskId - b.taskId);
+  }
   
-    // Return an array of all tasks
-    getTasks() {
-          return this.tasks;
-    }
-  
-    // Get task by taskId
-    getTask(taskId) {
-      for(let i=0;i<this.tasks.length;i++) {
-        if(this.tasks[i].taskId==taskId) {
-          return this.tasks[i];
-        }
+  // Return an array of all tasks
+  getTasks() {
+    return this.tasks;
+  }
+
+  // Get task by taskId
+  getTask(taskId) {
+    for(let i=0;i<this.tasks.length;i++) {
+      if(this.tasks[i].taskId==taskId) {
+        return this.tasks[i];
       }
     }
-      
-    // Update task type
-    updateTaskType(taskId, taskType) {
-        this.tasks[taskId].taskType = taskType;
-    }
+  }
     
-    // Update task name
-    updateTaskName(taskId, taskName) {
-        this.tasks[taskId].taskName = taskName;
-    }
-
-    // Update task description
-    updateTaskDescription(taskId, taskDescription) {
-        this.tasks[taskId].taskDescription = taskDescription;
-    }
-    
-    // Update assignee
-    updateAssignedTo(taskId, taskAssignedTo) {
-        this.tasks[taskId].taskAssignedTo = taskAssignedTo;
-    }
+  // Update task type
+  updateTaskType(taskId, taskType) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskType = taskType;
+  }
   
-    // Update priority
-    updatePriority(taskId, taskPriority) {
-        this.tasks[taskId].taskPriority = taskPriority;
-    }
-    
-    // Update status
-    updateStatus(taskId, taskStatus) {
-        this.tasks[taskId].taskStatus = taskStatus;
-    }
-    
-    // Update due date
-    updateDueDate(taskId, taskDueDate) {
-        this.tasks[taskId].taskDueDate = taskDueDate;
-    }
-    
-    // Delete task
-    // deleteTask(taskId) {
-    //     this.tasks.splice(taskId, 1);        
-    // }
-    deleteTask(taskId) {
-        this.tasks.splice(taskId, 1);        
-    }
+  // Update task name
+  updateTaskName(taskId, taskName) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskName = taskName;
+  }
 
-    // Render the task list, initialise date pickers and selectors
-    render() {
-      // Create an array to store the tasks' HTML
-      const tasksHtmlList = [];
+  // Update task description
+  updateTaskDescription(taskId, taskDescription) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskDescription = taskDescription;
+  }
+  
+  // Update assignee
+  updateAssignedTo(taskId, taskAssignedTo) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskAssignedTo = taskAssignedTo;
+  }
 
-      // Loop over our tasks and create the html, storing it in the array
-      for (let i = 0; i < this.tasks.length; i++) {
-          // Get the current task in the loop
-          const task = this.tasks[i];
+  // Update priority
+  updatePriority(taskId, taskPriority) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskPriority = taskPriority;
+  }
+  
+  // Update status
+  updateStatus(taskId, taskStatus) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskStatus = taskStatus;
+  }
+  
+  // Update due date
+  updateDueDate(taskId, taskDueDate) {
+    const taskToUpdate = this.findTask(taskId);
+    this.tasks[taskToUpdate].taskDueDate = taskDueDate;
+  }
 
-          // Create the task html
-          const taskHtml = createTaskHtml(task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
+  // Delete Task
+  deleteTask(taskId) {
+    this.tasks.splice(this.findTask(taskId), 1);
+    this.render();
+  }
 
-          // Push it to the tasksHtmlList array
-          tasksHtmlList.push(taskHtml);
+  // Find the index of the task in task array by taskId
+  findTask(taskId) {
+    for(let i = 0; i < taskManager.tasks.length; i++) {
+      if(taskManager.tasks[i].taskId == taskId) {
+        return i;
       }
+    }
+  }
 
-      // Create the tasksHtml by joining each item in the tasksHtmlList
-      // with a new line in between each item.
-      const tasksHtml = tasksHtmlList.join('\n');
+  // Render the task list, initialise date pickers and selectors
+  render() {
+    // Create an array to store the tasks' HTML
+    const tasksHtmlList = [];
 
-      // Set the inner html of the tasksList on the page
-      const tasksList = document.querySelector('#taskList');
-      tasksList.innerHTML = tasksHtml;
-    
+    // Loop over our tasks and create the html, storing it in the array
+    for (let i = 0; i < this.tasks.length; i++) {
+        // Get the current task in the loop
+        const task = this.tasks[i];
+
+        // Create the task html
+        const taskHtml = createTaskHtml(task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
+
+        // Push it to the tasksHtmlList array
+        tasksHtmlList.push(taskHtml);
+    }
+
+    // Create the tasksHtml by joining each item in the tasksHtmlList with a new line in between each item.
+    const tasksHtml = tasksHtmlList.join('\n');
+
+    // Set the inner html of the tasksList on the page
+    const tasksList = document.querySelector('#taskList');
+    tasksList.innerHTML = tasksHtml;
+
+    // Show correct values for selectors  
+    for (let task of taskManager.tasks) {
+      let taskId = task.taskId;
+      $('#type'+ taskId).selectpicker('val', task.taskType);
+      $('#assigned'+ taskId).selectpicker('val', task.taskAssignedTo);
+      $('#priority'+ taskId).selectpicker('val', task.taskPriority);
+      $('#status'+ taskId).selectpicker('val', task.taskStatus);
+      $('.selectpicker').selectpicker('render');
+    }
+
     // Make dueDate field clickable
     getCalendar();
 
     // Make selectors active
     $('select').selectpicker();
-    }
+  }
 }
 
 // Create the HTML for a task
 const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
-<div class="card row mx-auto text-center" id="${taskId}">
+<div class="row mx-auto text-center" id="${taskId}">
   <div class="col">
     <div class="row bg-grey mx-n3 pt-3">
       <div class="col-1 bg-grey">
@@ -182,8 +216,8 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
 
       <div class="col-1 bg-grey">
         <div class="form-group">
-          <label for="delete1">Delete</label>
-          <p id="delete1" class="bin">&#xf2ed;</p>
+          <label for="delete${taskId}">Delete</label>
+          <p id="delete${taskId}" class="bin">&#xf2ed;</p>
         </div>
       </div>
     </div>
