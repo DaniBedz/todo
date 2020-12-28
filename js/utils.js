@@ -7,6 +7,7 @@ function getCalendar()
     onChange: function () {
       let taskId = this.input.id.replace(/\D/g, '');
       taskManager.updateDueDate(taskId, this.input.value);
+      taskManager.render();
     }
   })
 };
