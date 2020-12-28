@@ -37,18 +37,17 @@ document.body.addEventListener('click', function (event) {
 
 // Show/hide intro message
 document.body.addEventListener('click', function (event) {
-  if (event.target.id == 'btn-add-task' || event.target.classList == 'bin') {
+  // if (event.target.id == 'btn-add-task' || event.target.classList == 'bin') {
     if (taskManager.tasks.length > 0) {
       // Remove class from container (displays intro message)
       const taskList = document.getElementById("taskList");
       taskList.classList.remove("taskList");
+      taskManager.render();
     } else {
       taskList.classList.add("taskList");
-      taskList.innerHTML = `<div id="intro">
-          You currently have no tasks added. Click the green '+' button to add a task.
-        </div>`;
+      taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
     }
-  };
+  // };
 });
 
 // Enter button in new task field adds new task
@@ -157,6 +156,9 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
-// // Add test tasks
-// taskManager.addTask('work', 'Task 1', 'Task Description 1', 'dani', 'high', 'in-progress', 'Sun 27/12/20');
-// taskManager.addTask('leisure', 'Task 2', 'Task Description 2', 'victoria', 'low', 'completed', 'Sat 26/12/20');
+// Add test tasks
+taskManager.addTask('work', 'Task 1', 'Task Description 1', 'dani', 'high', 'in-progress', 'Sun 27/12/20');
+taskManager.addTask('leisure', 'Task 2', 'Task Description 2', 'victoria', 'low', 'completed', 'Sat 26/12/20');
+
+// Workaround to trigger event handler/hide intro message if there are test tasks
+window.onload = () => document.body.click();
