@@ -200,6 +200,14 @@ ul.dropdown-menu > li {
   position: relative;
 }
 
+@media (-moz-touch-enabled) {
+  .date::-webkit-input-placeholder {
+    top: 0px !important;
+    font-size: calc(1.3rem + 1vw) !important;
+    position: relative;
+  }
+}
+
 .date {
   font-size: calc(0.3rem + 1vw) !important;
   margin-left: calc(-0.3rem + 0.05vw) !important;
