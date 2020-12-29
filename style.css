@@ -299,11 +299,12 @@ span > .btn-victoria:hover {
   border-radius: 10px;
   background-color: var(--lightgrey);
   color: white;
-  width: 40vw;
   margin: auto;
   text-align: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
 .save {
