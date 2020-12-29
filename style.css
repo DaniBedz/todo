@@ -259,6 +259,9 @@ img {
 #taskContainer {
   background-color: var(--darkgrey);
   padding-bottom: 1rem;
+  padding-top: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .taskList {
@@ -350,7 +353,21 @@ span > .btn-victoria:hover {
   .p-desc {
     padding-top: 0px !important;
   }
+  #taskList {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+  div.col {
+    /* margin-top: 1px; */
+  }
+  #taskHeaderBar {
+    padding-top: 0px !important;
+  }
 }
+
+/* xs  */
+/* #taskheaderBar:  */
+/* div.col: margin-top 1px */
 
 div.col {
   border-top: 2px solid gray;
@@ -358,7 +375,7 @@ div.col {
   border-right: 2px solid grey;
   border-bottom: 3px solid var(--darkgrey);
   border-radius: 3px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-bottom: 0px;
 }
 
