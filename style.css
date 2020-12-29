@@ -187,11 +187,17 @@ ul.dropdown-menu > li {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   opacity: 1;
-  -webkit-margin-before: -1.05rem !important;
+  vertical-align: middle;
   font-size: calc(0.75rem + 1.5vw) !important;
   color: steelblue !important;
   margin-left: calc(-1rem + 7.75vw) !important;
   overflow: visible;
+}
+
+.date::-webkit-input-placeholder {
+  top: 7px !important;
+  font-size: calc(1.3rem + 1vw) !important;
+  position: relative;
 }
 
 .date {
