@@ -94,9 +94,7 @@ button {
 }
 
 #btn-add-task {
-  border-top: 2px solid var(--darkgrey) !important;
-  border-bottom: 2px solid var(--darkgrey) !important;
-  border-right: 2px solid var(--darkgrey) !important;
+  border: 2px solid var(--darkgrey) !important;
   color: black !important;
 }
 
