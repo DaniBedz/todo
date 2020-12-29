@@ -19,6 +19,7 @@ body {
 
 #newTaskNameInput {
   background-color: var(--grey);
+  border: 2px solid var(--darkgrey) !important;
 }
 
 .bg-darkgrey {
@@ -90,6 +91,13 @@ button {
 .btn-none:hover {
   color: #fff;
   background-color: rgb(54, 103, 142);
+}
+
+#btn-add-task {
+  border-top: 2px solid var(--darkgrey) !important;
+  border-bottom: 2px solid var(--darkgrey) !important;
+  border-right: 2px solid var(--darkgrey) !important;
+  color: black !important;
 }
 
 .input {
@@ -234,28 +242,6 @@ img {
   border-radius: 5px;
 }
 
-.toggler {
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  text-align: center;
-  cursor: pointer;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  font-size: calc(0.9rem + 1vw) !important;
-  margin-top: -0.6rem !important;
-  -webkit-margin-before: -0.6rem !important;
-  white-space: nowrap;
-  -webkit-transition: color 0.5s ease-out;
-  -moz-transition: color 0.5s ease-out;
-  -o-transition: color 0.5s ease-out;
-  transition: color 0.5s ease-out;
-  color: var(--grey);
-}
-
-.toggler:hover {
-  color: white;
-}
-
 #taskContainer {
   background-color: var(--darkgrey);
   padding-bottom: 1rem;
@@ -357,17 +343,14 @@ span > .btn-victoria:hover {
     padding-left: 0rem;
     padding-right: 0rem;
   }
-  div.col {
-    /* margin-top: 1px; */
-  }
+
   #taskHeaderBar {
     padding-top: 0px !important;
   }
+  #newTaskForm {
+    width: 100% !important;
+  }
 }
-
-/* xs  */
-/* #taskheaderBar:  */
-/* div.col: margin-top 1px */
 
 div.col {
   border-top: 2px solid gray;
@@ -375,7 +358,6 @@ div.col {
   border-right: 2px solid grey;
   border-bottom: 3px solid var(--darkgrey);
   border-radius: 3px;
-  /* margin-top: 10px; */
   margin-bottom: 0px;
 }
 
