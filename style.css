@@ -200,11 +200,9 @@ ul.dropdown-menu > li {
   position: relative;
 }
 
-@media (-moz-touch-enabled) {
+@media (-moz-touch-enabled: 1), (pointer: coarse) {
   .date::-webkit-input-placeholder {
     top: 0px !important;
-    font-size: calc(1.3rem + 1vw) !important;
-    position: relative;
   }
 }
 
