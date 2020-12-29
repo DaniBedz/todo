@@ -36,19 +36,19 @@
     <div id="mainContainer" class="rounded m-0">
 
       <!-- Start Top Bar -->
-      <div class="row bg-primary text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
+      <div class="row title-bar text-white py-3 mt-3 mx-auto top-rounded justify-content-between">
         <div class="col-md-7">
           <h4 id="main-header" class="mt-2 mb-1 pl-3 w-100 d-none d-md-block">Victoria and Dani's To Do List:</h4>
         </div>
         <div data-target='#desc1'>
         </div>
-        <div class="col-sm-11 col-md-5">
+        <div class="col-sm-12 col-md-5">
           <div class="input-group d-flex flex-nowrap justify-content-end">
             <form id="newTaskForm">
               <input id="newTaskNameInput" type="text" class="text-white border-0 pl-3 task-width left-rounded" placeholder="Create New Task.." autofocus>
             </form>
             <button id="btn-add-task" type='submit' class="bg-success border-0 text-white px-3 py-2 m-0 plus right-rounded" >+</button>
-            <span class='toggler'>&#xf186;</span> 
+            <!-- <span class='toggler'>&#xf186;</span>  -->
           </div>
         
         </div>
@@ -56,32 +56,32 @@
       <!-- End of Top Bar -->
 
       <!-- Start Task Header Bar -->
-      <div class="row pt-3 text-center text-white mx-auto mb-n3">
-        <div class="col-1 container tasklist-headers">
-          <p><b>Type</b></p>
+      <div id="taskHeaderBar" class="row pt-3 text-center text-white mx-auto">
+        <div class="order-2 order-lg-1 col-1 container tasklist-headers">
+          <p class="pl-4"><b>Type</b></p>
         </div>
         
-        <div class="col-5 container tasklist-headers">
+        <div id="taskHeader" class="order-1 order-lg-2 col-12 col-lg-5 container tasklist-headers">
           <p><b>Task</b></p>
         </div>
         
-        <div class="col-1 container tasklist-headers">
-          <p class="ml-n2 ml-sm-n1 ml-md-0 pl-md-0"><b>Assignee</b></p>
+        <div class="order-2 order-lg-3 col-1 container tasklist-headers">
+          <p class=""><b>Assignee</b></p>
         </div>
         
-        <div class="col-1 container tasklist-headers">
-          <p class="ml-n1 ml-sm-0 ml-md-2"><b>Priority</b></p>
+        <div class="order-3 order-lg-4 col-1 container tasklist-headers">
+          <p class=""><b>Priority</b></p>
         </div>
         
-        <div class="col-1 container tasklist-headers">
-          <p class="ml-n1 ml-sm-1 pl-md-1"><b>Status</b></p>
+        <div class="order-4 order-lg-5 col-1 container tasklist-headers">
+          <p class="status-heading"><b>Status</b></p>
         </div>
         
-        <div class="col-2 container tasklist-headers">
-          <p id="due-date" class="ml-2 ml-sm-3"><b>Due Date</b></p>
+        <div class="order-5 order-lg-6  col-2 container tasklist-headers">
+          <p id="due-date" class=""><b>Due Date</b></p>
         </div>
         
-        <div class="col-sm-1 col-md-1 container tasklist-headers">
+        <div class="order-7 order-lg-8 col-sm-1 col-md-1 container tasklist-headers">
         </div>
       </div>
       <!-- End Task Header Bar -->

@@ -20,13 +20,7 @@ A simple to-do app built as part of Generation Australia's Junior Web Developer 
 
 ### Planned fixes:
 
-- Fix padding on Chrome (webkit)
-
 - Clean up duplicate CSS
-
-- Re-write media queries
-
-- Change responsive behaviour so selectors wrap onto second line on smaller view widths
 
 ### Features to add:
 
