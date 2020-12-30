@@ -21,6 +21,7 @@ body {
   background-color: var(--mediumgrey);
   border: 2px solid var(--darkestgrey) !important;
   border-radius: 7px !important;
+  outline: none !important;
 }
 
 .bg-darkestgrey {
@@ -172,7 +173,7 @@ span.text {
 label {
   display: none;
   color: white;
-  font-size: 0.4rem;
+  font-size: 0.6rem;
   text-align: center;
   white-space: nowrap;
   position: relative;
@@ -377,6 +378,7 @@ span > .btn-victoria:hover {
   border-bottom: 3px solid var(--darkestgrey);
   border-radius: 3px;
   margin-bottom: 0px;
+  background-color: var(--darkgrey);
 }
 
 @media (max-width: 992px) {
