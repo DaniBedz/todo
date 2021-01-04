@@ -1,253 +1,174 @@
+// Initialise the taskManager object
+const taskManager = new TaskManager(0);
+
 // Select the New Task Form
-// const newTaskForm = document.querySelector('#newTaskForm');
-const newTaskForm = document.querySelector('#taskContainer');
+const newTaskForm = document.querySelector('#btn-add-task');
 
-// Add an 'onsubmit' event listener
-newTaskForm.addEventListener('submit', (event) => {
-// Prevent default action of browswer refreshing
+// New task event listener
+newTaskForm.addEventListener('click', event => {
   event.preventDefault();
-});
+
+  // New task values template
+  const newTaskNameInput = document.querySelector('#newTaskNameInput');
+  const name = newTaskNameInput.value;
+  const type = 'none';
+  const description = '';
+  const assignedTo = 'none';
+  const priority = 'none';
+  const status = 'none';
+  const dueDate = '';
+
+  taskManager.addTask(type, name, description, assignedTo, priority, status, dueDate);
+
+  // Render the tasks
+  taskManager.render();
   
-function isValidTaskInput(data) {
-  return data !== null && data !== '';
-}
+  // Clear newTaskNameInput value
+  newTaskNameInput.value = '';
+});
 
-function isValidDateInput(data) {
-  return /\w\w\w\s\d\d.\d\d.\d\d/i.test(data);
-}
+// Delete button event listener
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList == 'bin') {
+    let taskId = event.target.id.replace(/\D/g, '');
+    taskManager.deleteTask(taskId);
+  };
+});
 
-//Render Function of 1 Task Card
-function renderTask(taskId,taskName) {
-  $('#mainContainer')
-      .append($([
-          '<div class= "card row mx-auto text-center" id='+taskId +'>',
-          '<div class="col">',
-          ' <div class="row bg-dark mx-n3 pt-3">',
-          '  <div class="col-1 bg-dark">',
-          '<div class="form-group">',
-          ' <label for="type'+taskId+'">Type</label>',
-          ' <select id="type'+taskId+'" class="selectpicker mr-n3" data-width="fit">',
-          '     <option class="bg-dark" value="none"',
-          '       data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>None</span>">None',
-          '   </option>',
-          '  <option class="bg-dark" value="work"',
-          '      data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Work</span>">Work',
-          '  </option>',
-          '  <option class="bg-dark" value="leisure"',
-          '      data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Leisure</span>">',
-          '      Leisure</option>',
-          '  <option class="bg-dark" value="other"',
-          '       data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>Other</span>">Other',
-          '  </option>',
-          ' </select>',
-          ' </div>',
-          ' </div>',
+// Show/hide intro message if task list is empty
+document.body.addEventListener('click', function (event) {
+  if (event.target.id == 'btn-add-task' || event.target.classList == 'bin') {
+    if (taskManager.tasks.length > 0) {
+      // Remove class from container (displays intro message)
+      const taskList = document.getElementById("taskList");
+      taskList.classList.remove("taskList");
+      taskManager.render();
+    } else {
+      taskList.classList.add("taskList");
+      taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
+    }
+  };
+});
 
-           '   <div class="col-5 bg-dark p-desc description">',
-         '                       <div class="input-group">',
-           '                           <label for="desc'+taskId+'">Task/Description</label>',
-           '                           <input id="desc'+taskId+'" type="text" class="form-control bg-dark text-white input rounded task-desc cardTag" placeholder="Type Task Name here..." value="'+taskName+'">',
-           '<button id="btn-description" type="button"',
-           ' class="more text-white px-3 py-2 rounded">...</button>',
-           '     </div>',
-           '<div class="descriptionDiv" style="display: none">',
-          '<input id="description1" type="text" class="form-control bg-dark text-white input rounded task-desc cardTag" placeholder="Description..">',,
-           '</div>',
-           '                       </div>',
-           '     <div class="col-1 bg-dark text-center">',
-           '                           <div class="form-group">',
-           '                               <label for="assigned'+taskId+'">Assigned</label>',
-           '                               <select id="assigned'+taskId+'" class="bg-dark selectpicker text-center mr-n3" data-width="fit">',
-           '                                   <option class="bg-dark" value="none"',
-           '                                       data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>&nbsp;None&nbsp;</span>">None',
-           '         </option>',
-           '                                   <option class="bg-dark" value="victoria"',
-           '                                       data-content="<span class=\'btn btn-victoria btn-shrink\'>&nbsp;Victoria&nbsp;</span>">Victoria',
-           '         </option>',
-           '                                   <option class="bg-dark" value="dani"',
-           '                                       data-content="<span class=\'btn btn-dani btn-shrink\'>&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;</span>">Dani',
-           '         </option>',
-           '                               </select>',
-           '                           </div>',
-           '                       </div>',
+// Hide intro message if there are existing tasks stored in the array
+window.onload = () => {
+if (taskManager.tasks.length > 0) {
+      // Remove class from container (displays intro message)
+      const taskList = document.getElementById("taskList");
+      taskList.classList.remove("taskList");
+      taskManager.render();
+    } else {
+      taskList.classList.add("taskList");
+      taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
+    }
+};
 
-
-           ' <div class="col-1 bg-dark">',
-           '                       <div class="form-group">',
-           '                            <label for="priority'+taskId+'">Priority</label>',
-           '                            <select id="priority'+taskId+'" class="bg-dark selectpicker mr-n3" data-width="fit">',
-           '                                <option class="bg-dark" value="none"',
-           '                                    data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>&nbsp;None&nbsp;</span>">None',
-           '      </option>',
-           '                                <option class="bg-dark" value="low"',
-           '                                   data-content="<span class=\'btn btn-success btn-shrink\'>&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>">Low',
-           '     </option>',
-           '                               <option class="bg-dark" value="medium"',
-           '                                    data-content="<span class=\'btn btn-warning btn-shrink\'>&nbsp;Medium&nbsp;</span>">Medium',
-           '     </option>',
-           '                               <option class="bg-dark" value="high"',
-           '                                   data-content="<span class=\'btn btn-danger btn-shrink\'>&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>">',
-           '                                   High</option>',
-           '                           </select>',
-           '                       </div>',
-           '                   </div>',
-
-
-           ' <div class="col-1 bg-dark">',
-           '                         <div class="form-group">',
-           '                             <label for="status'+taskId+'">Status</label>',
-           '                             <select id="status'+taskId+'" class="bg-dark selectpicker mr-n3" data-width="fit">',
-           '                                 <option class="bg-dark" value="none"',
-           '                                     data-content="<span class=\'btn btn-outline-primary btn-shrink btn-none\'>&nbsp;None&nbsp;</span>">None',
-           '       </option>',
-           '                                 <option class="bg-dark" value="not-started"',
-           '                                     data-content="<span class=\'btn btn-danger btn-status btn-shrink btn-wider\'>Not Started</span>">',
-           '                                     Not',
-           '         Started</option>',
-           '                                 <option class="bg-dark" value="in-progress"',
-           '                                     data-content="<span class=\'btn btn-warning btn-status btn-shrink btn-wider\'>In Progress</span>">',
-           '                                     In',
-           '         Progress</option>',
-           '                                 <option class="bg-dark" value="completed"',
-           '                                     data-content="<span class=\'btn btn-success btn-status btn-shrink\'> Complete </span>">',
-           '                                     Completed</option>',
-           '                             </select>',
-           '                        </div>',
-           '                     </div>',
-
-           '<div class="col-2 bg-dark text-white">',
-           '                       <div class="form-group">',
-           '                            <label for="date'+taskId+'">Due Date</label>',
-           '                            <input id="date'+taskId+'" placeholder="&#xf271;"',
-           '                                class="date bg-dark text-white text-center rounded border-0 date py-2" type="text">',
-           '  </div>',
-           '                        </div>',
-
-           ' <div class="col-1 bg-dark">',
-           '                             <div class="form-group">',
-           '                                 <label for="delete1">Delete</label>',
-           '                                 <p id="delete1" class="bin" >&#xf2ed;</p>',
-           '                             </div>',
-           '                        </div>',
-           '                   </div > ',
-           '               </div > ',
-           '          </div > ',
-           '          </div > '
-
-      ].join("\n"))
-      );
-
-}
-
-function addEventHandlers(taskId,taskManager1) {
-  //Hook bin button handling
-  $('#'+taskId+' .bin').on('click', function () {  
-    taskManager1.deleteTask(taskId);
-  $("#"+taskId).remove();
-  })
-
-  //Hook type selection handling
-  $('#type'+taskId).on('change', function () {  
-    alert(taskId);
-    taskManager1.updateTaskType(taskId,$(this).val()); 
-    let t=taskManager1.getTask(taskId);
-    console.log("New task type: "+t.taskType);
-  })
-
-  //Hook assignee selection handling
-  $('#assigned'+taskId).on('change', function () {  
-    console.log('Assignee');
-    taskManager1.updateAssignee(taskId,$(this).val()); 
-    let t=taskManager1.getTask(taskId);
-    console.log("New task assignee: "+t.assignee);
-  })
-
-  //Hook priority selection handling
-  $('#priority'+taskId).on('change', function () {  
-    console.log('Priority');
-    taskManager1.updatePriority(taskId,$(this).val()); 
-    let t=taskManager1.getTask(taskId);
-    console.log("New task priority: "+t.priority);
-  })
-
-  //Hook status selection handling
-  $('#status'+taskId).on('change', function () {  
-    console.log('Status');
-    taskManager1.updateStatus(taskId,$(this).val()); 
-    let t=taskManager1.getTask(taskId);
-    console.log("New task status: "+t.status);
-  })
-
-  //Hook date selection handling
-  $('#date'+taskId).on('change', function () {  
-    console.log('Date');
-    taskManager1.updateDueDate(taskId,$(this).val()); 
-    let t=taskManager1.getTask(taskId);
-    console.log("New task date: "+t.dueDate);
-  })
-
-}
-
-//Document Ready
-$(document).ready(function () {
-  let taskManager1 = new taskManager();
-  let $newTask = $('#newTaskNameInput');
-  let taskId=taskManager1.createTask('none', $newTask.val(), 'none', 'none', 'none', 'none', null);
-  renderTask(taskId,$newTask.val());
-//Hook description button handling
-$('.description button').on('click', function () {
-  $(this).parent().parent().find('div.descriptionDiv').toggle();
+// Enter button in new task field adds new task
+newTaskNameInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    newTaskForm.click();
+    newTaskNameInput.value = '';
   }
- )
-
- addEventHandlers(taskId,taskManager1);
-
-  //Validation for create task
-  $('#btn-add-task').on("click", function () {
-    let emptyTask = false;
-    if ($newTask.val().length > 1) {
-      let tasks = $('input.cardTag');
-      for (let i = 0; i < tasks.length; i++) {
-        if ($(tasks[i]).val() == '') {
-          emptyTask = true;
-          break;
-        }
-      }
-      //change this condition to only false for validation of using provided cards 
-      if (emptyTask == false || emptyTask == true) {
-        $('#alertMessage').hide();
-        //creating a default task         
-        let taskId=taskManager1.createTask('none', $newTask.val(), 'none', 'none', 'none', 'none', null);
-        renderTask(taskId,$newTask.val());
-
-        $('#'+taskId+' .description button').on('click', function () {
-          $(this).parent().parent().find('div.descriptionDiv').toggle();
-          })
-
-         //Deleting task on Bin click
-         $('#'+taskId+' .bin').on('click', function () {                
-          taskManager1.deleteTask(taskId);
-          $("#"+taskId).remove();
-          })
-
-         //Event Handler
-         addEventHandlers(taskId,taskManager1);
-
-          $newTask.val("");
-          $('select').selectpicker();
-          getCalendar();
-        }
-
-      else {
-        $('#alertMessage').text('Please use the empty slots provided')
-          .show();
-      }
-    }
-    else {
-      $('#alertMessage').show();
-    }
-
-  }); 
-
-  
 });
+
+// Clicking into task field changes '...' button to 'Save' button
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('form-control') && event.target.nextSibling.nextSibling.innerText === "...") {
+    event.target.nextSibling.nextSibling.innerText = "Save";
+    event.target.nextSibling.nextSibling.classList.add("save");
+  }
+});
+
+// Show/hide description field
+document.body.addEventListener('click', function (event) {
+  if (event.target.innerText === '...') {
+    if (event.target.parentNode.nextElementSibling.style.display === 'none') {
+      event.target.parentNode.nextElementSibling.style.display = 'flex';
+    } else {
+      event.target.parentNode.nextElementSibling.style.display = 'none';
+    }
+  }
+});
+
+// Show/hide description save button
+document.body.addEventListener('click', function (event) {
+  if (event.target.placeholder == 'Description..') {
+    event.target.nextSibling.nextSibling.style.display = 'flex';
+  }
+});
+
+// Clicking 'Save' button updates the task name
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('save')) {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskName(taskId, event.target.previousElementSibling.value)
+    event.target.classList.remove("save"); 
+    event.target.innerText = '...';
+  }
+});
+
+// Clicking 'Save' button updates the task description
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList.contains('desc-save')) {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskDescription(taskId, event.target.previousElementSibling.value)
+    event.target.style.display = 'none';
+  }
+});
+
+// Enter button updates the task name
+document.body.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter' && event.target.placeholder === 'Type task name here..') {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskName(taskId, event.target.value);
+    event.target.nextElementSibling.classList.contains('more');
+    event.target.nextElementSibling.classList.remove("save");
+    event.target.nextElementSibling.innerText = '...';
+    event.target.blur();
+  }
+});
+
+// Enter button updates the task description
+document.body.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter' && event.target.placeholder === 'Description..') {
+    let taskId = event.target.id.replace(/\D/g, '')
+    taskManager.updateTaskDescription(taskId, event.target.value);
+    event.target.nextElementSibling.style.display = "none";
+    event.target.blur();
+  }
+});
+
+// Display description value from array in description field
+document.body.addEventListener('click', function (event) {
+  if (event.target.innerText === '...') {
+    let taskId = event.target.id.replace(/\D/g, '');
+    event.target.parentNode.nextElementSibling.children[0].value = taskManager.tasks[taskManager.findTask(taskId)].taskDescription;
+  }
+});
+
+// Handle selector updates
+document.body.addEventListener('click', function (event) {
+  if (taskManager.tasks.length > 0) {
+    let selectors = document.getElementsByClassName('selectpicker');
+    for (let selector of selectors) {
+      selector.addEventListener('change', event => {
+        event.preventDefault();
+        let taskId = event.target.id.replace(/\D/g, '');
+        if (event.target.id.includes('type')) {
+          taskManager.updateTaskType(taskId, event.target.value);
+        } else if (event.target.id.includes('assigned')) {
+          taskManager.updateAssignedTo(taskId, event.target.value);
+        } else if (event.target.id.includes('priority')) {
+          taskManager.updatePriority(taskId, event.target.value);
+        } else if (event.target.id.includes('status')) {
+          taskManager.updateStatus(taskId, event.target.value);
+        } 
+      });
+    };
+  }
+});
+
+// Add test tasks
+taskManager.addTask('work', 'Write report for important client', 'John Smith @ Corp Tech - Final figures', 'dani', 'high', 'in-progress', 'Fri 12/02/21');
+taskManager.addTask('leisure', 'Play tennis with Kate', 'Meet @ Melbourne Tennis Centre', 'victoria', 'low', 'completed', 'Sat 26/12/20');
