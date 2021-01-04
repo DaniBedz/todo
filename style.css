@@ -240,20 +240,29 @@ ul.dropdown-menu > li {
   overflow: visible;
 }
 
-.date::-webkit-input-placeholder {
-  top: 7px !important;
+.date::-moz-placeholder {
+  top: 7px;
   font-size: calc(1.3rem + 1vw) !important;
   position: relative;
+  vertical-align: middle;
 }
 
-@media (-moz-touch-enabled: 1), (pointer: coarse) {
+.date::-webkit-input-placeholder {
+  top: 7px;
+  font-size: calc(1.3rem + 1vw) !important;
+  position: relative;
+  vertical-align: middle;
+}
+
+/* CSS specific to iOS devices */
+@supports (-webkit-touch-callout: none) {
   .date::-webkit-input-placeholder {
-    top: 0px !important;
+    top: 0px;
   }
 }
 
 .date {
-  font-size: calc(0.35rem + 0.8vw) !important;
+  font-size: calc(0.3rem + 0.8vw) !important;
   margin-left: calc(0.4rem + 0.05vw) !important;
   outline: none !important;
   width: 16vw !important;
