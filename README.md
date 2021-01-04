@@ -1,6 +1,6 @@
 # To-do
 
-A simple to-do app built as part of Generation Australia's Junior Web Developer programme.
+A simple to-do app built as part of Generation Australia's Junior Web Developer programme. Open source for all!
 
 ## Technologies used:
 
