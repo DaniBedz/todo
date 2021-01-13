@@ -1,3 +1,10 @@
+:root {
+  --darkestgrey: #343a40;
+  --darkgrey: #565656;
+  --mediumgrey: #484848;
+  --lightgrey: #929292;
+}
+
 .flatpickr-calendar {
   background: transparent;
   opacity: 0;
@@ -18,7 +25,7 @@
           box-sizing: border-box;
   -ms-touch-action: manipulation;
       touch-action: manipulation;
-  background: #3f4458;
+  background: var(--mediumgrey);
   -webkit-box-shadow: 1px 0 0 #20222c, -1px 0 0 #20222c, 0 1px 0 #20222c, 0 -1px 0 #20222c, 0 3px 13px rgba(0,0,0,0.08);
           box-shadow: 1px 0 0 #20222c, -1px 0 0 #20222c, 0 1px 0 #20222c, 0 -1px 0 #20222c, 0 3px 13px rgba(0,0,0,0.08);
 }
@@ -138,7 +145,8 @@
   display: flex;
 }
 .flatpickr-months .flatpickr-month {
-  background: #3f4458;
+  background: var(--mediumgrey);
+  /* background: #3f4458; */
   color: #fff;
   fill: #fff;
   height: 34px;
@@ -213,7 +221,7 @@
 }
 .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-months .flatpickr-next-month:hover svg {
-  fill: #f64747;
+  fill: steelblue;
 }
 .flatpickr-months .flatpickr-prev-month svg,
 .flatpickr-months .flatpickr-next-month svg {
@@ -433,8 +441,8 @@
 span.flatpickr-weekday {
   cursor: default;
   font-size: 90%;
-  background: #3f4458;
-  color: #fff;
+  background: var(--mediumgrey);
+  color: steelblue;
   line-height: 1;
   margin: 0;
   text-align: center;
@@ -532,16 +540,16 @@ span.flatpickr-weekday {
 .flatpickr-day.nextMonthDay:focus {
   cursor: pointer;
   outline: 0;
-  background: #646c8c;
-  border-color: #646c8c;
+  background: steelblue;
+  border-color: steelblue;
 }
 .flatpickr-day.today {
-  border-color: #eee;
+  border-color: steelblue;
 }
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
-  border-color: #eee;
-  background: #eee;
+  border-color: steelblue;
+  background: steelblue;
   color: #3f4458;
 }
 .flatpickr-day.selected,
@@ -562,11 +570,11 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #106cfc;
+  background: steelblue;
   -webkit-box-shadow: none;
           box-shadow: none;
   color: #fff;
-  border-color: #106cfc;
+  border-color: steelblue;
 }
 .flatpickr-day.selected.startRange,
 .flatpickr-day.startRange.startRange,
@@ -581,8 +589,8 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
-  -webkit-box-shadow: -10px 0 0 #106cfc;
-          box-shadow: -10px 0 0 #106cfc;
+  -webkit-box-shadow: -10px 0 0 #80cbc4;
+          box-shadow: -10px 0 0 #80cbc4;
 }
 .flatpickr-day.selected.startRange.endRange,
 .flatpickr-day.startRange.startRange.endRange,
@@ -613,8 +621,8 @@ span.flatpickr-weekday {
 }
 .flatpickr-day.week.selected {
   border-radius: 0;
-  -webkit-box-shadow: -5px 0 0 #106cfc, 5px 0 0 #106cfc;
-          box-shadow: -5px 0 0 #106cfc, 5px 0 0 #106cfc;
+  -webkit-box-shadow: -5px 0 0 #80cbc4, 5px 0 0 #80cbc4;
+          box-shadow: -5px 0 0 #80cbc4, 5px 0 0 #80cbc4;
 }
 .flatpickr-day.hidden {
   visibility: hidden;

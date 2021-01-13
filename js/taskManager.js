@@ -27,6 +27,7 @@ class TaskManager {
     };
     this.tasks.push(task);
     this.tasks.sort((a, b) => a.taskId - b.taskId);
+    this.save();
   }
   
   // Return an array of all tasks
@@ -36,8 +37,8 @@ class TaskManager {
 
   // Get task by taskId
   getTask(taskId) {
-    for(let i=0;i<this.tasks.length;i++) {
-      if(this.tasks[i].taskId==taskId) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].taskId == taskId) {
         return this.tasks[i];
       }
     }
@@ -47,58 +48,99 @@ class TaskManager {
   updateTaskType(taskId, taskType) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskType = taskType;
+    this.save();
   }
   
   // Update task name
   updateTaskName(taskId, taskName) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskName = taskName;
+    this.save();
   }
 
   // Update task description
   updateTaskDescription(taskId, taskDescription) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskDescription = taskDescription;
+    this.save();
   }
   
   // Update assignee
   updateAssignedTo(taskId, taskAssignedTo) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskAssignedTo = taskAssignedTo;
+    this.save();
   }
 
   // Update priority
   updatePriority(taskId, taskPriority) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskPriority = taskPriority;
+    this.save();
   }
   
   // Update status
   updateStatus(taskId, taskStatus) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskStatus = taskStatus;
+    this.save();
   }
   
   // Update due date
   updateDueDate(taskId, taskDueDate) {
     const taskToUpdate = this.findTask(taskId);
     this.tasks[taskToUpdate].taskDueDate = taskDueDate;
+    this.save();
   }
 
   // Delete Task
   deleteTask(taskId) {
     this.tasks.splice(this.findTask(taskId), 1);
-    this.render();
+    this.save();
   }
 
   // Find the index of the task in task array by taskId
   findTask(taskId) {
-    for(let i = 0; i < taskManager.tasks.length; i++) {
-      if(taskManager.tasks[i].taskId == taskId) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].taskId == taskId) {
         return i;
       }
     }
+  };
+
+  // Initialises the date picker and handles updates
+  getCalendar(taskManager) {
+    let dateField = document.querySelectorAll('.date');
+    dateField.flatpickr({
+      enableTime: false,
+      dateFormat: "D d/m/y",
+      monthSelectorType: "static",
+      disableMobile: true,
+      onChange: function () {
+        let taskId = this.input.id.replace(/\D/g, '');
+        taskManager.updateDueDate(taskId, this.input.value);
+      }
+    })
+  };
+
+  // Local storage functions
+  save() {
+    if (localStorage.getItem('tasks')) {
+      localStorage.removeItem('tasks');
+    }
+    const tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson);
   }
+
+  load() {
+    const taskString = localStorage.getItem('tasks');
+    const tasksJson = JSON.parse(taskString);
+  
+    tasksJson.map(eachTask => {
+      const { taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate } = eachTask;
+      this.addTask(taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate);
+    })
+  };
 
   // Render the task list, initialise date pickers and selectors
   render() {
@@ -107,14 +149,14 @@ class TaskManager {
 
     // Loop over our tasks and create the html, storing it in the array
     for (let i = 0; i < this.tasks.length; i++) {
-        // Get the current task in the loop
-        const task = this.tasks[i];
+      // Get the current task in the loop
+      const task = this.tasks[i];
 
-        // Create the task html
-        const taskHtml = createTaskHtml(task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
+      // Create the task html
+      const taskHtml = createTaskHtml(task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
 
-        // Push it to the tasksHtmlList array
-        tasksHtmlList.push(taskHtml);
+      // Push it to the tasksHtmlList array
+      tasksHtmlList.push(taskHtml);
     }
 
     // Create the tasksHtml by joining each item in the tasksHtmlList with a new line in between each item.
@@ -123,31 +165,34 @@ class TaskManager {
     // Set the inner html of the tasksList on the page
     const tasksList = document.querySelector('#taskList');
     tasksList.innerHTML = tasksHtml;
-
-    // Show correct values for selectors  
-    for (let task of taskManager.tasks) {
-      let taskId = task.taskId;
-      $('#type'+ taskId).selectpicker('val', task.taskType);
-      $('#assigned'+ taskId).selectpicker('val', task.taskAssignedTo);
-      $('#priority'+ taskId).selectpicker('val', task.taskPriority);
-      $('#status'+ taskId).selectpicker('val', task.taskStatus);
-      $('.selectpicker').selectpicker('render');
-    }
+    
+    // Show correct values for selectors / dueDate
+    showValues(this);
 
     // Make dueDate field clickable
-    getCalendar();
+    this.getCalendar(this);
 
     // Make selectors active
     $('select').selectpicker();
-
-    // Show correct value for dueDate
-    for (let task of taskManager.tasks) {
-      let taskId = task.taskId;
-      let dueDate = document.querySelector('#date' + taskId);
-      dueDate.value = task.taskDueDate;
-    }
   }
-}
+};
+
+// Show correct values for selectors / dueDate
+const showValues = (taskManager) => {
+  if (taskManager.tasks) {
+    for (let i = 0; i < taskManager.tasks.length; i++) {
+      let taskId = taskManager.tasks[i].taskId;
+      $('#type' + taskId).val(taskManager.tasks[i].taskType);
+      $('#assigned' + taskId).val(taskManager.tasks[i].taskAssignedTo);
+      $('#priority' + taskId).val(taskManager.tasks[i].taskPriority);
+      $('#status' + taskId).val(taskManager.tasks[i].taskStatus);
+      
+      let dueDate = document.querySelector('#date' + taskId);
+      dueDate.value = taskManager.tasks[i].taskDueDate;
+    }
+    $('.selectpicker').selectpicker('render');
+  }
+};
 
 // Create the HTML for a task
 const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
@@ -230,3 +275,5 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
   </div>
 </div>
 `
+
+export default TaskManager;
