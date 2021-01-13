@@ -1,5 +1,12 @@
+import TaskManager from './taskManager.js';
+
 // Initialise the taskManager object
-const taskManager = new TaskManager(0);
+const taskManager = new TaskManager();
+
+// Load tasks object from local storage 
+if(localStorage.getItem('tasks')) {
+  taskManager.load();
+};
 
 // Select the New Task Form
 const newTaskForm = document.querySelector('#btn-add-task');
@@ -20,11 +27,11 @@ newTaskForm.addEventListener('click', event => {
 
   taskManager.addTask(type, name, description, assignedTo, priority, status, dueDate);
 
-  // Render the tasks
-  taskManager.render();
-  
   // Clear newTaskNameInput value
   newTaskNameInput.value = '';
+
+  // Render the task list
+  taskManager.render();
 });
 
 // Delete button event listener
@@ -32,6 +39,7 @@ document.body.addEventListener('click', function (event) {
   if (event.target.classList == 'bin') {
     let taskId = event.target.id.replace(/\D/g, '');
     taskManager.deleteTask(taskId);
+    taskManager.render();
   };
 });
 
@@ -70,6 +78,7 @@ newTaskNameInput.addEventListener('keypress', function (event) {
     newTaskForm.click();
     newTaskNameInput.value = '';
   }
+  taskManager.save();
 });
 
 // Clicking into task field changes '...' button to 'Save' button
@@ -106,6 +115,7 @@ document.body.addEventListener('click', function (event) {
     event.target.classList.remove("save"); 
     event.target.innerText = '...';
   }
+  taskManager.save();
 });
 
 // Clicking 'Save' button updates the task description
@@ -115,6 +125,7 @@ document.body.addEventListener('click', function (event) {
     taskManager.updateTaskDescription(taskId, event.target.previousElementSibling.value)
     event.target.style.display = 'none';
   }
+  taskManager.save();
 });
 
 // Enter button updates the task name
@@ -127,6 +138,7 @@ document.body.addEventListener('keypress', function (event) {
     event.target.nextElementSibling.innerText = '...';
     event.target.blur();
   }
+  taskManager.save();
 });
 
 // Enter button updates the task description
@@ -137,6 +149,7 @@ document.body.addEventListener('keypress', function (event) {
     event.target.nextElementSibling.style.display = "none";
     event.target.blur();
   }
+  taskManager.save();
 });
 
 // Display description value from array in description field
@@ -166,9 +179,5 @@ document.body.addEventListener('click', function (event) {
         } 
       });
     };
-  }
+  };
 });
-
-// Add test tasks
-taskManager.addTask('work', 'Write report for important client', 'John Smith @ Corp Tech - Final figures', 'dani', 'high', 'in-progress', 'Fri 12/02/21');
-taskManager.addTask('leisure', 'Play tennis with Kate', 'Meet @ Melbourne Tennis Centre', 'victoria', 'low', 'completed', 'Sat 26/12/20');

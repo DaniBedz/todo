@@ -1,0 +1,22 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "A simple to-do app built as part of Generation Australia's Junior Web Developer programme. Open source for all!",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaniBedz/todo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaniBedz/todo/issues"
+  },
+  "homepage": "https://github.com/DaniBedz/todo#readme",
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  }
+}
