@@ -160,11 +160,10 @@ class TaskManager {
     }
 
     // Create the tasksHtml by joining each item in the tasksHtmlList with a new line in between each item.
-    const tasksHtml = tasksHtmlList.join('\n');
+  
 
     // Set the inner html of the tasksList on the page
-    const tasksList = document.querySelector('#taskList');
-    tasksList.innerHTML = tasksHtml;
+    document.querySelector('#taskList').innerHTML = tasksHtmlList.join('\n');
     
     // Show correct values for selectors / dueDate
     showValues(this);
@@ -182,13 +181,11 @@ const showValues = (taskManager) => {
   if (taskManager.tasks) {
     for (let i = 0; i < taskManager.tasks.length; i++) {
       let taskId = taskManager.tasks[i].taskId;
-      $('#type' + taskId).val(taskManager.tasks[i].taskType);
-      $('#assigned' + taskId).val(taskManager.tasks[i].taskAssignedTo);
-      $('#priority' + taskId).val(taskManager.tasks[i].taskPriority);
-      $('#status' + taskId).val(taskManager.tasks[i].taskStatus);
-      
-      let dueDate = document.querySelector('#date' + taskId);
-      dueDate.value = taskManager.tasks[i].taskDueDate;
+      document.querySelector(`#type${taskId}`).value = taskManager.tasks[i].taskType;
+      document.querySelector(`#assigned${taskId}`).value = taskManager.tasks[i].taskAssignedTo;
+      document.querySelector(`#priority${taskId}`).value = taskManager.tasks[i].taskPriority;
+      document.querySelector(`#status${taskId}`).value = taskManager.tasks[i].taskStatus;
+      document.querySelector(`#date${taskId}`).value = taskManager.tasks[i].taskDueDate;
     }
     $('.selectpicker').selectpicker('render');
   }

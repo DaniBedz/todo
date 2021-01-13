@@ -43,9 +43,24 @@ document.body.addEventListener('click', function (event) {
   };
 });
 
-// Show/hide intro message if task list is empty
+// Show/hide intro message if task list is empty and add task is clicked
 document.body.addEventListener('click', function (event) {
-  if (event.target.id == 'btn-add-task' || event.target.classList == 'bin') {
+  if (event.target.id == 'btn-add-task') {
+    if (taskManager.tasks.length > 0) {
+      // Remove class from container (displays intro message)
+      const taskList = document.getElementById("taskList");
+      taskList.classList.remove("taskList");
+      taskManager.render();
+    } else {
+      taskList.classList.add("taskList");
+      taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
+    }
+  };
+});
+
+// Show/hide intro message if task list is empty after clicking the bin icon
+document.body.addEventListener('click', function (event) {
+  if (event.target.classList == 'bin') {
     if (taskManager.tasks.length > 0) {
       // Remove class from container (displays intro message)
       const taskList = document.getElementById("taskList");
@@ -91,7 +106,7 @@ document.body.addEventListener('click', function (event) {
 
 // Show/hide description field
 document.body.addEventListener('click', function (event) {
-  if (event.target.innerText === '...') {
+  if (event.target.id.includes('descriptionBtn')) {
     if (event.target.parentNode.nextElementSibling.style.display === 'none') {
       event.target.parentNode.nextElementSibling.style.display = 'flex';
     } else {
@@ -154,7 +169,7 @@ document.body.addEventListener('keypress', function (event) {
 
 // Display description value from array in description field
 document.body.addEventListener('click', function (event) {
-  if (event.target.innerText === '...') {
+  if (event.target.id.includes('descriptionBtn')) {
     let taskId = event.target.id.replace(/\D/g, '');
     event.target.parentNode.nextElementSibling.children[0].value = taskManager.tasks[taskManager.findTask(taskId)].taskDescription;
   }
