@@ -69,6 +69,11 @@ body {
   right: 3px !important;
 }
 
+.more:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 button {
   padding: 0 !important;
 }
