@@ -164,7 +164,7 @@ span.text {
   background-color: var(--mediumgrey);
 }
 
-.form-control.task-desc {
+.task-name {
   margin-right: 3px;
 }
 
