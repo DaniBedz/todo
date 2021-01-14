@@ -1,4 +1,4 @@
-class TaskManager {
+export class TaskManager {
   constructor() {
     this.tasks = [];
   }
@@ -173,7 +173,26 @@ class TaskManager {
 
     // Make selectors active
     $('select').selectpicker();
-  }
+  };
+
+  // Add child node, rather than a full render
+  addNode(taskName) {
+    const newTask = document.createElement('div');
+    const taskId = this.taskIdGenerator();
+    newTask.innerHTML = createTaskHtml(taskId, 'none', taskName, '', 'none', 'none', 'none', '');
+    const taskList = document.getElementById('taskList');
+    taskList.appendChild(newTask);
+    this.getCalendar(this);
+    $('.selectpicker').selectpicker('render');
+    this.addTask('none', taskName, '', 'none', 'none', 'none', '');
+  };
+
+  // Delete node, rather than a full render
+  deleteNode(task) {
+    const taskId = task.id;
+    this.deleteTask(taskId);
+    document.getElementById(task).remove();
+  };
 };
 
 // Show correct values for selectors / dueDate
@@ -193,7 +212,7 @@ const showValues = (taskManager) => {
 
 // Create the HTML for a task
 const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
-<div class="row mx-auto text-center" id="${taskId}">
+<div class="row mx-auto text-center task" id="${taskId}">
   <div class="col">
     <div class="row bg-grey pt-3">
       <div class="order-2 order-lg-1 col-1 bg-grey flex">
@@ -272,5 +291,3 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
   </div>
 </div>
 `
-
-export default TaskManager;

@@ -1,4 +1,4 @@
-import TaskManager from './taskManager.js';
+import { TaskManager } from './taskManager.js';
 
 // Initialise the taskManager object
 const taskManager = new TaskManager();
@@ -17,56 +17,46 @@ newTaskForm.addEventListener('click', event => {
 
   // New task values template
   const newTaskNameInput = document.querySelector('#newTaskNameInput');
-  const name = newTaskNameInput.value;
-  const type = 'none';
-  const description = '';
-  const assignedTo = 'none';
-  const priority = 'none';
-  const status = 'none';
-  const dueDate = '';
-
-  taskManager.addTask(type, name, description, assignedTo, priority, status, dueDate);
+  const taskName = newTaskNameInput.value;
+  taskManager.addNode(taskName);
 
   // Clear newTaskNameInput value
   newTaskNameInput.value = '';
-
-  // Render the task list
-  taskManager.render();
 });
 
 // Delete button event listener
 document.body.addEventListener('click', function (event) {
   if (event.target.classList == 'bin') {
     let taskId = event.target.id.replace(/\D/g, '');
-    taskManager.deleteTask(taskId);
-    taskManager.render();
+    taskManager.deleteNode(taskId);
   };
 });
 
 // Show/hide intro message if task list is empty and add task is clicked
 document.body.addEventListener('click', function (event) {
   if (event.target.id == 'btn-add-task') {
-    if (taskManager.tasks.length > 0) {
+     const taskList = document.getElementById("taskList");
+    if (taskManager.tasks.length > 0 && taskList.classList.contains("taskList")) {
       // Remove class from container (displays intro message)
-      const taskList = document.getElementById("taskList");
       taskList.classList.remove("taskList");
       taskManager.render();
-    } else {
+    } else if (taskManager.tasks.length === 0 && !taskList.classList.contains("taskList")) {
       taskList.classList.add("taskList");
       taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
+      taskManager.render();
     }
   };
 });
 
 // Show/hide intro message if task list is empty after clicking the bin icon
-document.body.addEventListener('click', function (event) {
+document.body.addEventListener("click", function (event) {
   if (event.target.classList == 'bin') {
-    if (taskManager.tasks.length > 0) {
+    const taskList = document.getElementById("taskList");
+    if (taskManager.tasks.length > 0 && taskList.classList.contains("taskList")) {
       // Remove class from container (displays intro message)
-      const taskList = document.getElementById("taskList");
       taskList.classList.remove("taskList");
       taskManager.render();
-    } else {
+    } else if (taskManager.tasks.length === 0 && !taskList.classList.contains("taskList")) {
       taskList.classList.add("taskList");
       taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
     }
