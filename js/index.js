@@ -3,7 +3,10 @@ import { TaskManager } from './taskManager.js';
 // Initialise the taskManager object
 const taskManager = new TaskManager();
 
-// Load tasks object from local storage 
+// Make the taskManager Object globally available (ES6 module workaround)
+window.taskManager = taskManager;
+
+// Load tasks object from local storage
 if(localStorage.getItem('tasks')) {
   taskManager.load();
 };
