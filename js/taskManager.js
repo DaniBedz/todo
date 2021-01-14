@@ -28,7 +28,7 @@ export class TaskManager {
     this.tasks.push(task);
     this.tasks.sort((a, b) => a.taskId - b.taskId);
     this.save();
-  }
+  };
   
   // Return an array of all tasks
   getTasks() {
@@ -106,7 +106,7 @@ export class TaskManager {
         return i;
       }
     }
-  };
+  }
 
   // Initialises the date picker and handles updates
   getCalendar(taskManager) {
@@ -121,7 +121,7 @@ export class TaskManager {
         taskManager.updateDueDate(taskId, this.input.value);
       }
     })
-  };
+  }
 
   // Local storage functions
   save() {
@@ -140,7 +140,7 @@ export class TaskManager {
       const { taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate } = eachTask;
       this.addTask(taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate);
     })
-  };
+  }
 
   // Show correct values for selectors / dueDate
   showValues(taskManager) {
@@ -155,7 +155,7 @@ export class TaskManager {
       }
       $('.selectpicker').selectpicker('render');
     }
-  };
+  }
 
   // Render the task list, initialise date pickers and selectors
   render() {
@@ -186,7 +186,7 @@ export class TaskManager {
 
     // Make selectors active
     $('select').selectpicker();
-  };
+  }
 
   // Add child node, rather than a full render
   addNode(taskName) {
@@ -198,14 +198,14 @@ export class TaskManager {
     this.getCalendar(this);
     $('.selectpicker').selectpicker('render');
     this.addTask('none', taskName, '', 'none', 'none', 'none', '');
-  };
+  }
 
   // Delete node, rather than a full render
   deleteNode(task) {
     const taskId = task.id;
     this.deleteTask(taskId);
     document.getElementById(task).remove();
-  };
+  }
 };
 
 
@@ -241,7 +241,7 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
         <div class="form-group">
           <label for="assigned${taskId}">Assigned</label>
           <select id="assigned${taskId}" class="bg-grey selectpicker text-center" data-width="fit">
-            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
+            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
             <option class="bg-grey" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;&nbsp;Victoria&nbsp;&nbsp;</span>">Victoria</option>
             <option class="bg-grey" value="dani" data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">Dani</option>
           </select>
@@ -264,7 +264,7 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
         <div class="form-group">
           <label for="status${taskId}">Status</label>
           <select id="status${taskId}" class="bg-grey selectpicker" data-width="fit">
-            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
+            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
             <option class="bg-grey" value="not-started" data-content="<span class='btn btn-danger btn-shrink'>&nbsp;Not Started&nbsp;</span>">Not Started</option>
             <option class="bg-grey" value="in-progress" data-content="<span class='btn btn-warning btn-shrink'>&nbsp;In Progress&nbsp;</span>">In Progress</option>
             <option class="bg-grey" value="completed" data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;Completed&nbsp;&nbsp;</span>">Completed</option>
