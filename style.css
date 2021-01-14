@@ -218,7 +218,8 @@ ul.dropdown-menu > li {
   color: RGBA(0, 0, 0, 0) !important;
 }
 
-.bootstrap-select > .dropdown-toggle:focus {
+.bootstrap-select > .dropdown-toggle:focus,
+input:focus {
   outline: none !important;
 }
 
@@ -486,10 +487,10 @@ ul.dropdown-menu.inner.show > li {
 }
 
 * {
-  -webkit-user-select: none; /* Chrome all / Safari all */
-  -moz-user-select: none; /* Firefox all */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none; /* Likely future */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 button.bg-success:focus {
@@ -499,4 +500,8 @@ button.bg-success:focus {
 }
 button.bg-success:active {
   background-color: #1e7e34 !important;
+}
+
+.dropup .dropdown-toggle::after {
+  display: none !important;
 }

@@ -3,9 +3,6 @@ import { TaskManager } from './taskManager.js';
 // Initialise the taskManager object
 const taskManager = new TaskManager();
 
-// Make the taskManager Object globally available (ES6 module workaround)
-window.taskManager = taskManager;
-
 // Load tasks object from local storage
 if(localStorage.getItem('tasks')) {
   taskManager.load();
@@ -21,11 +18,12 @@ function displayIntro() {
   } else if (taskManager.tasks.length === 0 && !taskList.classList.contains("taskList")) {
     taskList.classList.add("taskList");
     taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
-  };
+  }
 };
 
 // Hide intro message if there are existing tasks stored in the array
 window.onload = () => {
+  taskManager.render();
   displayIntro();
 };
 
@@ -39,10 +37,18 @@ newTaskForm.addEventListener('click', event => {
   // New task values template
   const newTaskNameInput = document.querySelector('#newTaskNameInput');
   const taskName = newTaskNameInput.value;
-  taskManager.addNode(taskName);
 
-  // Clear newTaskNameInput value
-  newTaskNameInput.value = '';
+  // Validation code
+  if (taskName.length < 3) {
+    const alert = document.getElementById('alertMessage');
+    alert.style.display = 'block';
+    setTimeout(() => {alert.style.display = 'none'}, 4000);
+  } else {
+    taskManager.addNode(taskName);
+
+    // Clear newTaskNameInput value
+    newTaskNameInput.value = '';
+  }
 });
 
 // Delete button event listener
@@ -51,7 +57,7 @@ document.body.addEventListener('click', function (event) {
     let taskId = event.target.id.replace(/\D/g, '');
     taskManager.deleteNode(taskId);
     displayIntro();
-  };
+  }
 });
 
 // Show/hide intro message if task list is empty and add task is clicked
@@ -65,7 +71,7 @@ document.body.addEventListener('click', function (event) {
 document.body.addEventListener("click", function (event) {
   if (event.target.classList == 'bin') {
     displayIntro();
-  };
+  }
 });
 
 // Enter button in new task field adds new task
@@ -174,7 +180,10 @@ document.body.addEventListener('click', function (event) {
         } else if (event.target.id.includes('status')) {
           taskManager.updateStatus(taskId, event.target.value);
         } 
-      });
-    };
-  };
+      })
+    }
+  }
 });
+
+// Make the taskManager Object globally available (ES6 module workaround)
+window.taskManager = taskManager;
