@@ -142,6 +142,21 @@ export class TaskManager {
     })
   };
 
+  // Show correct values for selectors / dueDate
+  showValues(taskManager) {
+    if (taskManager.tasks) {
+      for (let i = 0; i < taskManager.tasks.length; i++) {
+        let taskId = taskManager.tasks[i].taskId;
+        document.querySelector(`#type${taskId}`).value = taskManager.tasks[i].taskType;
+        document.querySelector(`#assigned${taskId}`).value = taskManager.tasks[i].taskAssignedTo;
+        document.querySelector(`#priority${taskId}`).value = taskManager.tasks[i].taskPriority;
+        document.querySelector(`#status${taskId}`).value = taskManager.tasks[i].taskStatus;
+        document.querySelector(`#date${taskId}`).value = taskManager.tasks[i].taskDueDate;
+      }
+      $('.selectpicker').selectpicker('render');
+    }
+  };
+
   // Render the task list, initialise date pickers and selectors
   render() {
     // Create an array to store the tasks' HTML
@@ -160,13 +175,11 @@ export class TaskManager {
     }
 
     // Create the tasksHtml by joining each item in the tasksHtmlList with a new line in between each item.
-  
-
     // Set the inner html of the tasksList on the page
     document.querySelector('#taskList').innerHTML = tasksHtmlList.join('\n');
     
     // Show correct values for selectors / dueDate
-    showValues(this);
+    this.showValues(this);
 
     // Make dueDate field clickable
     this.getCalendar(this);
@@ -178,7 +191,7 @@ export class TaskManager {
   // Add child node, rather than a full render
   addNode(taskName) {
     const newTask = document.createElement('div');
-    const taskId = this.taskIdGenerator();
+    const taskId = taskManager.taskIdGenerator();
     newTask.innerHTML = createTaskHtml(taskId, 'none', taskName, '', 'none', 'none', 'none', '');
     const taskList = document.getElementById('taskList');
     taskList.appendChild(newTask);
@@ -195,20 +208,6 @@ export class TaskManager {
   };
 };
 
-// Show correct values for selectors / dueDate
-const showValues = (taskManager) => {
-  if (taskManager.tasks) {
-    for (let i = 0; i < taskManager.tasks.length; i++) {
-      let taskId = taskManager.tasks[i].taskId;
-      document.querySelector(`#type${taskId}`).value = taskManager.tasks[i].taskType;
-      document.querySelector(`#assigned${taskId}`).value = taskManager.tasks[i].taskAssignedTo;
-      document.querySelector(`#priority${taskId}`).value = taskManager.tasks[i].taskPriority;
-      document.querySelector(`#status${taskId}`).value = taskManager.tasks[i].taskStatus;
-      document.querySelector(`#date${taskId}`).value = taskManager.tasks[i].taskDueDate;
-    }
-    $('.selectpicker').selectpicker('render');
-  }
-};
 
 // Create the HTML for a task
 const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
