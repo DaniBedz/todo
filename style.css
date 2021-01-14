@@ -105,6 +105,14 @@ button {
   background-color: violet;
 }
 
+.btn-dani:hover {
+  background-color: rgb(69, 174, 216);
+}
+
+.btn-victoria:hover {
+  background-color: rgb(228, 95, 228);
+}
+
 .btn-none {
   color: #fff;
   background-color: steelblue;
@@ -470,4 +478,20 @@ li.selected.active,
 li.dropdown-menu,
 ul.dropdown-menu.inner.show > li {
   background-color: var(--secondary);
+}
+
+* {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
+}
+
+button.bg-success:focus {
+  background-color: #28a745 !important;
+  outline: none;
+  box-shadow: none;
+}
+button.bg-success:active {
+  background-color: #1e7e34 !important;
 }

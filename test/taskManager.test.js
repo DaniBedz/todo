@@ -1,6 +1,19 @@
 //Unit testing
-const TaskManager = require('../js/taskManager');
-const assert = require('assert');
+import { TaskManager } from '../js/taskManager.js';
+import assert from 'assert';
+
+global.localStorage = {
+    data: {},
+    getItem(key) {
+        return this.data[key];
+    },
+    setItem(key, value) {
+        this.data[key] = value;
+    },
+    removeItem(key) {
+        delete this.data[key];
+    }
+};
 
 describe('taskManager', () => {
   it('should add a task', () => {
@@ -41,5 +54,4 @@ describe('taskManager', () => {
     // Verify
     assert.equal(result.taskId, expectedTaskId);
   });
-
 });
