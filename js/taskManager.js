@@ -14,7 +14,7 @@ export class TaskManager {
     return newTaskId;
   }
 
-  addTask(taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) {
+  addTask(taskType = 'none', taskName = '', taskDescription = '', taskAssignedTo = 'none', taskPriority = 'none', taskStatus = 'none', taskDueDate = '') {
     const task = {
       taskId: this.taskIdGenerator(),
       taskType: taskType,
