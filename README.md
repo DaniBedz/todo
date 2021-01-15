@@ -47,6 +47,8 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 
 ### Planned Fixes:
 
+- Calendar circles overlapping border
+
 ### Features to Add:
 
 - Add light mode

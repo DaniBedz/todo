@@ -85,7 +85,7 @@ newTaskForm.addEventListener('click', event => {
 
   // Validation code
   if (taskName.length < 3) {
-    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;New task input invalid! </strong>&nbsp;Field must have more than 2 characters.', 'error', 4);
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;New task input invalid! </strong>&nbsp;Field must have more than 2 characters.', 'error', 5);
   } else {
     taskManager.addNode(taskName);
 
