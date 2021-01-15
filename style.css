@@ -162,6 +162,7 @@ span.text {
 
 .form-control:focus {
   background-color: var(--mediumgrey);
+  box-shadow: none !important;
 }
 
 .task-name {
@@ -181,6 +182,7 @@ span.text {
   height: calc(1.75rem + 1.3vw) !important;
   margin-top: auto !important;
   margin-bottom: calc(0.6rem + 0.9vw) !important;
+  margin-right: 3px;
 }
 
 label {
@@ -207,7 +209,9 @@ label {
 }
 
 .dropdown-menu {
-  background-color: var(--mediumgrey);
+  background-color: var(--darkgrey);
+  border: 2px solid var(--darkestgrey);
+  border-radius: 10px;
 }
 
 ul.dropdown-menu > li {
@@ -295,6 +299,10 @@ input:focus {
   width: calc(1rem + 1.3vw);
   cursor: pointer;
   margin-left: calc(20px + 1vw);
+}
+
+.bin-div {
+  padding-left: 7px;
 }
 
 img {
@@ -414,7 +422,8 @@ span > .btn-victoria:hover {
     display: flex;
     justify-content: space-around;
   }
-  #taskHeader {
+  #taskHeader,
+  #taskHeaderBar {
     display: none;
   }
   .tasklist-headers {
@@ -509,4 +518,37 @@ button.bg-success:active {
 
 .dropup .dropdown-toggle::after {
   display: none !important;
+}
+
+.arrows {
+  display: none;
+  color: #6997c0;
+  position: absolute;
+  right: calc(-1.2rem + 2vw);
+}
+
+.arrows:hover {
+  color: white;
+}
+
+.arrow-up {
+  top: -10px;
+}
+
+.arrow-down {
+  bottom: 5px;
+}
+
+.ajs-message {
+  border: 2px solid var(--darkestgrey) !important;
+  border-radius: 10px !important;
+  width: 400px !important;
+}
+
+.alertify-notifier.ajs-right .ajs-message.ajs-visible {
+  right: 410px !important;
+}
+
+.alertify-notifier.ajs-bottom {
+  bottom: 5vh !important;
 }

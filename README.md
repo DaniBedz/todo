@@ -17,8 +17,10 @@ Open source for all!
 2. A new empty task will be generated. Use the text field on your new task card to title your new task.
 3. (OPTIONAL) To add a more detailed description of your task, left click the three dots next to the task name input text box to drop down an additional section. There are may type your more detailed description, with the option of saving.
 4. Use the provided default buttons to assigne your task type, assignee, priority, status and due date.
-5. IF the priority or the status of your tasks changes, update your tasks by clicking the appropriate buttons and selecting your new updated statuses.
+5. If the priority or the status of your tasks changes, update your tasks by clicking the appropriate buttons and selecting your new updated statuses.
 6. Tasks that are no longer needed can be deleted from the list by clicking the bin icon to the very right of each task.
+
+Extra: You can add test data by adding a new task with the name '!test', or clear the list with '!clear'.
 
 ## Code and Languages used:
 
@@ -38,11 +40,12 @@ Open source for all!
 - Font Awesome
   https://fontawesome.com/
 
+- AlertifyJS
+  https://alertifyjs.com/
+
 ## Dev Notes:
 
 ### Planned Fixes:
-
-- Clean up duplicate CSS
 
 ### Features to Add:
 
