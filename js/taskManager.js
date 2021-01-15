@@ -14,6 +14,7 @@ export class TaskManager {
     return newTaskId;
   }
 
+  // addTask, push to array, sort and save to local storage
   addTask(taskType = 'none', taskName = '', taskDescription = '', taskAssignedTo = 'none', taskPriority = 'none', taskStatus = 'none', taskDueDate = '') {
     const task = {
       taskId: this.taskIdGenerator(),
@@ -383,7 +384,6 @@ export class TaskManager {
   }
 };
 
-
 // Create the HTML for a task
 const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
 <div class="row mx-auto text-center task" id="${taskId}">
@@ -455,11 +455,13 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
         </div>
       </div>
 
-      <div class="order-7 order-lg-8 col-1 bg-grey flex">
+      <div class="order-7 order-lg-8 col-1 bg-grey flex bin-div">
+        <div id="up${taskId}" class='arrows arrow-up'>↑</div>
         <div class="form-group delete-cell">
           <label for="delete${taskId}">Delete</label>
           <img src="./img/bin.png"id="delete${taskId}" class="bin">
         </div>
+        <div id="down${taskId}" class='arrows arrow-down'>↓</div>
       </div>
     </div>
   </div>

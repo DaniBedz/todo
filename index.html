@@ -20,7 +20,12 @@
   <link rel="stylesheet" href="./datepicker.css">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.min.css'>
+
+  <!-- Alertify -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
 
   <!-- favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
@@ -37,10 +42,6 @@
 </head>
 
 <body>
-  <div id="alertMessage" class="alert alert-danger" role="alert" style="display: none">
-    New task input invalid. Field must have more than 2 characters.
-  </div>
-
   <!-- Start Main Container -->
   <div id="taskContainer" class="container-fluid">
     <div id="mainContainer" class="rounded m-0">
@@ -58,7 +59,6 @@
               <input id="newTaskNameInput" type="text" class="text-white pl-3 task-width rounded" placeholder="Create New Task.." autofocus>
             </form>
             <button id="btn-add-task" type='submit' class="bg-success border-0 text-white plus rounded">+</button>
-            <!-- <span class='toggler'>&#xf186;</span>  -->
           </div>
         
         </div>
@@ -119,5 +119,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta/js/bootstrap-select.min.js"></script>
   <!-- Date Picker -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.js"></script>
+  <!-- Alertify -->
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </body>
 </html>

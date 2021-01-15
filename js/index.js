@@ -25,6 +25,27 @@ function displayIntro() {
 window.onload = () => {
   taskManager.render();
   displayIntro();
+  initDivMouseOver();
+};
+
+// Show up/down arrows
+function initDivMouseOver()   {
+  let div = document.querySelectorAll('.task');
+  for (let task of div) {
+    let taskIndex = taskManager.findTask(task.id);
+    task.onmouseover = function () { 
+      if (taskIndex !== 0) {
+        document.getElementById(`up${task.id}`).style.display = 'block';
+      }
+      if (taskIndex !== taskManager.tasks.length - 1) {
+      document.getElementById(`down${task.id}`).style.display = 'block';
+      }
+      task.onmouseleave = function () { 
+        document.getElementById(`up${task.id}`).style.display = 'none';
+        document.getElementById(`down${task.id}`).style.display = 'none';
+      }
+    } 
+  }
 };
 
 // Select the New Task Form
@@ -48,6 +69,8 @@ newTaskForm.addEventListener('click', event => {
     taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.save();
     taskManager.render();
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Test data added</strong>', 'success', 2);
+
     return;
   }
 
@@ -56,21 +79,25 @@ newTaskForm.addEventListener('click', event => {
     taskManager.tasks = [];
     taskManager.save();
     taskManager.render();
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Tasks Cleared</strong>', 'success', 2);
     return;
   }
 
-
   // Validation code
   if (taskName.length < 3) {
-    const alert = document.getElementById('alertMessage');
-    alert.style.display = 'block';
-    setTimeout(() => {alert.style.display = 'none'}, 4000);
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;New task input invalid! </strong>&nbsp;Field must have more than 2 characters.', 'error', 4);
   } else {
     taskManager.addNode(taskName);
 
     // Clear newTaskNameInput value
     newTaskNameInput.value = '';
+
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task Added</strong>', 'success', 2);
+
   }
+
+  // Initialise up/down arrows
+  initDivMouseOver();
 });
 
 // Delete button event listener
@@ -79,6 +106,7 @@ document.body.addEventListener('click', function (event) {
     let taskId = event.target.id.replace(/\D/g, '');
     taskManager.deleteNode(taskId);
     displayIntro();
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task Deleted </strong>', 'success', 2);
   }
 });
 
@@ -102,6 +130,9 @@ newTaskNameInput.addEventListener('keypress', function (event) {
     event.preventDefault();
     newTaskForm.click();
     newTaskNameInput.value = '';
+
+    // Initialise up/down arrows
+    initDivMouseOver();
   }
   taskManager.save();
 });
@@ -116,7 +147,7 @@ document.body.addEventListener('click', function (event) {
 
 // Show/hide description field
 document.body.addEventListener('click', function (event) {
-  if (event.target.innerText === '...') {
+  if (event.target.id.includes('descriptionBtn') && event.target.innerText === '...') {
     if (event.target.parentNode.nextElementSibling.style.display === 'none') {
       event.target.parentNode.nextElementSibling.style.display = 'flex';
     } else {
@@ -139,8 +170,10 @@ document.body.addEventListener('click', function (event) {
     taskManager.updateTaskName(taskId, event.target.previousElementSibling.value)
     event.target.classList.remove("save"); 
     event.target.innerText = '...';
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task name updated</strong>', 'success', 2);
   }
   taskManager.save();
+
 });
 
 // Clicking 'Save' button updates the task description
@@ -149,6 +182,7 @@ document.body.addEventListener('click', function (event) {
     let taskId = event.target.id.replace(/\D/g, '')
     taskManager.updateTaskDescription(taskId, event.target.previousElementSibling.value)
     event.target.style.display = 'none';
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task description updated</strong>', 'success', 2);
   }
   taskManager.save();
 });
@@ -162,6 +196,7 @@ document.body.addEventListener('keypress', function (event) {
     event.target.nextElementSibling.classList.remove("save");
     event.target.nextElementSibling.innerText = '...';
     event.target.blur();
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task name updated</strong>', 'success', 2);
   }
   taskManager.save();
 });
@@ -173,6 +208,7 @@ document.body.addEventListener('keypress', function (event) {
     taskManager.updateTaskDescription(taskId, event.target.value);
     event.target.nextElementSibling.style.display = "none";
     event.target.blur();
+    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task description updated</strong>', 'success', 2);
   }
   taskManager.save();
 });
@@ -213,10 +249,12 @@ document.body.addEventListener('click', function (event) {
   if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskNameOrder === true) {
     taskManager.sortByTaskNameAsc();
     taskNameOrder = false;
+    initDivMouseOver();
   }
   else if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskNameOrder === false) {
     taskManager.sortByTaskNameDsc();
     taskNameOrder = true;
+    initDivMouseOver();
   }
 });
 
@@ -226,10 +264,12 @@ document.body.addEventListener('click', function (event) {
   if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskTypeOrder === true) {
     taskManager.sortByTaskTypeAsc();
     taskTypeOrder = false;
+    initDivMouseOver();
   }
   else if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskTypeOrder === false) {
     taskManager.sortByTaskTypeDsc();
     taskTypeOrder = true;
+    initDivMouseOver();
   }
 });
 
@@ -239,10 +279,12 @@ document.body.addEventListener('click', function (event) {
   if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskAssignedToOrder === true) {
     taskManager.sortByTaskAssignedToAsc();
     taskAssignedToOrder = false;
+    initDivMouseOver();
   }
   else if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskAssignedToOrder === false) {
     taskManager.sortByTaskAssignedToDsc();
     taskAssignedToOrder = true;
+    initDivMouseOver();
   }
 });
 
@@ -252,10 +294,12 @@ document.body.addEventListener('click', function (event) {
   if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskPriorityOrder === true) {
     taskManager.sortByTaskPriorityAsc();
     taskPriorityOrder = false;
+    initDivMouseOver();
   }
   else if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskPriorityOrder === false) {
     taskManager.sortByTaskPriorityDsc();
     taskPriorityOrder = true;
+    initDivMouseOver();
   }
 });
 
@@ -265,10 +309,12 @@ document.body.addEventListener('click', function (event) {
   if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskStatusOrder === true) {
     taskManager.sortByTaskStatusAsc();
     taskStatusOrder = false;
+    initDivMouseOver();
   }
   else if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskStatusOrder === false) {
     taskManager.sortByTaskStatusDsc();
     taskStatusOrder = true;
+    initDivMouseOver();
   }
 });
 
@@ -278,12 +324,55 @@ document.body.addEventListener('click', function (event) {
   if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskDueDateOrder === true) {
     taskManager.sortByTaskDueDateAsc();
     taskDueDateOrder = false;
+    initDivMouseOver();
   }
   else if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskDueDateOrder === false) {
     taskManager.sortByTaskDueDateDsc();
     taskDueDateOrder = true;
+    initDivMouseOver();
+  }
+});
+
+// Move task up
+document.body.addEventListener('click', function (event) {
+  if (event.target.id.includes('up')) {
+    let taskId = event.target.id.replace(/\D/g, '');
+    let taskIndex = taskManager.findTask(taskId);
+    if (taskIndex === 0) {
+      return;
+    }
+    taskManager.tasks.move(taskIndex, taskIndex-1);
+    taskManager.save();
+    taskManager.render();
+    initDivMouseOver();
+  }
+});
+
+// Move task down
+document.body.addEventListener('click', function (event) {
+  if (event.target.id.includes('down')) {
+    let taskId = event.target.id.replace(/\D/g, '');
+    let taskIndex = taskManager.findTask(taskId);
+    if (taskIndex === taskManager.tasks.length) {
+      return;
+    }
+    taskManager.tasks.move(taskIndex, taskIndex+1);
+    taskManager.save();
+    taskManager.render();
+    initDivMouseOver();
   }
 });
 
 // Make the taskManager Object globally available (ES6 module workaround)
 window.taskManager = taskManager;
+
+// Extend global Array object to include .move function (for reordering tasks)
+Object.defineProperty(Array.prototype, 'move', {
+    value: function (old_index, new_index) {
+        while (old_index < 0) {
+            old_index += this.length;
+        }
+        this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+        return this;
+    }
+});
