@@ -157,6 +157,182 @@ export class TaskManager {
     }
   }
 
+  // Sort taskType ascending
+  sortByTaskTypeAsc() {
+    const type = ['work', 'leisure', 'other', 'none'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = type.findIndex(type => a.taskType.includes(type));
+      let bIndex = type.findIndex(type => b.taskType.includes(type));
+      return aIndex - bIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskType descending
+  sortByTaskTypeDsc() {
+    const type = ['work', 'leisure', 'other', 'none'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = type.findIndex(type => a.taskType.includes(type));
+      let bIndex = type.findIndex(type => b.taskType.includes(type));
+      return bIndex - aIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskName ascending
+  sortByTaskNameAsc() {
+    taskManager.tasks.sort((a, b) => {
+      if (a.taskName < b.taskName) {
+        return - 1;
+      }
+      if (a.taskName > b.taskName) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskName descending
+  sortByTaskNameDsc() {
+    taskManager.tasks.sort((a, b) => {
+      if (a.taskName < b.taskName) {
+        return 1;
+      }
+      if (a.taskName > b.taskName) {
+        return - 1;
+      }
+      else {
+        return 0;
+      }
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskAssignedTo ascending
+  sortByTaskAssignedToAsc() {
+   const assignedTo = ['none', 'dani', 'victoria'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = assignedTo.findIndex(assignedTo => a.taskAssignedTo.includes(assignedTo));
+      let bIndex = assignedTo.findIndex(assignedTo => b.taskAssignedTo.includes(assignedTo));
+      return aIndex - bIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskAssignedTo descending
+  sortByTaskAssignedToDsc() {
+    const assignedTo = ['none', 'dani', 'victoria'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = assignedTo.findIndex(assignedTo => a.taskAssignedTo.includes(assignedTo));
+      let bIndex = assignedTo.findIndex(assignedTo => b.taskAssignedTo.includes(assignedTo));
+      return bIndex - aIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskPriority ascending
+  sortByTaskPriorityAsc() {
+    const priority = ['none', 'low', 'medium', 'high'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = priority.findIndex(priority => a.taskPriority.includes(priority));
+      let bIndex = priority.findIndex(priority => b.taskPriority.includes(priority));
+      return aIndex - bIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskPriority descending
+  sortByTaskPriorityDsc() {
+     const priority = ['none', 'low', 'medium', 'high'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = priority.findIndex(priority => a.taskPriority.includes(priority));
+      let bIndex = priority.findIndex(priority => b.taskPriority.includes(priority));
+      return bIndex - aIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskStatus ascending
+  sortByTaskStatusAsc() {
+    const status = ['none', 'not-started', 'in-progress', 'completed'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = status.findIndex(status => a.taskStatus.includes(status));
+      let bIndex = status.findIndex(status => b.taskStatus.includes(status));
+      return aIndex - bIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskStatus descending
+  sortByTaskStatusDsc() {
+    const status = ['none', 'not-started', 'in-progress', 'completed'];
+  
+    taskManager.tasks.sort((a, b) => {
+      let aIndex = status.findIndex(status => a.taskStatus.includes(status));
+      let bIndex = status.findIndex(status => b.taskStatus.includes(status));
+      return bIndex - aIndex;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskDueDate ascending
+  sortByTaskDueDateAsc() {
+    taskManager.tasks.sort((a, b) => {
+      if (a.taskDueDate === '') {
+        return -1;
+      }
+      if (b.taskDueDate === '') {
+        return 1;
+      }
+      let dateNumbersA = a.taskDueDate.split(' '); 
+      let dateFormattedA = dateNumbersA[1].split('/').reverse().join('');
+      let dateNumbersB = b.taskDueDate.split(' '); 
+      let dateFormattedB = dateNumbersB[1].split('/').reverse().join('');
+      return dateFormattedA - dateFormattedB;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
+  // Sort taskDueDate descending
+  sortByTaskDueDateDsc() {
+    taskManager.tasks.sort((a, b) => {
+      if (a.taskDueDate === '') {
+        return 1;
+      }
+      if (b.taskDueDate === '') {
+        return -1;
+      }
+      let dateNumbersA = a.taskDueDate.split(' '); 
+      let dateFormattedA = dateNumbersA[1].split('/').reverse().join('');
+      let dateNumbersB = b.taskDueDate.split(' '); 
+      let dateFormattedB = dateNumbersB[1].split('/').reverse().join('');
+      return dateFormattedB - dateFormattedA;
+    });
+    taskManager.save();
+    taskManager.render();
+  }
+
   // Render the task list, initialise date pickers and selectors
   render() {
     // Create an array to store the tasks' HTML
@@ -201,10 +377,9 @@ export class TaskManager {
   }
 
   // Delete node, rather than a full render
-  deleteNode(task) {
-    const taskId = task.id;
+  deleteNode(taskId) {
     this.deleteTask(taskId);
-    document.getElementById(task).remove();
+    document.getElementById(taskId).remove();
   }
 };
 

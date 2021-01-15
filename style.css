@@ -309,6 +309,11 @@ img {
   font-size: calc(0.8rem + 0.1vw) !important;
 }
 
+.tasklist-headers:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .due-date-header {
   padding-left: 40px;
 }
