@@ -2,7 +2,7 @@
   --darkestgrey: #343a40;
   --darkgrey: #565656;
   --mediumgrey: #484848;
-  --lightgrey: #929292;
+  --lightgrey: #717171;
 }
 
 body {
@@ -374,8 +374,8 @@ span > .btn-victoria:hover {
 }
 
 #intro {
-  border-radius: 7px;
-  border: 2px solid var(--darkestgrey) !important;
+  border-radius: 10px;
+  border: 3px solid var(--darkestgrey) !important;
   background-color: var(--lightgrey);
   color: white;
   margin: auto;
@@ -384,6 +384,7 @@ span > .btn-victoria:hover {
   padding-bottom: 2rem;
   padding-left: 4rem;
   padding-right: 4rem;
+  text-shadow: -1px -1px 3px rgba(0, 0, 0, 1);
 }
 
 .save {
@@ -551,4 +552,24 @@ button.bg-success:active {
 
 .alertify-notifier.ajs-bottom {
   bottom: 5vh !important;
+}
+
+.flatpickr-calendar.arrowTop::after {
+  border-bottom-color: var(--mediumgrey) !important;
+}
+
+.flatpickr-calendar {
+  border: 2px solid var(--darkestgrey) !important;
+  box-shadow: none !important;
+  border-radius: 7px !important;
+}
+
+.flatpickr-months,
+.flatpickr-month {
+  border-radius: 7px !important;
+  background: none !important;
+}
+
+.flatpickr-calendar.arrowTop::before {
+  border-bottom-color: var(--darkestgrey) !important;
 }
