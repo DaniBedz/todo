@@ -300,10 +300,10 @@ export class TaskManager {
   sortByTaskDueDateAsc() {
     taskManager.tasks.sort((a, b) => {
       if (a.taskDueDate === '') {
-        return -1;
+        return 1;
       }
       if (b.taskDueDate === '') {
-        return 1;
+        return -1;
       }
       let dateNumbersA = a.taskDueDate.split(' '); 
       let dateFormattedA = dateNumbersA[1].split('/').reverse().join('');
@@ -319,10 +319,10 @@ export class TaskManager {
   sortByTaskDueDateDsc() {
     taskManager.tasks.sort((a, b) => {
       if (a.taskDueDate === '') {
-        return 1;
+        return -1;
       }
       if (b.taskDueDate === '') {
-        return -1;
+        return 1;
       }
       let dateNumbersA = a.taskDueDate.split(' '); 
       let dateFormattedA = dateNumbersA[1].split('/').reverse().join('');
