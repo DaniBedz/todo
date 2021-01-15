@@ -38,6 +38,28 @@ newTaskForm.addEventListener('click', event => {
   const newTaskNameInput = document.querySelector('#newTaskNameInput');
   const taskName = newTaskNameInput.value;
 
+  // Add test data
+  if (taskName === '!test') {
+    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'dani', 'high', 'in-progress', 'Fri 22/01/21');
+    taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'victoria', 'low', 'completed', 'Thu 28/01/21');
+    taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'dani', 'medium', 'not-started', 'Wed 27/01/21');
+    taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'victoria', 'low', 'none', 'Sat 30/01/21');
+    taskManager.addTask('leisure', 'Go for a nice walk 🧍‍♀️', 'Albert park lake', 'victoria', 'none', 'not-started', '');
+    taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
+    taskManager.save();
+    taskManager.render();
+    return;
+  }
+
+  // Clear all tasks
+  if (taskName === '!clear') {
+    taskManager.tasks = [];
+    taskManager.save();
+    taskManager.render();
+    return;
+  }
+
+
   // Validation code
   if (taskName.length < 3) {
     const alert = document.getElementById('alertMessage');
@@ -94,7 +116,7 @@ document.body.addEventListener('click', function (event) {
 
 // Show/hide description field
 document.body.addEventListener('click', function (event) {
-  if (event.target.id.includes('descriptionBtn')) {
+  if (event.target.innerText === '...') {
     if (event.target.parentNode.nextElementSibling.style.display === 'none') {
       event.target.parentNode.nextElementSibling.style.display = 'flex';
     } else {
@@ -182,6 +204,84 @@ document.body.addEventListener('click', function (event) {
         } 
       })
     }
+  }
+});
+
+// Sort by taskName
+let taskNameOrder = true;
+document.body.addEventListener('click', function (event) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskNameOrder === true) {
+    taskManager.sortByTaskNameAsc();
+    taskNameOrder = false;
+  }
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskNameOrder === false) {
+    taskManager.sortByTaskNameDsc();
+    taskNameOrder = true;
+  }
+});
+
+// Sort by taskType
+let taskTypeOrder = true;
+document.body.addEventListener('click', function (event) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskTypeOrder === true) {
+    taskManager.sortByTaskTypeAsc();
+    taskTypeOrder = false;
+  }
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskTypeOrder === false) {
+    taskManager.sortByTaskTypeDsc();
+    taskTypeOrder = true;
+  }
+});
+
+// Sort by taskAssignedTo
+let taskAssignedToOrder = true;
+document.body.addEventListener('click', function (event) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskAssignedToOrder === true) {
+    taskManager.sortByTaskAssignedToAsc();
+    taskAssignedToOrder = false;
+  }
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskAssignedToOrder === false) {
+    taskManager.sortByTaskAssignedToDsc();
+    taskAssignedToOrder = true;
+  }
+});
+
+// Sort by taskPriority
+let taskPriorityOrder = true;
+document.body.addEventListener('click', function (event) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskPriorityOrder === true) {
+    taskManager.sortByTaskPriorityAsc();
+    taskPriorityOrder = false;
+  }
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskPriorityOrder === false) {
+    taskManager.sortByTaskPriorityDsc();
+    taskPriorityOrder = true;
+  }
+});
+
+// Sort by taskStatus
+let taskStatusOrder = true;
+document.body.addEventListener('click', function (event) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskStatusOrder === true) {
+    taskManager.sortByTaskStatusAsc();
+    taskStatusOrder = false;
+  }
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskStatusOrder === false) {
+    taskManager.sortByTaskStatusDsc();
+    taskStatusOrder = true;
+  }
+});
+
+// Sort by taskDueDate
+let taskDueDateOrder = true;
+document.body.addEventListener('click', function (event) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskDueDateOrder === true) {
+    taskManager.sortByTaskDueDateAsc();
+    taskDueDateOrder = false;
+  }
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskDueDateOrder === false) {
+    taskManager.sortByTaskDueDateDsc();
+    taskDueDateOrder = true;
   }
 });
 
