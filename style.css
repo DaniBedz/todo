@@ -501,7 +501,7 @@ ul.dropdown-menu.inner.show > li {
   background-color: var(--secondary);
 }
 
-* {
+*:not(input) {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
