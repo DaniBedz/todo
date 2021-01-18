@@ -243,93 +243,104 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
+// Reset all sorts apart from current sort
+function resetSorts() {
+  taskManager.taskNameOrder = true;
+  taskManager.taskTypeOrder = true;
+  taskManager.taskAssignedToOrder = true;
+  taskManager.taskPriorityOrder = true;
+  taskManager.taskStatusOrder = true;
+  taskManager.taskDueDateOrder = true;
+};
+
 // Sort by taskName
-let taskNameOrder = true;
 document.body.addEventListener('click', function (event) {
-  if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskNameOrder === true) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskManager.taskNameOrder === true) {
     taskManager.sortByTaskNameAsc();
-    taskNameOrder = false;
     initDivMouseOver();
+    resetSorts();
+    taskManager.taskNameOrder = false;
   }
-  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskNameOrder === false) {
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskHeader' && taskManager.taskNameOrder === false) {
     taskManager.sortByTaskNameDsc();
-    taskNameOrder = true;
     initDivMouseOver();
+    resetSorts();
   }
-});
+  });
 
 // Sort by taskType
-let taskTypeOrder = true;
 document.body.addEventListener('click', function (event) {
-  if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskTypeOrder === true) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskManager.taskTypeOrder === true) {
     taskManager.sortByTaskTypeAsc();
-    taskTypeOrder = false;
+    resetSorts();
+    taskManager.taskTypeOrder = false;
     initDivMouseOver();
+
   }
-  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskTypeOrder === false) {
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskType' && taskManager.taskTypeOrder === false) {
     taskManager.sortByTaskTypeDsc();
-    taskTypeOrder = true;
     initDivMouseOver();
+    resetSorts();
   }
 });
 
 // Sort by taskAssignedTo
-let taskAssignedToOrder = true;
 document.body.addEventListener('click', function (event) {
-  if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskAssignedToOrder === true) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskManager.taskAssignedToOrder === true) {
     taskManager.sortByTaskAssignedToAsc();
-    taskAssignedToOrder = false;
+    resetSorts();
+    taskManager.taskAssignedToOrder = false;
     initDivMouseOver();
   }
-  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskAssignedToOrder === false) {
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskAssignedTo' && taskManager.taskAssignedToOrder === false) {
     taskManager.sortByTaskAssignedToDsc();
-    taskAssignedToOrder = true;
     initDivMouseOver();
+    resetSorts();
   }
 });
 
 // Sort by taskPriority
-let taskPriorityOrder = true;
 document.body.addEventListener('click', function (event) {
-  if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskPriorityOrder === true) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskManager.taskPriorityOrder === true) {
     taskManager.sortByTaskPriorityAsc();
-    taskPriorityOrder = false;
+    resetSorts();
+    taskManager.taskPriorityOrder = false;
     initDivMouseOver();
   }
-  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskPriorityOrder === false) {
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskPriority' && taskManager.taskPriorityOrder === false) {
     taskManager.sortByTaskPriorityDsc();
-    taskPriorityOrder = true;
     initDivMouseOver();
+    resetSorts();
   }
 });
 
 // Sort by taskStatus
-let taskStatusOrder = true;
 document.body.addEventListener('click', function (event) {
-  if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskStatusOrder === true) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskManager.taskStatusOrder === true) {
     taskManager.sortByTaskStatusAsc();
-    taskStatusOrder = false;
+    resetSorts();
+    taskManager.taskStatusOrder = false;
     initDivMouseOver();
   }
-  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskStatusOrder === false) {
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskStatus' && taskManager.taskStatusOrder === false) {
     taskManager.sortByTaskStatusDsc();
-    taskStatusOrder = true;
     initDivMouseOver();
+    resetSorts();
   }
 });
 
 // Sort by taskDueDate
-let taskDueDateOrder = true;
 document.body.addEventListener('click', function (event) {
-  if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskDueDateOrder === true) {
+  if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskManager.taskDueDateOrder === true) {
     taskManager.sortByTaskDueDateAsc();
-    taskDueDateOrder = false;
+    resetSorts();
+    taskManager.taskDueDateOrder = false;
     initDivMouseOver();
   }
-  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskDueDateOrder === false) {
+  else if (event.target.offsetParent && event.target.offsetParent.id === 'taskDueDate' && taskManager.taskDueDateOrder === false) {
     taskManager.sortByTaskDueDateDsc();
-    taskDueDateOrder = true;
     initDivMouseOver();
+    resetSorts();
   }
 });
 
