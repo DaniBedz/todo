@@ -1,6 +1,12 @@
 export class TaskManager {
   constructor() {
     this.tasks = [];
+    this.taskNameOrder = true;
+    this.taskTypeOrder = true;
+    this.taskAssignedToOrder = true;
+    this.taskPriorityOrder = true;
+    this.taskStatusOrder = true;
+    this.taskDueDateOrder = true;
   }
 
   // taskId creation
