@@ -107,6 +107,7 @@ document.body.addEventListener('click', function (event) {
     taskManager.deleteNode(taskId);
     displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task Deleted </strong>', 'success', 2);
+    initDivMouseOver();
   }
 });
 
