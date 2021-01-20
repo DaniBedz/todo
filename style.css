@@ -387,27 +387,6 @@ span > .btn-victoria:hover {
   text-shadow: -1px -1px 3px rgba(0, 0, 0, 1);
 }
 
-.save {
-  border: 2px solid var(--darkestgrey) !important;
-  border-radius: 7px !important;
-  height: calc(1.8rem + 1.3vw) !important;
-  margin-top: auto !important;
-  margin-bottom: calc(0.6rem + 0.9vw) !important;
-  background-color: #28a745;
-  padding-top: 3px !important;
-}
-
-.desc-save {
-  display: none;
-  border: 2px solid var(--darkestgrey) !important;
-  border-radius: 7px !important;
-  height: calc(1.75rem + 1.3vw) !important;
-  margin-top: auto !important;
-  margin-bottom: calc(0.6rem + 0.9vw) !important;
-  background-color: #28a745;
-  padding-top: 0.5vw !important;
-}
-
 #taskHeaderBar {
   border-top: 2px solid gray;
   border-left: 3px solid var(--darkestgrey);
@@ -493,6 +472,29 @@ div.col {
 .text-white,
 label {
   color: rgb(200, 200, 200) !important;
+}
+
+.save {
+  border: 2px solid var(--darkestgrey) !important;
+  border-radius: 7px !important;
+  height: calc(1.8rem + 1.3vw) !important;
+  margin-top: auto !important;
+  margin-bottom: calc(0.6rem + 0.9vw) !important;
+  background-color: #28a745;
+  padding-top: 3px !important;
+  color: white !important;
+}
+
+.desc-save {
+  display: none;
+  border: 2px solid var(--darkestgrey) !important;
+  border-radius: 7px !important;
+  height: calc(1.75rem + 1.3vw) !important;
+  margin-top: auto !important;
+  margin-bottom: calc(0.6rem + 0.9vw) !important;
+  background-color: #28a745;
+  padding-top: 0.5vw !important;
+  color: white !important;
 }
 
 li.selected.active,

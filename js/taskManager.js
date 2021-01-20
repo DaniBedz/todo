@@ -435,7 +435,7 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
           <select id="priority${taskId}" class="bg-grey selectpicker" data-width="fit">
             <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
             <option class="bg-grey" value="low" data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">Low</option>
-            <option class="bg-grey" value="medium" data-content="<span class='btn btn-warning btn-shrink'>&nbsp;&nbsp;Medium&nbsp;</span>">Medium</option>
+            <option class="bg-grey" value="medium" data-content="<span class='btn btn-warning btn-shrink'>&nbsp;&nbsp;Medium&nbsp;&nbsp;</span>">Medium</option>
             <option class="bg-grey" value="high" data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">High</option>
           </select>
         </div>
