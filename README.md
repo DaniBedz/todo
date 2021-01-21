@@ -49,11 +49,8 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 
 - Calendar circles overlapping border
 
-### Features to Add:
+### Future Features to Add:
 
 - Add light mode
 - Create/add a logo
-
-### Optional Features:
-
 - Settings page/overlay to add new assignees/task types
