@@ -265,7 +265,7 @@ export class TaskManager {
 
   // Sort taskPriority descending
   sortByTaskPriorityDsc() {
-     const priority = ['none', 'low', 'medium', 'high'];
+     const priority = ['high', 'medium', 'low', 'none'];
   
     taskManager.tasks.sort((a, b) => {
       let aIndex = priority.findIndex(priority => a.taskPriority.includes(priority));
