@@ -51,6 +51,7 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 
 ### Future Features to Add:
 
+- Password reset ability
 - Add light mode
 - Create/add a logo
 - Settings page/overlay to add new assignees/task types
