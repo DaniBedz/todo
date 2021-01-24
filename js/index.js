@@ -3,10 +3,14 @@ import { TaskManager } from './taskManager.js';
 // Initialise the taskManager object
 const taskManager = new TaskManager();
 
-// Load tasks object from local storage
-if(localStorage.getItem('tasks')) {
-  taskManager.load();
-};
+// Get uid & load tasks from Firestore
+auth.onAuthStateChanged(user => {
+  if (user) {
+    localStorage.setItem("uid", user.uid);
+    // Load tasks from Firebase into local storage
+    loadFromFB();
+  }
+});
 
 // Handles display of intro div
 function displayIntro() {
@@ -14,17 +18,21 @@ function displayIntro() {
   if (taskManager.tasks.length > 0 && taskList.classList.contains("taskList")) {
     // Remove class from container (displays intro message)
     taskList.classList.remove("taskList");
-    taskManager.render();
   } else if (taskManager.tasks.length === 0 && !taskList.classList.contains("taskList")) {
     taskList.classList.add("taskList");
     taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
   }
 };
 
+// Hide loading div
+function hideLoadingDiv() {
+  const div = document.getElementById('loading');
+  div.style.display = 'none';
+}
+
 // Hide intro message if there are existing tasks stored in the array
 window.onload = () => {
-  taskManager.render();
-  displayIntro();
+  // taskManager.render();
   initDivMouseOver();
 };
 
@@ -69,8 +77,8 @@ newTaskForm.addEventListener('click', event => {
     taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.save();
     taskManager.render();
+    displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Test data added</strong>', 'success', 2);
-
     return;
   }
 
@@ -79,6 +87,7 @@ newTaskForm.addEventListener('click', event => {
     taskManager.tasks = [];
     taskManager.save();
     taskManager.render();
+    displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Tasks Cleared</strong>', 'success', 2);
     return;
   }
@@ -86,15 +95,17 @@ newTaskForm.addEventListener('click', event => {
   // Validation code
   if (taskName.length < 3) {
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;New task input invalid! </strong>&nbsp;Field must have more than 2 characters.', 'error', 5);
+    return;
   } else {
     taskManager.addNode(taskName);
-
-    // Clear newTaskNameInput value
-    newTaskNameInput.value = '';
-
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task Added</strong>', 'success', 2);
-
   }
+
+  // Clear newTaskNameInput value
+  newTaskNameInput.value = '';
+
+  taskManager.render();
+  displayIntro();
 
   // Initialise up/down arrows
   initDivMouseOver();
@@ -105,23 +116,11 @@ document.body.addEventListener('click', function (event) {
   if (event.target.classList == 'bin') {
     let taskId = event.target.id.replace(/\D/g, '');
     taskManager.deleteNode(taskId);
-    displayIntro();
+    if (taskManager.tasks.length === 0) {
+      displayIntro();
+    }
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task Deleted </strong>', 'success', 2);
     initDivMouseOver();
-  }
-});
-
-// Show/hide intro message if task list is empty and add task is clicked
-document.body.addEventListener('click', function (event) {
-  if (event.target.id == 'btn-add-task') {
-    displayIntro();
-  };
-});
-
-// Show/hide intro message if task list is empty after clicking the bin icon
-document.body.addEventListener("click", function (event) {
-  if (event.target.classList == 'bin') {
-    displayIntro();
   }
 });
 
@@ -134,8 +133,8 @@ newTaskNameInput.addEventListener('keypress', function (event) {
 
     // Initialise up/down arrows
     initDivMouseOver();
+    taskManager.save();
   }
-  taskManager.save();
 });
 
 // Clicking into task field changes '...' button to 'Save' button
@@ -172,9 +171,8 @@ document.body.addEventListener('click', function (event) {
     event.target.classList.remove("save"); 
     event.target.innerText = '...';
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task name updated</strong>', 'success', 2);
+    taskManager.save();
   }
-  taskManager.save();
-
 });
 
 // Clicking 'Save' button updates the task description
@@ -184,8 +182,8 @@ document.body.addEventListener('click', function (event) {
     taskManager.updateTaskDescription(taskId, event.target.previousElementSibling.value)
     event.target.style.display = 'none';
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task description updated</strong>', 'success', 2);
+    taskManager.save();
   }
-  taskManager.save();
 });
 
 // Enter button updates the task name
@@ -198,8 +196,8 @@ document.body.addEventListener('keypress', function (event) {
     event.target.nextElementSibling.innerText = '...';
     event.target.blur();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task name updated</strong>', 'success', 2);
+    taskManager.save();
   }
-  taskManager.save();
 });
 
 // Enter button updates the task description
@@ -210,8 +208,8 @@ document.body.addEventListener('keypress', function (event) {
     event.target.nextElementSibling.style.display = "none";
     event.target.blur();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task description updated</strong>', 'success', 2);
+    taskManager.save();
   }
-  taskManager.save();
 });
 
 // Display description value from array in description field
@@ -388,3 +386,50 @@ Object.defineProperty(Array.prototype, 'move', {
         return this;
     }
 });
+      
+// Check if user is logged in
+auth.onAuthStateChanged(user => {
+  if (user) {
+    localStorage.setItem("loginState", 1);
+  } else if (localStorage.loginState == 3) {
+    location = 'auth.html'
+  } else {
+    localStorage.setItem("loginState", 2);
+    location = 'auth.html'
+  }
+});
+
+// Logout
+document.body.addEventListener('click', function (event) {
+  if (event.target.id === 'log-out') {
+    localStorage.setItem("loginState", 3);
+    auth.signOut();
+  }
+});
+
+// Load from firestore
+async function loadFromFB() {
+  await fs.collection("todos").doc(`${localStorage.uid}`)
+    .get()
+    .then(function (doc) {
+      if (doc.exists) {
+        hideLoadingDiv();
+        localStorage.tasks = doc.data().tasks;
+        taskManager.load();
+        taskManager.render();
+        if (taskManager.tasks.length === 0) {
+          displayIntro();
+        }
+        initDivMouseOver();
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("Failed to load tasks");
+      }
+    }).catch(function (error) {
+      console.log("Error getting tasks:", error);
+    })
+};
+
+window.displayIntro = displayIntro;
+window.loadFromFB = loadFromFB;
+window.initDivMouseOver = initDivMouseOver;
