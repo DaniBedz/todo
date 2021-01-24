@@ -137,6 +137,7 @@ export class TaskManager {
     }
     const tasksJson = JSON.stringify(this.tasks);
     localStorage.setItem('tasks', tasksJson);
+    this.saveToFB();
   }
 
   load() {
@@ -388,6 +389,14 @@ export class TaskManager {
     this.deleteTask(taskId);
     document.getElementById(taskId).remove();
   }
+
+  saveToFB() {
+  const todos = fs.collection('todos');
+  const tasks = localStorage.tasks;
+  todos.doc(`${localStorage.uid}`).set({ tasks }).then(() => {
+    // taskManager.render();
+  });
+};
 };
 
 // Create the HTML for a task
