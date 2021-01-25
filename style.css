@@ -578,6 +578,13 @@ button.bg-success:active {
 
 #log-out {
   width: 5rem;
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+#log-out:hover {
+  border-color: #fff;
 }
 
 #main-header {
