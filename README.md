@@ -22,14 +22,14 @@ Open source for all!
 
 Extra: You can add test data by adding a new task with the name '!test', or clear the list with '!clear'.
 
-## Code and Languages used:
+## Languages/Frameworks used:
 
 - HTML
 - CSS
 - Bootstrap
 - JavaScript & jQuery
 
-## Attributions:
+## Attributions/Tools:
 
 - Flatpickr
   https://flatpickr.js.org/
@@ -43,6 +43,9 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 - AlertifyJS
   https://alertifyjs.com/
 
+- Firebase
+  https://firebase.google.com/
+
 ## Dev Notes:
 
 ### Planned Fixes:
@@ -51,6 +54,6 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 
 ### Future Features to Add:
 
+- Settings page/overlay to add new assignees/task types
 - Add light mode
 - Create/add a logo
-- Settings page/overlay to add new assignees/task types

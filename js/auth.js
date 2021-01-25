@@ -76,7 +76,7 @@ loginBtn.addEventListener('click', e => {
 });
 
 if (localStorage.getItem("loginState") == 2) {
-	alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;Your session has expired, please log in again to continue.`, 'error', 4);
+	alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Please log in or sign up to continue.`, 'notify', 6);
 	localStorage.setItem("loginState", 0);
 } else if (localStorage.getItem("loginState") == 3) {
 	  alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Successfully logged out!</strong>', 'success', 5);
