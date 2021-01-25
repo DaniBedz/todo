@@ -1,3 +1,13 @@
+// Selectors
+const passwordField = document.querySelector('#login_password');
+const resetPasswordLink = document.querySelector('#password-reset');
+const loginBtn = document.querySelector('#login-btn');
+const loginTab = document.querySelector("[data-tab='login']");
+const signupTab = document.querySelector("[data-tab='sign_up']");
+const loginForm = document.getElementById('login_form');
+const signupForm = document.getElementById('signup_form');
+const signedUp = document.getElementById('signed-up');
+
 $(document).ready(function () {
 	
 	$('ul.switcher li').click(function () {
@@ -12,7 +22,6 @@ $(document).ready(function () {
 })
 
 // Style tabs
-const signupTab = document.querySelector("[data-tab='sign_up']");
 signupTab.addEventListener('click', e => {
 	loginTab.classList.add('signup-selected-login');
 	signupTab.classList.add('signup-selected-signup');
@@ -20,10 +29,7 @@ signupTab.addEventListener('click', e => {
 	signupTab.classList.remove('login-selected-signup');
 });
 
-const loginTab = document.querySelector("[data-tab='login']");
 loginTab.addEventListener('click', e => {
-	const loginBtn = document.querySelector('#login-btn');
-	const passwordField = document.querySelector('#login_password');
 	loginBtn.innerText = "Log In";
 	passwordField.style.display = 'block';
 	loginTab.classList.add('login-selected-login');
@@ -34,24 +40,22 @@ loginTab.addEventListener('click', e => {
 });
 
 // Password reset
-const passwordField = document.querySelector('#login_password');
 function passwordReset(emailAddress) {
+	loginBtn.innerText = "Resetting password..";
 	const auth = firebase.auth();
 	auth.sendPasswordResetEmail(emailAddress).then(function () {
-		const loginBtn = document.querySelector('#login-btn');
 		loginBtn.innerText = "Log In";
 		passwordField.style.display = 'block';
-			alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Successfully sent password reset - please check your email!</strong>', 'success', 5);
-		}).catch(function (error) {
-			alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;${error.message}`, 'error', 4);
+		resetPasswordLink.innerHTML = `<label><a href="#">Forgot your password?</a></label>`;
+		alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Successfully sent password reset - please check your email!</strong>', 'success', 5);
+	}).catch(function (error) {
+	  loginBtn.innerText = "Reset Password";	
+	  alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;${error.message}`, 'error', 4);
 		});
 }
 
-const resetPasswordLink = document.querySelector('#password-reset');
-const loginBtn = document.querySelector('#login-btn');
 resetPasswordLink.addEventListener('click', e => {
 	if (resetPasswordLink.innerText === "Forgot your password?") {
-		const passwordField = document.querySelector('#login_password');
 		resetPasswordLink.innerHTML = `<label><a href="#">Return to Log In</a></label>`;
 		loginBtn.innerText = "Reset Password";
 		passwordField.style.display = 'none';	
@@ -62,14 +66,11 @@ resetPasswordLink.addEventListener('click', e => {
 	}
 });
 
-
-
-
 loginBtn.addEventListener('click', e => {
 	const loginEmail = loginForm['login_username'].value;
 	if (loginEmail && loginBtn.innerText === 'Reset Password') {
 		passwordReset(loginEmail);
-	} else {
+	} else if (loginBtn.innerText === 'Reset Password'){
 		alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;Please enter your email address.`, 'error', 4);
 	}
 });
@@ -83,7 +84,6 @@ if (localStorage.getItem("loginState") == 2) {
 }
 
 // Signup functionality
-const signupForm = document.getElementById('signup_form');
 signupForm.addEventListener('submit', e => {
 	e.preventDefault();
 	loginBtn.innerText = "Log In";
@@ -124,7 +124,6 @@ signupForm.addEventListener('submit', e => {
 });
 
 // Login functionality
-const loginForm = document.getElementById('login_form');
 loginForm.addEventListener('submit', e => {
 	e.preventDefault();
 	const loginEmail = loginForm['login_username'].value;
@@ -145,12 +144,10 @@ loginForm.addEventListener('submit', e => {
 });
 
 // Already signed up?
-const signedUp = document.getElementById('signed-up');
-const loginTabBtn = document.getElementById('login-tab-btn');
 signedUp.addEventListener('click', e => {
 	e.preventDefault();
 	resetPasswordLink.innerHTML = `<label><a href="#">Forgot your password?</a></label>`;
 	loginBtn.innerText = "Log In";
 	passwordField.style.display = 'block';
-	loginTabBtn.click();
+	loginTab.click();
 });
