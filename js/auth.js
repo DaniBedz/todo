@@ -1,3 +1,10 @@
+// Check if user is logged in and redirect if so
+setTimeout(() => {
+	if (auth.currentUser) {
+		location = 'index.html';
+	};
+}, 1500);
+
 // Selectors
 const passwordField = document.querySelector('#login_password');
 const resetPasswordLink = document.querySelector('#password-reset');
@@ -132,12 +139,9 @@ loginForm.addEventListener('submit', e => {
 		const loginPassword = loginForm['login_password'].value;
 		loginBtn.innerText = 'Logging in..'
 		auth.signInWithEmailAndPassword(loginEmail, loginPassword).then(() => {
-			console.log('Logged in successfully');
-			alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Log in successful.</strong>', 'success', 5);
 			location = 'index.html';
 		}).catch(err => {
 			loginBtn.innerText = 'Log In'
-			console.log(err.message);
 			alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;${err.message}`, 'error', 5);
 		})
 	}

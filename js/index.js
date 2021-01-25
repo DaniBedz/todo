@@ -32,7 +32,7 @@ function hideLoadingDiv() {
 
 // Hide intro message if there are existing tasks stored in the array
 window.onload = () => {
-  // taskManager.render();
+  setTimeout(() => { alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 2) }, 1000);
   initDivMouseOver();
 };
 
