@@ -384,7 +384,7 @@ span > .btn-victoria:hover {
   padding-bottom: 2rem;
   padding-left: 4rem;
   padding-right: 4rem;
-  text-shadow: -1px -1px 3px rgba(0, 0, 0, 1);
+  box-shadow: 0px 30px 60px -5px #000;
 }
 
 #taskHeaderBar {
@@ -574,4 +574,73 @@ button.bg-success:active {
 
 .flatpickr-calendar.arrowTop::before {
   border-bottom-color: var(--darkestgrey) !important;
+}
+
+#log-out {
+  width: 5rem;
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+#log-out:hover {
+  border-color: #fff;
+}
+
+#main-header {
+  display: grid;
+  align-items: center;
+}
+
+.loading-bro {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -5rem;
+  margin-top: -11rem;
+  width: 10rem;
+  background: rgba(49, 49, 49, 0.9);
+  border-radius: 7px;
+  z-index: 100;
+  border: 3px solid var(--darkestgrey) !important;
+}
+.loading-bro > h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  font-weight: 300;
+  color: #8e8e8e;
+}
+
+#load {
+  width: 150px;
+  animation: loading 3s linear infinite;
+}
+#load #loading-inner {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 300;
+  stroke-width: 10;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  animation: loading-circle 2s linear infinite;
+  stroke: steelblue;
+  fill: transparent;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-circle {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -600;
+  }
 }
