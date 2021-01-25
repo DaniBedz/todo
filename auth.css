@@ -208,6 +208,11 @@ input[type='checkbox']:checked + label::before,
   bottom: 5vh !important;
 }
 
+.ajs-notify {
+  background-color: steelblue !important;
+  color: white !important;
+}
+
 .login-container-wrapper li.active a {
   border-bottom: 2px solid steelblue;
 }
