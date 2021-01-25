@@ -194,10 +194,10 @@ export class TaskManager {
   // Sort taskName ascending
   sortByTaskNameAsc() {
     taskManager.tasks.sort((a, b) => {
-      if (a.taskName < b.taskName) {
+      if (a.taskName.toLowerCase() < b.taskName.toLowerCase()) {
         return - 1;
       }
-      if (a.taskName > b.taskName) {
+      if (a.taskName.toLowerCase() > b.taskName.toLowerCase()) {
         return 1;
       }
       else {
@@ -211,10 +211,10 @@ export class TaskManager {
   // Sort taskName descending
   sortByTaskNameDsc() {
     taskManager.tasks.sort((a, b) => {
-      if (a.taskName < b.taskName) {
+      if (a.taskName.toLowerCase() < b.taskName.toLowerCase()) {
         return 1;
       }
-      if (a.taskName > b.taskName) {
+      if (a.taskName.toLowerCase() > b.taskName.toLowerCase()) {
         return - 1;
       }
       else {
