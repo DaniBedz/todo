@@ -79,13 +79,16 @@ newTaskForm.addEventListener('click', event => {
 
   // Add test data
   if (taskName === '!test') {
-    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'dani', 'high', 'in-progress', 'Fri 22/01/21');
-    taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'victoria', 'low', 'completed', 'Thu 28/01/21');
-    taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'dani', 'medium', 'not-started', 'Wed 27/01/21');
-    taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'victoria', 'low', 'none', 'Sat 30/01/21');
-    taskManager.addTask('leisure', 'Go for a nice walk 🧍‍♀️', 'Albert park lake', 'victoria', 'none', 'not-started', '');
+    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'Dani', 'high', 'in-progress', 'Fri 22/01/21');
+    taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'Victoria', 'low', 'completed', 'Thu 28/01/21');
+    taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'Dani', 'medium', 'not-started', 'Wed 27/01/21');
+    taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'Victoria', 'low', 'none', 'Sat 30/01/21');
+    taskManager.addTask('leisure', 'Go for a nice walk 🧍‍♀️', 'Albert park lake', 'Victoria', 'none', 'not-started', '');
     taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.save();
+    taskManager.customAssigneesArray = ['Victoria', 'Dani'];
+    localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+    taskManager.saveCustomAssigneesToFB();
     taskManager.render();
     displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Test data added</strong>', 'success', 2);

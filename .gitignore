@@ -34,3 +34,6 @@ pids
 
 # Optional eslint cache
 .eslintcache
+
+# Firebase cache
+*.cache
