@@ -1,4 +1,5 @@
 import { TaskManager } from './taskManager.js';
+import alertifySettings from './alertify.js'
 
 // Initialise the taskManager object
 const taskManager = new TaskManager();
@@ -8,7 +9,14 @@ auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("uid", user.uid);
     // Load tasks from Firebase into local storage
-    loadFromFB();
+    taskManager.loadFromFB();
+    
+    // Load customAssignees from Firebase into local storage
+    taskManager.loadCustomAssigneesFromFB().then(() => {
+      if (taskManager.tasks.length > 0) {
+        taskManager.render();
+      }
+    });
   }
 });
 
@@ -16,19 +24,21 @@ auth.onAuthStateChanged(user => {
 function displayIntro() {
   const taskList = document.getElementById("taskList");
   if (taskManager.tasks.length > 0 && taskList.classList.contains("taskList")) {
-    // Remove class from container (displays intro message)
+    // Remove class from container (hides intro message)
     taskList.classList.remove("taskList");
   } else if (taskManager.tasks.length === 0 && !taskList.classList.contains("taskList")) {
     taskList.classList.add("taskList");
     taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
   }
 };
+window.displayIntro = displayIntro;
 
 // Hide loading div
 function hideLoadingDiv() {
   const div = document.getElementById('loading');
   div.style.display = 'none';
 }
+window.hideLoadingDiv = hideLoadingDiv;
 
 // Hide intro message if there are existing tasks stored in the array
 window.onload = () => {
@@ -220,24 +230,36 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
-// Handle selector updates
+// Handle selector updates / customAssignees
 document.body.addEventListener('click', function (event) {
   if (taskManager.tasks.length > 0) {
-    let selectors = document.getElementsByClassName('selectpicker');
-    for (let selector of selectors) {
-      selector.addEventListener('change', event => {
-        event.preventDefault();
+    if (event.target.innerHTML === '&nbsp;Edit&nbsp;') {
+      alertify.prompt('Assignee Name:', '', function (evt, value) {
         let taskId = event.target.id.replace(/\D/g, '');
-        if (event.target.id.includes('type')) {
-          taskManager.updateTaskType(taskId, event.target.value);
-        } else if (event.target.id.includes('assigned')) {
-          taskManager.updateAssignedTo(taskId, event.target.value);
-        } else if (event.target.id.includes('priority')) {
-          taskManager.updatePriority(taskId, event.target.value);
-        } else if (event.target.id.includes('status')) {
-          taskManager.updateStatus(taskId, event.target.value);
-        } 
-      })
+        taskManager.customAssigneesArray.push(value);
+        localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+        alertify.success(`New Assignee ${value} added!`);
+        taskManager.saveCustomAssigneesToFB();
+        taskManager.updateAssignedTo(taskId, 'none');
+        taskManager.render();
+      }).set('labels', {ok:'Add New', cancel:'Delete Existing'}).set('reverseButtons', true); 
+    } else {
+      let selectors = document.getElementsByClassName('selectpicker');
+      for (let selector of selectors) {
+        selector.addEventListener('change', event => {
+          let taskId = event.target.id.replace(/\D/g, '');
+          event.preventDefault();
+          if (event.target.id.includes('type')) {
+            taskManager.updateTaskType(taskId, event.target.value);
+          } else if (event.target.id.includes('assigned')) {
+            taskManager.updateAssignedTo(taskId, event.target.value);
+          } else if (event.target.id.includes('priority')) {
+            taskManager.updatePriority(taskId, event.target.value);
+          } else if (event.target.id.includes('status')) {
+            taskManager.updateStatus(taskId, event.target.value);
+          }
+        })
+      }
     }
   }
 });
@@ -407,29 +429,4 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
-// Load from firestore
-async function loadFromFB() {
-  await fs.collection("todos").doc(`${localStorage.uid}`)
-    .get()
-    .then(function (doc) {
-      if (doc.exists) {
-        hideLoadingDiv();
-        localStorage.tasks = doc.data().tasks;
-        taskManager.load();
-        taskManager.render();
-        if (taskManager.tasks.length === 0) {
-          displayIntro();
-        }
-        initDivMouseOver();
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("Failed to load tasks");
-      }
-    }).catch(function (error) {
-      console.log("Error getting tasks:", error);
-    })
-};
-
-window.displayIntro = displayIntro;
-window.loadFromFB = loadFromFB;
 window.initDivMouseOver = initDivMouseOver;
