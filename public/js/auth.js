@@ -109,16 +109,22 @@ signupForm.addEventListener('submit', e => {
 			.then((cred) => {
 			alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Sign-up successful, please log in.</strong>', 'success', 5);
 			document.getElementById('login-tab-btn').click();
-			return fs.collection('users').doc(cred.user.uid).set({
-				Email: signupEmail,
-				Password: signupPassword
+			fs.collection('users').doc(cred.user.uid).set({
+					Email: signupEmail,
+					Password: signupPassword
+				});
+				fs.collection('todos').doc(cred.user.uid).set({
+					tasks: '[]'
+				})
+				fs.collection('customAssignees').doc(cred.user.uid).set({
+					customAssignees: '[]'
+				})
 			})
 				.catch(err => {
 				signupForm['signup_password'].value = '';
 				signupForm['signup_password'].value = '';
 				console.log(err.message);
 				alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;${err.message}`, 'error', 5);
-			})
 			})
 			.catch(err => {
 				signupBtn.innerText = "Sign Up"
