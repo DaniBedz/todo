@@ -16,7 +16,7 @@ auth.onAuthStateChanged(user => {
       if (taskManager.tasks.length > 0) {
         taskManager.render();
       }
-    });
+    })
   }
 });
 
@@ -40,7 +40,7 @@ function hideLoadingDiv() {
 }
 window.hideLoadingDiv = hideLoadingDiv;
 
-// Hide intro message if there are existing tasks stored in the array
+// Show notification if successful signin & initialise taskUp/taskDown events
 window.onload = () => {
   setTimeout(() => { alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 2) }, 1000);
   initDivMouseOver();
@@ -236,13 +236,36 @@ document.body.addEventListener('click', function (event) {
     if (event.target.innerHTML === '&nbsp;Edit&nbsp;') {
       alertify.prompt('Assignee Name:', '', function (evt, value) {
         let taskId = event.target.id.replace(/\D/g, '');
-        taskManager.customAssigneesArray.push(value);
-        localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
-        alertify.success(`New Assignee ${value} added!`);
-        taskManager.saveCustomAssigneesToFB();
-        taskManager.updateAssignedTo(taskId, 'none');
-        taskManager.render();
-      }).set('labels', {ok:'Add New', cancel:'Delete Existing'}).set('reverseButtons', true); 
+        if (value !== '' && customAssigneesArray.indexOf(value) === -1 && value.length < 10) {
+          taskManager.customAssigneesArray.push(value);
+          localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+          alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;New Assignee ${value} added!</strong>`, 'success', 2);
+          taskManager.saveCustomAssigneesToFB();
+          taskManager.updateAssignedTo(taskId, value);
+          taskManager.render();
+        } else {
+          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to create assignee!', 'error', 3);
+          taskManager.updateAssignedTo(taskId, 'none');
+          taskManager.render();
+        }
+      }).set('labels', { ok: 'Add New', cancel: 'Delete Existing' }).set('oncancel', function () {
+        if (customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value) !== -1) {
+          let taskId = event.target.id.replace(/\D/g, '');
+          customAssigneesArray.splice(customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value), 1);
+          // if (event.target.value === customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value)) {
+          console.log(taskId);
+          // }
+          taskManager.updateAssignedTo(taskId, 'none');
+          localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+          taskManager.saveCustomAssigneesToFB();
+          taskManager.render();
+          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Assignee Deleted!</strong>', 'success', 2);
+          return true;
+        } else {
+          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to delete assignee!', 'error', 3);
+        }
+        return false;
+      }).set('reverseButtons', true); 
     } else {
       let selectors = document.getElementsByClassName('selectpicker');
       for (let selector of selectors) {
