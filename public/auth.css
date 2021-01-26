@@ -280,3 +280,14 @@ input[type='checkbox']:checked + label::before,
 #tab-div {
   background: var(--lightgrey);
 }
+
+.taskr {
+  padding-top: 2rem;
+  margin-bottom: calc(-2.5rem - 6vw);
+  text-align: center;
+  color: rgb(200, 200, 200);
+  font-size: 6rem;
+}
+.me {
+  color: steelblue;
+}

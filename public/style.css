@@ -18,8 +18,8 @@ body {
 }
 
 #newTaskNameInput {
-  background-color: var(--mediumgrey);
-  border: 2px solid var(--darkestgrey) !important;
+  background-color: var(--darkestgrey);
+  border: 3px solid var(--darkgrey) !important;
   border-radius: 7px !important;
   outline: none !important;
 }
@@ -455,6 +455,9 @@ span > .btn-victoria:hover {
   .bin {
     margin-left: calc(-9px + 1vw);
   }
+  .taskr {
+    margin-bottom: 10px;
+  }
 }
 
 div.col {
@@ -656,13 +659,18 @@ button.bg-success:active {
 
 #log-out {
   width: 5rem;
-  color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  color: rgb(200, 200, 200);
+  background-color: var(--darkestgrey);
+  border-color: rgb(200, 200, 200);
+  position: absolute;
+  right: 30px;
+  top: 12px;
 }
 
 #log-out:hover {
-  border-color: #fff;
+  border-color: rgb(200, 200, 200);
+  background-color: rgb(200, 200, 200);
+  color: var(--darkestgrey);
 }
 
 #main-header {
@@ -721,4 +729,18 @@ button.bg-success:active {
   100% {
     stroke-dashoffset: -600;
   }
+}
+
+.taskr {
+  display: inline;
+  background: var(--darkestgrey);
+  text-align: center;
+  color: rgb(200, 200, 200);
+  font-size: 2rem;
+  border-radius: 10px;
+  border: 3px solid var(--darkgrey);
+  width: 100% !important;
+}
+.me {
+  color: steelblue;
 }
