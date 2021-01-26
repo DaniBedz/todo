@@ -1,5 +1,6 @@
 export class TaskManager {
   constructor() {
+    this.customAssigneesArray = [];
     this.tasks = [];
     this.taskNameOrder = true;
     this.taskTypeOrder = true;
@@ -343,6 +344,18 @@ export class TaskManager {
 
   // Render the task list, initialise date pickers and selectors
   render() {
+    // customAssignees HTML
+    function createCustomAssigneesHTML() {
+      let generatedHTML;
+      for (let i = 0; i < taskManager.customAssigneesArray.length; i++) {
+        generatedHTML += `<option class="bg-grey" value="${taskManager.customAssigneesArray[i]}" data-content="<span class='btn btn-outline-primary btn-shrink btn-new'>${taskManager.customAssigneesArray[i]}</span>">${taskManager.customAssigneesArray[i]}</option>`;
+      }
+      return generatedHTML;
+    }
+  
+    // Create HTML for customAssignee selector options
+    const customAssigneesHTML = createCustomAssigneesHTML()
+
     // Create an array to store the tasks' HTML
     const tasksHtmlList = [];
 
@@ -352,8 +365,7 @@ export class TaskManager {
       const task = this.tasks[i];
 
       // Create the task html
-      const taskHtml = createTaskHtml(task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
-
+      const taskHtml = createTaskHtml(customAssigneesHTML, task.taskId, task.taskType, task.taskName, task.taskDescription, task.taskAssignedTo, task.taskPriority, task.taskStatus, task.taskueDate);
       // Push it to the tasksHtmlList array
       tasksHtmlList.push(taskHtml);
     }
@@ -390,17 +402,62 @@ export class TaskManager {
     document.getElementById(taskId).remove();
   }
 
+  // Save tasks to firestore
   saveToFB() {
   const todos = fs.collection('todos');
   const tasks = localStorage.tasks;
-  todos.doc(`${localStorage.uid}`).set({ tasks }).then(() => {
-    // taskManager.render();
-  });
-};
+  todos.doc(`${localStorage.uid}`).set({ tasks });
+  }
+
+  // Load tasks from firestore
+  async loadFromFB() {
+    await fs.collection("todos").doc(`${localStorage.uid}`)
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          hideLoadingDiv();
+          localStorage.tasks = doc.data().tasks;
+          taskManager.load();
+          if (taskManager.tasks.length === 0) {
+            displayIntro();
+          }
+          initDivMouseOver();
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Failed to load tasks");
+        }
+      }).catch(function (error) {
+        console.log("Error getting tasks:", error);
+      })
+  }
+
+  // Load custom assignees from FB
+  async loadCustomAssigneesFromFB() {
+    await fs.collection("customAssignees").doc(`${localStorage.uid}`)
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          localStorage.customAssignees = doc.data().customAssignees;
+          taskManager.customAssigneesArray = JSON.parse(localStorage.customAssignees);
+          window.customAssigneesArray = taskManager.customAssigneesArray;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Failed to load custom assignees");
+        }
+      }).catch(function (error) {
+        console.log("Error getting custom assignees:", error);
+      })
+  }
+  // Save customAssignees to Firestore
+  saveCustomAssigneesToFB() {
+    const customAssigneesCollection = fs.collection('customAssignees');
+    const customAssignees = localStorage.customAssignees;
+    customAssigneesCollection.doc(`${localStorage.uid}`).set({ customAssignees });
+  }
 };
 
 // Create the HTML for a task
-const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
+const createTaskHtml = (customAssigneesHTML, taskId, taskType, taskName, taskDescription, taskAssignedTo, taskPriority, taskStatus, taskDueDate) => `
 <div class="row mx-auto text-center task" id="${taskId}">
   <div class="col">
     <div class="row bg-grey pt-3">
@@ -432,8 +489,8 @@ const createTaskHtml = (taskId, taskType, taskName, taskDescription, taskAssigne
           <label for="assigned${taskId}">Assigned</label>
           <select id="assigned${taskId}" class="bg-grey selectpicker text-center" data-width="fit">
             <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
-            <option class="bg-grey" value="victoria" data-content="<span class='btn btn-victoria btn-shrink'>&nbsp;&nbsp;Victoria&nbsp;&nbsp;</span>">Victoria</option>
-            <option class="bg-grey" value="dani" data-content="<span class='btn btn-dani btn-shrink'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dani&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">Dani</option>
+            ${customAssigneesHTML}
+            <option class="bg-grey" value="add-new" data-content="<span id='edit${taskId}' class='btn btn-outline-primary btn-shrink btn-edit'>&nbsp;Edit&nbsp;</span>"></option>
           </select>
         </div>
       </div>
