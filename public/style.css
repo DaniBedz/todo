@@ -18,8 +18,8 @@ body {
 }
 
 #newTaskNameInput {
-  background-color: var(--mediumgrey);
-  border: 2px solid var(--darkestgrey) !important;
+  background-color: var(--darkestgrey);
+  border: 3px solid var(--darkgrey) !important;
   border-radius: 7px !important;
   outline: none !important;
 }
@@ -123,6 +123,25 @@ button {
   background-color: steelblue;
 }
 
+.btn-new {
+  color: #fff;
+  background-color: steelblue;
+  min-width: calc(2rem + 3.5vw);
+}
+
+.btn-edit {
+  color: #fff !important;
+  background-color: transparent;
+  min-width: calc(2rem + 3.5vw);
+  border: 1px dashed var(--lightgrey) !important;
+}
+
+.btn-edit:hover {
+  color: #fff !important;
+  background-color: var(--darkestgrey) !important;
+  border: 1px dashed var(--lightgrey) !important;
+}
+
 .btn-none:hover {
   color: #fff;
   background-color: rgb(54, 103, 142);
@@ -142,13 +161,13 @@ button {
   padding-left: 0px !important;
   padding-right: 0px !important;
   font-size: calc(0.35rem + 0.8vw) !important;
-  border: 0 !important;
+  border: 0;
   border-radius: 5px;
 }
 
 span.text {
   border-radius: 7px !important;
-  border: 2px solid var(--darkestgrey) !important;
+  border: 2px solid var(--darkestgrey);
 }
 
 .input {
@@ -436,6 +455,9 @@ span > .btn-victoria:hover {
   .bin {
     margin-left: calc(-9px + 1vw);
   }
+  .taskr {
+    margin-bottom: 10px;
+  }
 }
 
 div.col {
@@ -548,12 +570,71 @@ button.bg-success:active {
   width: 400px !important;
 }
 
+.alertify .ajs-dialog,
+.ajs-header,
+.ajs-footer {
+  background-color: var(--lightgrey) !important;
+}
+
+.ajs-input {
+  border: 3px solid var(--darkestgrey) !important;
+  background: var(--darkgrey);
+  border-radius: 10px !important;
+  color: rgb(200, 200, 200) !important;
+}
+
+.ajs-button {
+  color: var(--darkestgrey) !important;
+}
+
+.ajs-content {
+  color: var(--darkestgrey);
+}
+
+.ajs-header {
+  border-top: 3px solid var(--darkestgrey);
+  border-left: 3px solid var(--darkestgrey);
+  border-right: 3px solid var(--darkestgrey);
+  border-bottom: none !important;
+  border-radius: 10px 10px 0px 0 !important;
+}
+
+.ajs-footer {
+  border-top: none !important;
+  border-left: 3px solid var(--darkestgrey);
+  border-right: 3px solid var(--darkestgrey);
+  border-bottom: 3px solid var(--darkestgrey);
+  border-radius: 0 0 10px 10px !important;
+}
+
+.ajs-ok {
+  color: lime !important;
+}
+
+.ajs-cancel {
+  color: darkred !important;
+}
+
+.alertify .ajs-dialog {
+  border-left: 3px solid var(--darkestgrey);
+  border-right: 3px solid var(--darkestgrey);
+  border-radius: 10px !important;
+  padding: 21px 21px 0px 21px !important;
+}
+
 .alertify-notifier.ajs-right .ajs-message.ajs-visible {
   right: 410px !important;
 }
 
 .alertify-notifier.ajs-bottom {
   bottom: 5vh !important;
+}
+
+.ajs-commands button {
+  width: 15px !important;
+  height: 15px !important;
+  background-color: var(--darkestgrey) !important;
+  border-radius: 3px !important;
 }
 
 .flatpickr-calendar.arrowTop::after {
@@ -578,13 +659,18 @@ button.bg-success:active {
 
 #log-out {
   width: 5rem;
-  color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  color: rgb(200, 200, 200);
+  background-color: var(--darkestgrey);
+  border-color: rgb(200, 200, 200);
+  position: absolute;
+  right: 30px;
+  top: 12px;
 }
 
 #log-out:hover {
-  border-color: #fff;
+  border-color: rgb(200, 200, 200);
+  background-color: rgb(200, 200, 200);
+  color: var(--darkestgrey);
 }
 
 #main-header {
@@ -643,4 +729,18 @@ button.bg-success:active {
   100% {
     stroke-dashoffset: -600;
   }
+}
+
+.taskr {
+  display: inline;
+  background: var(--darkestgrey);
+  text-align: center;
+  color: rgb(200, 200, 200);
+  font-size: 2rem;
+  border-radius: 10px;
+  border: 3px solid var(--darkgrey);
+  width: 100% !important;
+}
+.me {
+  color: steelblue;
 }

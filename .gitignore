@@ -34,3 +34,8 @@ pids
 
 # Optional eslint cache
 .eslintcache
+
+# Firebase cache
+*.cache
+public/js/auth.js
+.firebase/hosting.cHVibGlj.cache

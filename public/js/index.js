@@ -1,4 +1,5 @@
 import { TaskManager } from './taskManager.js';
+import alertifySettings from './alertify.js'
 
 // Initialise the taskManager object
 const taskManager = new TaskManager();
@@ -8,7 +9,14 @@ auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("uid", user.uid);
     // Load tasks from Firebase into local storage
-    loadFromFB();
+    taskManager.loadFromFB();
+    
+    // Load customAssignees from Firebase into local storage
+    taskManager.loadCustomAssigneesFromFB().then(() => {
+      if (taskManager.tasks.length > 0) {
+        taskManager.render();
+      }
+    })
   }
 });
 
@@ -16,21 +24,23 @@ auth.onAuthStateChanged(user => {
 function displayIntro() {
   const taskList = document.getElementById("taskList");
   if (taskManager.tasks.length > 0 && taskList.classList.contains("taskList")) {
-    // Remove class from container (displays intro message)
+    // Remove class from container (hides intro message)
     taskList.classList.remove("taskList");
   } else if (taskManager.tasks.length === 0 && !taskList.classList.contains("taskList")) {
     taskList.classList.add("taskList");
     taskList.innerHTML = `<div id="intro">You currently have no tasks added.<br><br>Click the green '+' button to add a task.</div>`;
   }
 };
+window.displayIntro = displayIntro;
 
 // Hide loading div
 function hideLoadingDiv() {
   const div = document.getElementById('loading');
   div.style.display = 'none';
 }
+window.hideLoadingDiv = hideLoadingDiv;
 
-// Hide intro message if there are existing tasks stored in the array
+// Show notification if successful signin & initialise taskUp/taskDown events
 window.onload = () => {
   setTimeout(() => { alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 2) }, 1000);
   initDivMouseOver();
@@ -69,13 +79,16 @@ newTaskForm.addEventListener('click', event => {
 
   // Add test data
   if (taskName === '!test') {
-    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'dani', 'high', 'in-progress', 'Fri 22/01/21');
-    taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'victoria', 'low', 'completed', 'Thu 28/01/21');
-    taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'dani', 'medium', 'not-started', 'Wed 27/01/21');
-    taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'victoria', 'low', 'none', 'Sat 30/01/21');
-    taskManager.addTask('leisure', 'Go for a nice walk 🧍‍♀️', 'Albert park lake', 'victoria', 'none', 'not-started', '');
+    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'Dani', 'high', 'in-progress', 'Fri 22/01/21');
+    taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'Victoria', 'low', 'completed', 'Thu 28/01/21');
+    taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'Dani', 'medium', 'not-started', 'Wed 27/01/21');
+    taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'Victoria', 'low', 'none', 'Sat 30/01/21');
+    taskManager.addTask('leisure', 'Go for a nice walk 🚶‍♀️', 'Albert park lake', 'Victoria', 'none', 'not-started', '');
     taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.save();
+    taskManager.customAssigneesArray = ['Victoria', 'Dani'];
+    localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+    taskManager.saveCustomAssigneesToFB();
     taskManager.render();
     displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Test data added</strong>', 'success', 2);
@@ -220,24 +233,59 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
-// Handle selector updates
+// Handle selector updates / customAssignees
 document.body.addEventListener('click', function (event) {
   if (taskManager.tasks.length > 0) {
-    let selectors = document.getElementsByClassName('selectpicker');
-    for (let selector of selectors) {
-      selector.addEventListener('change', event => {
-        event.preventDefault();
+    if (event.target.innerHTML === '&nbsp;Edit&nbsp;') {
+      alertify.prompt('Assignee Name:', '', function (evt, value) {
         let taskId = event.target.id.replace(/\D/g, '');
-        if (event.target.id.includes('type')) {
-          taskManager.updateTaskType(taskId, event.target.value);
-        } else if (event.target.id.includes('assigned')) {
-          taskManager.updateAssignedTo(taskId, event.target.value);
-        } else if (event.target.id.includes('priority')) {
-          taskManager.updatePriority(taskId, event.target.value);
-        } else if (event.target.id.includes('status')) {
-          taskManager.updateStatus(taskId, event.target.value);
-        } 
-      })
+        if (value !== '' && customAssigneesArray.indexOf(value) === -1 && value.length < 10) {
+          taskManager.customAssigneesArray.push(value);
+          localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+          alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;New Assignee ${value} added!</strong>`, 'success', 2);
+          taskManager.saveCustomAssigneesToFB();
+          taskManager.updateAssignedTo(taskId, value);
+          taskManager.render();
+        } else {
+          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to create assignee!', 'error', 3);
+          taskManager.updateAssignedTo(taskId, 'none');
+          taskManager.render();
+        }
+      }).set('labels', { ok: 'Add New', cancel: 'Delete Existing' }).set('oncancel', function () {
+        if (customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value) !== -1) {
+          let taskId = event.target.id.replace(/\D/g, '');
+          customAssigneesArray.splice(customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value), 1);
+          // if (event.target.value === customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value)) {
+          console.log(taskId);
+          // }
+          taskManager.updateAssignedTo(taskId, 'none');
+          localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
+          taskManager.saveCustomAssigneesToFB();
+          taskManager.render();
+          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Assignee Deleted!</strong>', 'success', 2);
+          return true;
+        } else {
+          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to delete assignee!', 'error', 3);
+        }
+        return false;
+      }).set('reverseButtons', true); 
+    } else {
+      let selectors = document.getElementsByClassName('selectpicker');
+      for (let selector of selectors) {
+        selector.addEventListener('change', event => {
+          let taskId = event.target.id.replace(/\D/g, '');
+          event.preventDefault();
+          if (event.target.id.includes('type')) {
+            taskManager.updateTaskType(taskId, event.target.value);
+          } else if (event.target.id.includes('assigned')) {
+            taskManager.updateAssignedTo(taskId, event.target.value);
+          } else if (event.target.id.includes('priority')) {
+            taskManager.updatePriority(taskId, event.target.value);
+          } else if (event.target.id.includes('status')) {
+            taskManager.updateStatus(taskId, event.target.value);
+          }
+        })
+      }
     }
   }
 });
@@ -392,10 +440,10 @@ auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("loginState", 1);
   } else if (localStorage.loginState == 3) {
-    location = 'auth.html'
+    location = 'index.html'
   } else {
     localStorage.setItem("loginState", 2);
-    location = 'auth.html'
+    location = 'index.html'
   }
 });
 
@@ -407,29 +455,4 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
-// Load from firestore
-async function loadFromFB() {
-  await fs.collection("todos").doc(`${localStorage.uid}`)
-    .get()
-    .then(function (doc) {
-      if (doc.exists) {
-        hideLoadingDiv();
-        localStorage.tasks = doc.data().tasks;
-        taskManager.load();
-        taskManager.render();
-        if (taskManager.tasks.length === 0) {
-          displayIntro();
-        }
-        initDivMouseOver();
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("Failed to load tasks");
-      }
-    }).catch(function (error) {
-      console.log("Error getting tasks:", error);
-    })
-};
-
-window.displayIntro = displayIntro;
-window.loadFromFB = loadFromFB;
 window.initDivMouseOver = initDivMouseOver;
