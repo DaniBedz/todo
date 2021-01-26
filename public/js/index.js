@@ -83,7 +83,7 @@ newTaskForm.addEventListener('click', event => {
     taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'Victoria', 'low', 'completed', 'Thu 28/01/21');
     taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'Dani', 'medium', 'not-started', 'Wed 27/01/21');
     taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'Victoria', 'low', 'none', 'Sat 30/01/21');
-    taskManager.addTask('leisure', 'Go for a nice walk 🧍‍♀️', 'Albert park lake', 'Victoria', 'none', 'not-started', '');
+    taskManager.addTask('leisure', 'Go for a nice walk 🚶‍♀️', 'Albert park lake', 'Victoria', 'none', 'not-started', '');
     taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.save();
     taskManager.customAssigneesArray = ['Victoria', 'Dani'];
@@ -440,10 +440,10 @@ auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("loginState", 1);
   } else if (localStorage.loginState == 3) {
-    location = 'auth.html'
+    location = 'index.html'
   } else {
     localStorage.setItem("loginState", 2);
-    location = 'auth.html'
+    location = 'index.html'
   }
 });
 
