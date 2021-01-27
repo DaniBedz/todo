@@ -11,9 +11,16 @@
   <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
   <title>taskr.me</title>
+  <script defer>
+    let app;
+    function setVar() {
+    app = window.frames[0];
+    }
+    setTimeout(setVar, 1000);
+  </script>
 </head>
 <frameset>
   <frameset rows>
-    <frame src="https://taskr.me/auth.html">
-  </frameset>
+    <frame id="main" src="./auth.html">
+      </frameset>
 </html>
