@@ -74,8 +74,19 @@ body {
   box-shadow: none !important;
 }
 
+.filter-option {
+  border: 2px solid var(--darkestgrey) !important;
+  border-radius: 7px !important;
+}
+
 button {
   padding: 0 !important;
+}
+
+.btn-status {
+  min-width: calc(2rem + 3.5vw);
+  line-height: calc(0.45rem + 1.35vw) !important;
+  font-size: calc(0.3rem + 0.65vw) !important;
 }
 
 .btn {
@@ -85,11 +96,12 @@ button {
   position: relative;
   z-index: 1;
   border-radius: 5px;
+  min-width: calc(2rem + 3.5vw);
 }
 
-.filter-option {
-  border: 2px solid var(--darkestgrey) !important;
-  border-radius: 7px !important;
+caption {
+  padding: 0px !important;
+  caption-side: left !important;
 }
 
 .btn-light {
@@ -102,22 +114,6 @@ button {
   box-shadow: none !important;
 }
 
-.btn-dani {
-  background-color: skyblue;
-}
-
-.btn-victoria {
-  background-color: violet;
-}
-
-.btn-dani:hover {
-  background-color: rgb(69, 174, 216);
-}
-
-.btn-victoria:hover {
-  background-color: rgb(228, 95, 228);
-}
-
 .btn-none {
   color: #fff;
   background-color: steelblue;
@@ -127,6 +123,10 @@ button {
   color: #fff;
   background-color: steelblue;
   min-width: calc(2rem + 3.5vw);
+}
+
+.btn-new:hover {
+  background-color: rgb(54, 103, 142);
 }
 
 .btn-edit {
@@ -160,7 +160,7 @@ button {
   height: calc (1rem + 1vw) !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  font-size: calc(0.35rem + 0.8vw) !important;
+  font-size: calc(0.35rem + 0.8vw);
   border: 0;
   border-radius: 5px;
 }

@@ -351,7 +351,7 @@ export class TaskManager {
     function createCustomAssigneesHTML() {
       let generatedHTML;
       for (let i = 0; i < taskManager.customAssigneesArray.length; i++) {
-        generatedHTML += `<option class="bg-grey" value="${taskManager.customAssigneesArray[i]}" data-content="<span class='btn btn-outline-primary btn-shrink btn-new'>${taskManager.customAssigneesArray[i]}</span>">${taskManager.customAssigneesArray[i]}</option>`;
+        generatedHTML += `<option class="bg-grey" value="${taskManager.customAssigneesArray[i]}" data-content="<span class='btn btn-outline-primary btn-shrink btn-new btn-assignee'>${taskManager.customAssigneesArray[i]}</span>">${taskManager.customAssigneesArray[i]}</option>`;
       }
       return generatedHTML;
     }
@@ -468,10 +468,10 @@ const createTaskHtml = (customAssigneesHTML, taskId, taskType, taskName, taskDes
         <div class="form-group">
           <label for="type${taskId}">Type</label>
           <select id="type${taskId}" class="selectpicker" data-width="fit">
-            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
-            <option class="bg-grey" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;Work&nbsp;&nbsp;&nbsp;&nbsp;</span>">Work</option>
-            <option class="bg-grey" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;Leisure&nbsp;&nbsp;</span>">Leisure</option>
-            <option class="bg-grey" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;Other&nbsp;&nbsp;&nbsp;&nbsp;</span>">Other</option>
+            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None</option>
+            <option class="bg-grey" value="work" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Work</span>">Work</option>
+            <option class="bg-grey" value="leisure" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Leisure</span>">Leisure</option>
+            <option class="bg-grey" value="other" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>Other</span>">Other</option>
           </select>
         </div>
       </div>
@@ -502,10 +502,10 @@ const createTaskHtml = (customAssigneesHTML, taskId, taskType, taskName, taskDes
         <div class="form-group">
           <label for="priority${taskId}">Priority</label>
           <select id="priority${taskId}" class="bg-grey selectpicker" data-width="fit">
-            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
-            <option class="bg-grey" value="low" data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">Low</option>
-            <option class="bg-grey" value="medium" data-content="<span class='btn btn-warning btn-shrink'>&nbsp;&nbsp;Medium&nbsp;&nbsp;</span>">Medium</option>
-            <option class="bg-grey" value="high" data-content="<span class='btn btn-danger btn-shrink'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">High</option>
+            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>None</span>">None</option>
+            <option class="bg-grey" value="low" data-content="<span class='btn btn-success btn-shrink'>Low</span>">Low</option>
+            <option class="bg-grey" value="medium" data-content="<span class='btn btn-warning btn-shrink'>Medium</span>">Medium</option>
+            <option class="bg-grey" value="high" data-content="<span class='btn btn-danger btn-shrink'>High</span>">High</option>
           </select>
         </div>
       </div>
@@ -514,10 +514,10 @@ const createTaskHtml = (customAssigneesHTML, taskId, taskType, taskName, taskDes
         <div class="form-group">
           <label for="status${taskId}">Status</label>
           <select id="status${taskId}" class="bg-grey selectpicker" data-width="fit">
-            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
-            <option class="bg-grey" value="not-started" data-content="<span class='btn btn-danger btn-shrink'>&nbsp;Not Started&nbsp;</span>">Not Started</option>
-            <option class="bg-grey" value="in-progress" data-content="<span class='btn btn-warning btn-shrink'>&nbsp;In Progress&nbsp;</span>">In Progress</option>
-            <option class="bg-grey" value="completed" data-content="<span class='btn btn-success btn-shrink'>&nbsp;&nbsp;Completed&nbsp;&nbsp;</span>">Completed</option>
+            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none btn-status'>None</span>">None</option>
+            <option class="bg-grey" value="not-started" data-content="<span class='btn btn-danger btn-shrink btn-status'>Not Started</span>">Not Started</option>
+            <option class="bg-grey" value="in-progress" data-content="<span class='btn btn-warning btn-shrink btn-status'>In Progress</span>">In Progress</option>
+            <option class="bg-grey" value="completed" data-content="<span class='btn btn-success btn-shrink btn-status'>Completed</span>">Completed</option>
           </select>
         </div>
       </div>
