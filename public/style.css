@@ -36,10 +36,12 @@ body {
 
 .bg-success {
   background-color: rgba(91, 189, 114) !important;
+  color: black !important;
 }
 
 button.bg-success:hover {
-  background-color: rgb(94, 197, 94) !important;
+  background-color: rgb(63, 128, 78) !important;
+  color: white !important;
 }
 
 button.bg-success:active {
@@ -83,6 +85,11 @@ button.bg-success:active {
   margin-bottom: calc(0.6rem + 0.9vw) !important;
   padding-top: 0 !important;
   right: 3px !important;
+}
+
+.more:hover {
+  background-color: var(--lightgrey);
+  color: var(--darkestgrey) !important;
 }
 
 .more:focus {
@@ -141,7 +148,8 @@ caption {
 }
 
 .btn-none:active {
-  background-color: whitesmoke;
+  color: var(--darkestgrey) !important;
+  background-color: whitesmoke !important;
 }
 
 .btn-new {
@@ -174,7 +182,7 @@ caption {
 #btn-add-task {
   border: 2px solid var(--darkestgrey) !important;
   border-radius: 7px !important;
-  color: black !important;
+  /* color: black; */
   margin-left: 3px !important;
 }
 
@@ -353,19 +361,16 @@ input:focus {
   overflow: visible;
 }
 
-.date:hover::placeholder {
-  filter: hue-rotate(140deg) !important;
-  -webkit-filter: hue-rotate(140deg) !important;
+:hover::placeholder {
+  color: rgb(200, 200, 200) !important;
 }
 
-.date:hover::-moz-placeholder {
-  filter: hue-rotate(140deg) !important;
-  -webkit-filter: hue-rotate(140deg) !important;
+:hover::-moz-placeholder {
+  color: rgb(200, 200, 200) !important;
 }
 
-.date:hover::-moz-placeholder {
-  filter: hue-rotate(140deg) !important;
-  -webkit-filter: hue-rotate(140deg) !important;
+:hover::-moz-placeholder {
+  color: rgb(200, 200, 200) !important;
 }
 
 .date::-moz-placeholder {
@@ -579,7 +584,10 @@ div.col {
   margin-top: -3px;
 }
 
-.text-white,
+.text-white:not(.bg-success):not(.more) {
+  color: rgb(200, 200, 200) !important;
+}
+
 label {
   color: rgb(200, 200, 200) !important;
 }
