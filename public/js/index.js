@@ -237,7 +237,7 @@ document.body.addEventListener('click', function (event) {
 // Handle selector updates / customAssignees
 document.body.addEventListener('click', function (event) {
   if (taskManager.tasks.length > 0) {
-    if (event.target.innerHTML === '&nbsp;Edit&nbsp;' || event.target.outerHTML.includes('&nbsp;Edit&nbsp;')) {
+    if (event.target.innerHTML === '&nbsp;Edit&nbsp;' || event.target.id.includes('bs-select')) {
       let taskId = event.target.id.replace(/\D/g, '');
       if (event.target.id.includes('bs-select')) {
         taskId = event.target.childNodes[0].firstChild.id.replace(/\D/g, '');
@@ -250,6 +250,7 @@ document.body.addEventListener('click', function (event) {
           taskManager.saveCustomAssigneesToFB();
           taskManager.updateAssignedTo(taskId, value);
           taskManager.render();
+          return true;
         } else {
           if (value === '') {
             alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Unable to create assignee: </strong>&nbsp;Please enter a name.', 'error', 3);
