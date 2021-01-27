@@ -226,14 +226,15 @@ export class TaskManager {
     taskManager.render();
   }
 
-  // Sort taskAssignedTo ascending
   sortByTaskAssignedToAsc() {
-   const assignedTo = ['none', 'dani', 'victoria'];
-  
     taskManager.tasks.sort((a, b) => {
-      let aIndex = assignedTo.findIndex(assignedTo => a.taskAssignedTo.includes(assignedTo));
-      let bIndex = assignedTo.findIndex(assignedTo => b.taskAssignedTo.includes(assignedTo));
-      return aIndex - bIndex;
+       if (a.taskAssignedTo == 'none') {
+        return -1;
+      }
+      else if (b.taskAssignedTo == 'none') {
+        return 1;
+      }
+        return a.taskAssignedTo - b.taskAssignedTo;
     });
     taskManager.save();
     taskManager.render();
@@ -241,12 +242,14 @@ export class TaskManager {
 
   // Sort taskAssignedTo descending
   sortByTaskAssignedToDsc() {
-    const assignedTo = ['none', 'dani', 'victoria'];
-  
-    taskManager.tasks.sort((a, b) => {
-      let aIndex = assignedTo.findIndex(assignedTo => a.taskAssignedTo.includes(assignedTo));
-      let bIndex = assignedTo.findIndex(assignedTo => b.taskAssignedTo.includes(assignedTo));
-      return bIndex - aIndex;
+     taskManager.tasks.sort((a, b) => {
+       if (a.taskAssignedTo == 'none') {
+        return 1;
+       }
+       else if (b.taskAssignedTo == 'none') {
+         return -1;
+       }
+         return b.taskAssignedTo - a.taskAssignedTo;
     });
     taskManager.save();
     taskManager.render();

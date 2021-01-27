@@ -263,6 +263,7 @@ document.body.addEventListener('click', function (event) {
             if (task.taskAssignedTo === document.getElementsByClassName('ajs-input')[0].value) {
               task.taskAssignedTo = 'none';
             }
+            taskManager.save();
           }
           localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
           taskManager.saveCustomAssigneesToFB();
