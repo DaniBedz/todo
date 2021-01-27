@@ -2,7 +2,8 @@
 if (localStorage.loginState !== 0) {
 alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Checking login status..`, 'notify', 6);
 }
-(async function isLoggedIn() {
+
+async function isLoggedIn() {
 	try {
 		await new Promise((resolve, reject) =>
 			firebase.auth().onAuthStateChanged(
@@ -25,7 +26,29 @@ alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa f
 	} catch (error) {
 		return false;
 	}
-})();
+};
+
+// Create new user objects in Firestore
+async function createUserObjectsInFS(cred, signupEmail, signupPassword) {
+	const batch = fs.batch();
+
+	const usersRef = fs.collection('users').doc(cred.user.uid);
+	batch.set(usersRef, {
+		email: signupEmail,
+		password: signupPassword
+	});
+
+	const customAssigneesRef = fs.collection('customAssignees').doc(cred.user.uid);
+	batch.set(customAssigneesRef, {
+		customAssignees: '[]'
+	});
+
+	const todosRef = fs.collection('todos').doc(cred.user.uid);
+	batch.set(todosRef, {
+		tasks: '[]'
+	});
+	await batch.commit();
+};
 
 // Selectors
 const passwordField = document.querySelector('#login_password');
@@ -128,18 +151,21 @@ signupForm.addEventListener('submit', e => {
 	} else {
 		auth.createUserWithEmailAndPassword(signupEmail, signupPassword)
 			.then((cred) => {
-			alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Sign-up successful, please log in.</strong>', 'success', 5);
-			document.getElementById('login-tab-btn').click();
-			fs.collection('users').doc(cred.user.uid).set({
-					Email: signupEmail,
-					Password: signupPassword
-				});
-				fs.collection('todos').doc(cred.user.uid).set({
-					tasks: '[]'
-				})
-				fs.collection('customAssignees').doc(cred.user.uid).set({
-					customAssignees: '[]'
-				})
+				// Firebase user creation batch
+				try {
+					createUserObjectsInFS(cred, signupEmail, signupPassword).then(() => {
+						try {
+							isLoggedIn();
+						} catch (error) {
+							console.error(error);
+						}
+					})
+				} catch (error) {
+					console.error(error);
+				};
+				
+				alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Sign-up successful, please log in.</strong>', 'success', 5);
+				document.getElementById('login-tab-btn').click();
 			})
 				.catch(err => {
 				signupForm['signup_password'].value = '';
