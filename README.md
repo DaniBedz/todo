@@ -54,6 +54,4 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 
 ### Future Features to Add:
 
-- Settings page/overlay to add new assignees/task types
 - Add light mode
-- Create/add a logo

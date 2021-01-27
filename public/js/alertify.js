@@ -4,7 +4,7 @@ alertify.defaults = {
         basic:false,
         closable:true,
         closableByDimmer:true,
-        invokeOnCloseOff:false,
+        invokeOnCloseOff:true,
         frameless:false,
         defaultFocusOff:false,
         maintainFocus:true, // <== global default not per instance, applies to all dialogs

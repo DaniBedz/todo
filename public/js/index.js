@@ -258,7 +258,7 @@ document.body.addEventListener('click', function (event) {
             taskManager.updateAssignedTo(taskId, 'none');
           }
           customAssigneesArray.splice(customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value), 1);
-          // Change existing deleted customAssignee to 'none;
+          // Change existing deleted customAssignee to 'none'
           for (const task of taskManager.tasks) {
             if (task.taskAssignedTo === document.getElementsByClassName('ajs-input')[0].value) {
               task.taskAssignedTo = 'none';
@@ -273,7 +273,12 @@ document.body.addEventListener('click', function (event) {
           alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to delete assignee!', 'error', 3);
         }
         return false;
-      }).set('reverseButtons', true); 
+      }).set('reverseButtons', true).set({
+        'onclose': function () {
+          taskManager.render();
+          return true;
+        }
+      });; 
     } else {
       let selectors = document.getElementsByClassName('selectpicker');
       for (let selector of selectors) {
