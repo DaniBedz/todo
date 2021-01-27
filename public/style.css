@@ -448,7 +448,7 @@ img {
   border-radius: 10px;
   border: 3px solid var(--darkestgrey) !important;
   background-color: var(--lightgrey);
-  color: white;
+  color: var(--darkestgrey);
   margin: auto;
   text-align: center;
   padding-top: 2rem;
