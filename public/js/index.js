@@ -237,10 +237,13 @@ document.body.addEventListener('click', function (event) {
 // Handle selector updates / customAssignees
 document.body.addEventListener('click', function (event) {
   if (taskManager.tasks.length > 0) {
-    if (event.target.innerHTML === '&nbsp;Edit&nbsp;') {
+    if (event.target.innerHTML === '&nbsp;Edit&nbsp;' || event.target.outerHTML.includes('&nbsp;Edit&nbsp;')) {
+      let taskId = event.target.id.replace(/\D/g, '');
+      if (event.target.outerHTML.includes('&nbsp;Edit&nbsp;')) {
+        taskId = event.target.childNodes[0].firstChild.id.replace(/\D/g, '');
+      }
       alertify.prompt('Assignee Name:', '', function (evt, value) {
-        let taskId = event.target.id.replace(/\D/g, '');
-        if (value !== '' && customAssigneesArray.indexOf(value) === -1 && value.length < 10) {
+        if (value !== '' && customAssigneesArray.indexOf(value) == -1 && value.length < 11 && value != 'None') {
           taskManager.customAssigneesArray.push(value);
           localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
           alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;New Assignee ${value} added!</strong>`, 'success', 2);
@@ -248,9 +251,16 @@ document.body.addEventListener('click', function (event) {
           taskManager.updateAssignedTo(taskId, value);
           taskManager.render();
         } else {
-          alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to create assignee!', 'error', 3);
+          if (value === '') {
+            alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Unable to create assignee: </strong>&nbsp;Please enter a name.', 'error', 3);
+          } else if (value.length > 10) {
+            alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Unable to create assignee: </strong>&nbsp;Maximum name length is 10 characters', 'error', 3);
+          } else if (customAssigneesArray.indexOf(value) !== -1 || value == 'None') {
+            alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Unable to create assignee: </strong>&nbsp;Assignee already exists', 'error', 3);
+          }
           taskManager.updateAssignedTo(taskId, 'none');
           taskManager.render();
+          initDivMouseOver();
         }
       }).set('labels', { ok: 'Add New', cancel: 'Delete Existing' }).set('oncancel', function () {
         if (customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value) !== -1) {
@@ -273,8 +283,8 @@ document.body.addEventListener('click', function (event) {
           return true;
         } else {
           alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error: </strong>&nbsp;Unable to delete assignee!', 'error', 3);
+          return true;
         }
-        return false;
       }).set('reverseButtons', true).set({
         'onclose': function () {
           taskManager.render();
