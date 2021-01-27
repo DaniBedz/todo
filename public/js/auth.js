@@ -1,6 +1,7 @@
 // Check if user is logged in and redirect if so
-if (localStorage.loginState !== 0) {
-alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Checking login status..`, 'notify', 6);
+if (localStorage.loginState == 1) {
+	alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Trying to log you in..`, 'notify', 4);
+	isLoggedIn();
 }
 
 async function isLoggedIn() {
@@ -126,10 +127,10 @@ loginBtn.addEventListener('click', e => {
 	}
 });
 
-if (localStorage.getItem("loginState") == 2) {
+if (localStorage.loginState == 2 || localStorage.loginState == 0) {
 	alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Please log in or sign up to continue.`, 'notify', 6);
 	localStorage.setItem("loginState", 0);
-} else if (localStorage.getItem("loginState") == 3) {
+} else if (localStorage.loginState == 3) {
 	  alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Successfully logged out!</strong>', 'success', 5);
 		localStorage.setItem("loginState", 0);	
 }

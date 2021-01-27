@@ -43,7 +43,7 @@ window.hideLoadingDiv = hideLoadingDiv;
 
 // Show notification if successful signin & initialise taskUp/taskDown events
 window.onload = () => {
-  setTimeout(() => { alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 2) }, 1000);
+  setTimeout(() => { alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 3) }, 1000);
   initDivMouseOver();
 };
 
@@ -462,15 +462,20 @@ Object.defineProperty(Array.prototype, 'move', {
 });
       
 // Check if user is logged in
+// loginState 1 = logged in
+// loginState 2 = expired
+// loginState 3 = logged out intentionally
+// loginState 0 = logged out, no messages to display
+
 auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("loginState", 1);
   } else if (localStorage.loginState == 3) {
-    window.open('index.html', '_self');
+    window.open('auth.html', '_self');
 
   } else {
     localStorage.setItem("loginState", 2);
-    window.open('index.html', '_self');
+    window.open('auth.html', '_self');
   }
 });
 
