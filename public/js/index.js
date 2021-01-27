@@ -15,6 +15,7 @@ auth.onAuthStateChanged(user => {
     taskManager.loadCustomAssigneesFromFB().then(() => {
       if (taskManager.tasks.length > 0) {
         taskManager.render();
+        initDivMouseOver();
       }
     })
   }
@@ -301,6 +302,7 @@ document.body.addEventListener('click', function (event) {
       }
     }
   }
+  initDivMouseOver();
 });
 
 // Reset all sorts apart from current sort
