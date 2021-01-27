@@ -254,11 +254,16 @@ document.body.addEventListener('click', function (event) {
       }).set('labels', { ok: 'Add New', cancel: 'Delete Existing' }).set('oncancel', function () {
         if (customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value) !== -1) {
           let taskId = event.target.id.replace(/\D/g, '');
-          customAssigneesArray.splice(customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value), 1);
           if (event.target.value === customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value)) {
             taskManager.updateAssignedTo(taskId, 'none');
           }
-          taskManager.updateAssignedTo(taskId, 'none');
+          customAssigneesArray.splice(customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value), 1);
+          // Change existing deleted customAssignee to 'none;
+          for (const task of taskManager.tasks) {
+            if (task.taskAssignedTo === document.getElementsByClassName('ajs-input')[0].value) {
+              task.taskAssignedTo = 'none';
+            }
+          }
           localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
           taskManager.saveCustomAssigneesToFB();
           taskManager.render();
@@ -278,7 +283,9 @@ document.body.addEventListener('click', function (event) {
           if (event.target.id.includes('type')) {
             taskManager.updateTaskType(taskId, event.target.value);
           } else if (event.target.id.includes('assigned')) {
-            taskManager.updateAssignedTo(taskId, event.target.value);
+            if (event.target.value !== 'add-new') {
+              taskManager.updateAssignedTo(taskId, event.target.value);
+            }
           } else if (event.target.id.includes('priority')) {
             taskManager.updatePriority(taskId, event.target.value);
           } else if (event.target.id.includes('status')) {
@@ -440,10 +447,11 @@ auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("loginState", 1);
   } else if (localStorage.loginState == 3) {
-    window.location.href = 'index.html'
+    window.open('index.html', '_self');
+
   } else {
     localStorage.setItem("loginState", 2);
-    window.location.href = 'index.html'
+    window.open('index.html', '_self');
   }
 });
 
