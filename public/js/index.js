@@ -43,7 +43,14 @@ window.hideLoadingDiv = hideLoadingDiv;
 
 // Show notification if successful signin & initialise taskUp/taskDown events
 window.onload = () => {
-  setTimeout(() => { alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 3) }, 1000);
+  setTimeout(() => {
+    if (localStorage.isFirstLogin == 1) {
+      alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Thanks for signing up! I hope this is useful.</strong>`, `success`, 5);
+      localStorage.isFirstLogin = 0;
+    } else {
+        alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 3)
+      }
+    }, 1000);
   initDivMouseOver();
 };
 

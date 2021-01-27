@@ -155,6 +155,7 @@ signupForm.addEventListener('submit', e => {
 				// Firebase user creation batch
 				try {
 					createUserObjectsInFS(cred, signupEmail, signupPassword).then(() => {
+						localStorage.isFirstLogin = 1;
 						try {
 							isLoggedIn();
 						} catch (error) {
