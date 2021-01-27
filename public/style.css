@@ -19,9 +19,15 @@ body {
 
 #newTaskNameInput {
   background-color: var(--darkestgrey);
-  border: 3px solid var(--darkgrey) !important;
+  border: 0 !important;
   border-radius: 7px !important;
   outline: none !important;
+  padding-left: 1.5rem !important;
+}
+
+#addnewtaskdiv {
+  padding-left: 0 !important;
+  padding-right: 1.5rem !important;
 }
 
 .bg-darkestgrey {
@@ -29,7 +35,7 @@ body {
 }
 
 .bg-success {
-  background-color: lightgreen !important;
+  background-color: rgba(91, 189, 114) !important;
 }
 
 button.bg-success:hover {
@@ -37,16 +43,14 @@ button.bg-success:hover {
 }
 
 button.bg-success:active {
-  background-color: lightgreen !important;
+  background-color: rgba(91, 189, 114) !important;
 }
 
 .title-bar {
-  background-color: steelblue;
+  background-color: var(--darkgrey);
   border-top: 2px solid gray;
   border-left: 3px solid var(--darkestgrey);
   border-right: 2px solid grey;
-  border-bottom: 3px solid var(--darkestgrey);
-  border-radius: 3px;
   margin-bottom: 0px;
 }
 
@@ -299,11 +303,6 @@ label {
   padding-bottom: 0.75rem;
 }
 
-.row {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 .dropdown-menu {
   background-color: var(--darkgrey);
   border: 2px solid var(--darkestgrey);
@@ -461,12 +460,10 @@ img {
 }
 
 #taskHeaderBar {
-  border-top: 2px solid gray;
   border-left: 3px solid var(--darkestgrey);
   border-right: 2px solid grey;
   border-bottom: 3px solid var(--darkestgrey);
-  border-radius: 3px;
-  margin-bottom: 0px;
+  padding-top: 0 !important;
   background-color: var(--darkgrey);
 }
 
@@ -475,22 +472,27 @@ img {
     display: flex;
     justify-content: space-around;
   }
+
   #taskHeader,
   #taskHeaderBar {
     display: none;
   }
+
   .tasklist-headers {
     display: none;
   }
+
   label {
     display: flex;
     justify-content: space-around;
     align-items: center;
     text-align: center;
   }
+
   .p-desc {
     padding-top: 0px !important;
   }
+
   #taskList {
     padding-left: 0rem;
     padding-right: 0rem;
@@ -499,18 +501,30 @@ img {
   #taskHeaderBar {
     padding-top: 0px !important;
   }
+
   #newTaskForm {
     width: 100% !important;
   }
+
   .delete-cell {
     margin-left: -6px !important;
     margin-top: -8px !important;
   }
+
   .bin {
     margin-left: calc(-9px + 1vw);
   }
+
   .taskr {
     margin-bottom: 10px;
+  }
+
+  #addnewtaskdiv {
+    padding-left: 1.5rem !important;
+    padding-right: 1rem !important;
+  }
+  .title-bar {
+    border-bottom: 3px solid var(--darkestgrey);
   }
 }
 
@@ -736,7 +750,7 @@ ul.dropdown-menu.inner.show > li {
   border-color: rgb(200, 200, 200);
   position: absolute;
   right: 30px;
-  top: 15px;
+  top: 9px;
 }
 
 #log-out:hover {
@@ -748,6 +762,7 @@ ul.dropdown-menu.inner.show > li {
 #main-header {
   display: grid;
   align-items: center;
+  padding-left: 1.5rem !important;
 }
 
 .loading-bro {
@@ -810,7 +825,6 @@ ul.dropdown-menu.inner.show > li {
   color: rgb(200, 200, 200);
   font-size: 2rem;
   border-radius: 10px;
-  border: 3px solid var(--darkgrey);
   width: 100% !important;
 }
 .me {
