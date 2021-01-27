@@ -100,6 +100,7 @@ newTaskForm.addEventListener('click', event => {
     taskManager.render();
     displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Test data added</strong>', 'success', 2);
+    newTaskNameInput.value = '';
     return;
   }
 
@@ -110,6 +111,7 @@ newTaskForm.addEventListener('click', event => {
     taskManager.render();
     displayIntro();
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Tasks Cleared</strong>', 'success', 2);
+    newTaskNameInput.value = '';
     return;
   }
 
