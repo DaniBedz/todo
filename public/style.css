@@ -28,6 +28,18 @@ body {
   background-color: var(--darkestgrey);
 }
 
+.bg-success {
+  background-color: lightgreen !important;
+}
+
+button.bg-success:hover {
+  background-color: rgb(94, 197, 94) !important;
+}
+
+button.bg-success:active {
+  background-color: lightgreen !important;
+}
+
 .title-bar {
   background-color: steelblue;
   border-top: 2px solid gray;
@@ -174,31 +186,31 @@ caption {
 }
 
 .btn-success {
-  background-color: lightgreen;
+  background-color: rgba(91, 189, 114);
   color: var(--darkestgrey);
 }
 
 .btn-success:hover {
-  background-color: rgb(94, 197, 94);
+  background-color: rgb(69, 143, 87);
   color: #fff;
 }
 
 .btn-success:active {
-  background-color: lightgreen !important;
+  background-color: rgba(91, 189, 114) !important;
 }
 
 .btn-danger {
-  background-color: rgb(228, 99, 99) !important;
+  background-color: rgba(217, 92, 92) !important;
   color: var(--darkestgrey);
 }
 
 .btn-danger:hover {
-  background-color: rgb(202, 64, 64) !important;
+  background-color: rgb(162, 68, 68) !important;
   color: white;
 }
 
 .btn-danger:active {
-  background-color: rgb(228, 99, 99) !important;
+  background-color: rgba(217, 92, 92) !important;
 }
 
 .btn-warning {
@@ -207,7 +219,7 @@ caption {
 
 .btn-warning:hover {
   color: #fff;
-  background-color: rgb(216, 160, 86) !important;
+  background-color: rgb(168, 139, 102) !important;
 }
 
 .btn-warning:active {
@@ -644,6 +656,14 @@ ul.dropdown-menu.inner.show > li {
 
 .ajs-cancel {
   color: darkred !important;
+}
+
+.alertify-notifier .ajs-message {
+  text-shadow: none !important;
+}
+
+.alertify-notifier * {
+  color: var(--darkestgrey) !important;
 }
 
 .alertify .ajs-dialog {

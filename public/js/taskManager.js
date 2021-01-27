@@ -491,7 +491,7 @@ const createTaskHtml = (customAssigneesHTML, taskId, taskType, taskName, taskDes
         <div class="form-group">
           <label for="assigned${taskId}">Assigned</label>
           <select id="assigned${taskId}" class="bg-grey selectpicker text-center" data-width="fit">
-            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
+            <option class="bg-grey" value="none" data-content="<span class='btn btn-outline-primary btn-shrink btn-none btn-new'>&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;</span>">None</option>
             ${customAssigneesHTML}
             <option class="bg-grey" value="add-new" data-content="<span id='edit${taskId}' class='btn btn-outline-primary btn-shrink btn-edit'>&nbsp;Edit&nbsp;</span>"></option>
           </select>

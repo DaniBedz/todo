@@ -291,3 +291,11 @@ input[type='checkbox']:checked + label::before,
 .me {
   color: steelblue;
 }
+
+.alertify-notifier .ajs-message {
+  text-shadow: none !important;
+}
+
+.alertify-notifier * {
+  color: var(--darkestgrey) !important;
+}
