@@ -85,7 +85,7 @@ button {
 
 .btn-status {
   min-width: calc(2rem + 3.5vw);
-  line-height: calc(0.45rem + 1.35vw) !important;
+  line-height: calc(0.45rem + 1.3vw) !important;
   font-size: calc(0.3rem + 0.65vw) !important;
 }
 
@@ -115,18 +115,31 @@ caption {
 }
 
 .btn-none {
+  color: var(--darkestgrey);
+  background-color: skyblue;
+}
+
+.btn-none:hover {
   color: #fff;
-  background-color: steelblue;
+  background-color: rgb(100, 167, 194);
+}
+
+.btn-none:active {
+  background-color: skyblue !important;
 }
 
 .btn-new {
-  color: #fff;
+  color: var(--darkestgrey);
   background-color: steelblue;
   min-width: calc(2rem + 3.5vw);
 }
 
 .btn-new:hover {
   background-color: rgb(54, 103, 142);
+}
+
+.btn-new:active {
+  background-color: steelblue !important;
 }
 
 .btn-edit {
@@ -140,11 +153,6 @@ caption {
   color: #fff !important;
   background-color: var(--darkestgrey) !important;
   border: 1px dashed var(--lightgrey) !important;
-}
-
-.btn-none:hover {
-  color: #fff;
-  background-color: rgb(54, 103, 142);
 }
 
 #btn-add-task {
@@ -163,6 +171,63 @@ caption {
   font-size: calc(0.35rem + 0.8vw);
   border: 0;
   border-radius: 5px;
+}
+
+.btn-success {
+  background-color: lightgreen;
+  color: var(--darkestgrey);
+}
+
+.btn-success:hover {
+  background-color: rgb(94, 197, 94);
+  color: #fff;
+}
+
+.btn-success:active {
+  background-color: lightgreen !important;
+}
+
+.btn-danger {
+  background-color: rgb(228, 99, 99) !important;
+  color: var(--darkestgrey);
+}
+
+.btn-danger:hover {
+  background-color: rgb(202, 64, 64) !important;
+  color: white;
+}
+
+.btn-danger:active {
+  background-color: rgb(228, 99, 99) !important;
+}
+
+.btn-warning {
+  background-color: burlywood !important;
+}
+
+.btn-warning:hover {
+  color: #fff;
+  background-color: rgb(216, 160, 86) !important;
+}
+
+.btn-warning:active {
+  background-color: burlywood !important;
+  color: #fff !important;
+}
+
+.btn-type {
+  background-color: mediumslateblue;
+  color: var(--darkestgrey);
+}
+
+.btn-type:hover {
+  background-color: rgb(97, 81, 190);
+  color: #fff;
+}
+
+.btn-type:active {
+  background-color: mediumslateblue !important;
+  color: #fff;
 }
 
 span.text {
@@ -367,31 +432,6 @@ img {
   background-color: var(--lightgrey) !important;
 }
 
-span > .btn-outline-primary.btn-none {
-  color: #fff;
-  background-color: steelblue;
-}
-
-span > .btn-outline-primary.btn-none:hover {
-  color: #fff;
-  background-color: rgb(54, 103, 142);
-}
-span > .btn-dani {
-  background-color: skyblue;
-}
-
-span > .btn-dani:hover {
-  background-color: rgb(91, 181, 217);
-}
-
-span > .btn-victoria {
-  background-color: violet;
-}
-
-span > .btn-victoria:hover {
-  background-color: rgb(237, 187, 237);
-}
-
 #intro {
   border-radius: 10px;
   border: 3px solid var(--darkestgrey) !important;
@@ -530,15 +570,6 @@ ul.dropdown-menu.inner.show > li {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-button.bg-success:focus {
-  background-color: #28a745 !important;
-  outline: none;
-  box-shadow: none;
-}
-button.bg-success:active {
-  background-color: #1e7e34 !important;
 }
 
 .dropup .dropdown-toggle::after {
