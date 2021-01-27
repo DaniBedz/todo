@@ -165,7 +165,7 @@ signupForm.addEventListener('submit', e => {
 					console.error(error);
 				};
 				
-				alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Sign-up successful, please log in.</strong>', 'success', 5);
+				alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Sign-up successful, trying to log you in..</strong>', 'success', 5);
 				document.getElementById('login-tab-btn').click();
 			})
 				.catch(err => {
