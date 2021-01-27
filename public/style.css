@@ -128,7 +128,7 @@ caption {
 
 .btn-none {
   color: var(--darkestgrey);
-  background-color: skyblue;
+  background-color: whitesmoke;
 }
 
 .btn-none:hover {
@@ -200,7 +200,7 @@ caption {
 }
 
 .btn-danger {
-  background-color: rgb(255, 108, 108) !important;
+  background-color: rgb(255, 132, 132) !important;
   color: var(--darkestgrey);
 }
 
@@ -210,7 +210,7 @@ caption {
 }
 
 .btn-danger:active {
-  background-color: rgb(255, 108, 108) !important;
+  background-color: rgb(255, 132, 132) !important;
 }
 
 .btn-warning {
