@@ -279,10 +279,10 @@ input[type='checkbox']:checked + label::before,
 
 .taskr {
   padding-top: 2rem;
-  margin-bottom: calc(-2.5rem - 6vw);
+  margin-bottom: calc(-1.5rem - 6vw);
   text-align: center;
   color: rgb(200, 200, 200);
-  font-size: 6rem;
+  font-size: calc(4rem + 3vw);
 }
 .me {
   color: steelblue;

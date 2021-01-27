@@ -353,6 +353,21 @@ input:focus {
   overflow: visible;
 }
 
+.date:hover::placeholder {
+  filter: hue-rotate(140deg) !important;
+  -webkit-filter: hue-rotate(140deg) !important;
+}
+
+.date:hover::-moz-placeholder {
+  filter: hue-rotate(140deg) !important;
+  -webkit-filter: hue-rotate(140deg) !important;
+}
+
+.date:hover::-moz-placeholder {
+  filter: hue-rotate(140deg) !important;
+  -webkit-filter: hue-rotate(140deg) !important;
+}
+
 .date::-moz-placeholder {
   top: 7px;
   font-size: calc(1.3rem + 1vw) !important;
@@ -394,6 +409,11 @@ input:focus {
   width: calc(1rem + 1.3vw);
   cursor: pointer;
   margin-left: calc(20px + 1vw);
+}
+
+.bin:hover {
+  filter: hue-rotate(140deg);
+  -webkit-filter: hue-rotate(140deg);
 }
 
 .bin-div {
