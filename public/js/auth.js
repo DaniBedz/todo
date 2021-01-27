@@ -1,6 +1,6 @@
 // Check if user is logged in and redirect if so
 if (localStorage.loginState !== 0) {
-alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Checking login status..`, 'notify', 3);
+alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Checking login status..`, 'notify', 6);
 }
 (async function isLoggedIn() {
 	try {
