@@ -239,7 +239,7 @@ document.body.addEventListener('click', function (event) {
   if (taskManager.tasks.length > 0) {
     if (event.target.innerHTML === '&nbsp;Edit&nbsp;' || event.target.outerHTML.includes('&nbsp;Edit&nbsp;')) {
       let taskId = event.target.id.replace(/\D/g, '');
-      if (event.target.outerHTML.includes('&nbsp;Edit&nbsp;')) {
+      if (event.target.id.includes('bs-select')) {
         taskId = event.target.childNodes[0].firstChild.id.replace(/\D/g, '');
       }
       alertify.prompt('Assignee Name:', '', function (evt, value) {
@@ -258,7 +258,7 @@ document.body.addEventListener('click', function (event) {
           } else if (customAssigneesArray.indexOf(value) !== -1 || value == 'None') {
             alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Unable to create assignee: </strong>&nbsp;Assignee already exists', 'error', 3);
           }
-          taskManager.updateAssignedTo(taskId, 'none');
+          taskManager.updateAssignedTo(taskId, taskManager.getTask(taskId).taskAssignedTo);
           taskManager.render();
           initDivMouseOver();
         }

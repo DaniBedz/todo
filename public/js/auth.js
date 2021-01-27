@@ -1,9 +1,31 @@
 // Check if user is logged in and redirect if so
-setTimeout(() => {
-	if (auth.currentUser) {
-	window.open('tasklist.html', '_self');
-	};
-}, 1500);
+if (localStorage.loginState !== 0) {
+alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Checking login status..`, 'notify', 3);
+}
+(async function isLoggedIn() {
+	try {
+		await new Promise((resolve, reject) =>
+			firebase.auth().onAuthStateChanged(
+				user => {
+					if (user) {
+						// User is signed in.
+						window.open('tasklist.html', '_self');
+					} else {
+						// No user is signed in.
+						alertify.dismissAll();
+						alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-info-circle faa-shake animated ml-n2"></i>&nbsp;&nbsp;</strong>&nbsp;Please log in or sign up to continue.`, 'notify', 3);
+						reject('no user logged in')
+					}
+				},
+				// Prevent console error
+				error => reject(error)
+			)
+		)
+		return true;
+	} catch (error) {
+		return false;
+	}
+})();
 
 // Selectors
 const passwordField = document.querySelector('#login_password');
@@ -16,7 +38,6 @@ const signupForm = document.getElementById('signup_form');
 const signedUp = document.getElementById('signed-up');
 
 $(document).ready(function () {
-	
 	$('ul.switcher li').click(function () {
 		var tab_id = $(this).attr('data-tab');
 
