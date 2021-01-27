@@ -1,7 +1,7 @@
 // Check if user is logged in and redirect if so
 setTimeout(() => {
 	if (auth.currentUser) {
-		location = 'tasklist.html';
+		window.location.href = 'tasklist.html';
 	};
 }, 1500);
 
@@ -145,7 +145,7 @@ loginForm.addEventListener('submit', e => {
 		const loginPassword = loginForm['login_password'].value;
 		loginBtn.innerText = 'Logging in..'
 		auth.signInWithEmailAndPassword(loginEmail, loginPassword).then(() => {
-			location = 'tasklist.html';
+			window.location.href = 'tasklist.html';
 		}).catch(err => {
 			loginBtn.innerText = 'Log In'
 			alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;Error! </strong>&nbsp;${err.message}`, 'error', 5);

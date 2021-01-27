@@ -440,10 +440,10 @@ auth.onAuthStateChanged(user => {
   if (user) {
     localStorage.setItem("loginState", 1);
   } else if (localStorage.loginState == 3) {
-    location = 'index.html'
+    window.location.href = 'index.html'
   } else {
     localStorage.setItem("loginState", 2);
-    location = 'index.html'
+    window.location.href = 'index.html'
   }
 });
 
