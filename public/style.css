@@ -142,7 +142,7 @@ caption {
 
 .btn-new {
   color: var(--darkestgrey);
-  background-color: steelblue;
+  background-color: #6baadf;
   min-width: calc(2rem + 3.5vw);
 }
 
@@ -151,7 +151,7 @@ caption {
 }
 
 .btn-new:active {
-  background-color: steelblue !important;
+  background-color: #6baadf;
 }
 
 .btn-edit {
@@ -200,7 +200,7 @@ caption {
 }
 
 .btn-danger {
-  background-color: rgba(217, 92, 92) !important;
+  background-color: rgb(255, 108, 108) !important;
   color: var(--darkestgrey);
 }
 
@@ -210,7 +210,7 @@ caption {
 }
 
 .btn-danger:active {
-  background-color: rgba(217, 92, 92) !important;
+  background-color: rgb(255, 108, 108) !important;
 }
 
 .btn-warning {
@@ -228,7 +228,7 @@ caption {
 }
 
 .btn-type {
-  background-color: mediumslateblue;
+  background-color: #9280ff;
   color: var(--darkestgrey);
 }
 
@@ -238,7 +238,7 @@ caption {
 }
 
 .btn-type:active {
-  background-color: mediumslateblue !important;
+  background-color: #9280ff !important;
   color: #fff;
 }
 
@@ -266,7 +266,7 @@ span.text {
 }
 
 .p-desc {
-  padding-top: calc(0rem + 0.8vw) !important;
+  padding-top: calc(-0.2rem + 1vw) !important;
 }
 
 #newTaskForm {
@@ -654,11 +654,28 @@ ul.dropdown-menu.inner.show > li {
 }
 
 .ajs-ok {
-  color: lime !important;
+  color: rgba(91, 189, 114) !important;
+  background-color: var(--darkgrey) !important;
+  border: 3px solid var(--darkestgrey) !important;
+  border-radius: 10px;
+  margin-right: 2.3rem !important;
+}
+
+.ajs-ok:hover {
+  background-color: var(--darkestgrey) !important;
 }
 
 .ajs-cancel {
-  color: darkred !important;
+  color: rgb(255, 105, 105) !important;
+  background-color: var(--darkgrey) !important;
+  border: 3px solid var(--darkestgrey) !important;
+  border-radius: 10px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.ajs-cancel:hover {
+  background-color: var(--darkestgrey) !important;
 }
 
 .alertify-notifier .ajs-message {
@@ -681,10 +698,15 @@ ul.dropdown-menu.inner.show > li {
 }
 
 .ajs-commands button {
-  width: 15px !important;
-  height: 15px !important;
+  width: 30px !important;
+  height: 30px !important;
   background-color: var(--darkestgrey) !important;
   border-radius: 3px !important;
+  margin-right: -0.8rem;
+}
+
+.alertify .ajs-modal {
+  top: 20% !important;
 }
 
 .flatpickr-calendar.arrowTop::after {
