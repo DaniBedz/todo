@@ -255,9 +255,9 @@ document.body.addEventListener('click', function (event) {
         if (customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value) !== -1) {
           let taskId = event.target.id.replace(/\D/g, '');
           customAssigneesArray.splice(customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value), 1);
-          // if (event.target.value === customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value)) {
-          console.log(taskId);
-          // }
+          if (event.target.value === customAssigneesArray.indexOf(document.getElementsByClassName('ajs-input')[0].value)) {
+            taskManager.updateAssignedTo(taskId, 'none');
+          }
           taskManager.updateAssignedTo(taskId, 'none');
           localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
           taskManager.saveCustomAssigneesToFB();
