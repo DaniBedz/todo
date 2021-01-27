@@ -137,11 +137,11 @@ caption {
 
 .btn-none:hover {
   color: #fff;
-  background-color: rgb(100, 167, 194);
+  background-color: rgb(175, 175, 175);
 }
 
 .btn-none:active {
-  background-color: skyblue !important;
+  background-color: whitesmoke;
 }
 
 .btn-new {
