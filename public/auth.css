@@ -200,10 +200,6 @@ input[type='checkbox']:checked + label::before,
   width: 400px !important;
 }
 
-.alertify-notifier.ajs-right .ajs-message.ajs-visible {
-  right: 410px !important;
-}
-
 .alertify-notifier.ajs-bottom {
   bottom: 5vh !important;
 }
@@ -298,4 +294,11 @@ input[type='checkbox']:checked + label::before,
 
 .alertify-notifier * {
   color: var(--darkestgrey) !important;
+}
+
+.ajs-message {
+  border: 2px solid var(--darkestgrey) !important;
+  border-radius: 10px !important;
+  width: 350px !important;
+  right: 350px !important;
 }

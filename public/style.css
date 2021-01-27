@@ -434,6 +434,8 @@ img {
   height: 50vh;
   display: grid;
   margin: auto;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .dropdown-item.active {
@@ -610,7 +612,8 @@ ul.dropdown-menu.inner.show > li {
 .ajs-message {
   border: 2px solid var(--darkestgrey) !important;
   border-radius: 10px !important;
-  width: 400px !important;
+  width: 350px !important;
+  right: 350px !important;
 }
 
 .alertify .ajs-dialog,
@@ -673,10 +676,6 @@ ul.dropdown-menu.inner.show > li {
   padding: 21px 21px 0px 21px !important;
 }
 
-.alertify-notifier.ajs-right .ajs-message.ajs-visible {
-  right: 410px !important;
-}
-
 .alertify-notifier.ajs-bottom {
   bottom: 5vh !important;
 }
@@ -715,7 +714,7 @@ ul.dropdown-menu.inner.show > li {
   border-color: rgb(200, 200, 200);
   position: absolute;
   right: 30px;
-  top: 12px;
+  top: 15px;
 }
 
 #log-out:hover {
