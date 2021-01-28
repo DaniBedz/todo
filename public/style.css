@@ -598,9 +598,18 @@ label {
   height: calc(1.8rem + 1.3vw) !important;
   margin-top: auto !important;
   margin-bottom: calc(0.6rem + 0.9vw) !important;
-  background-color: #28a745;
-  padding-top: 3px !important;
+  padding-top: calc(0.1rem + 0.3vw) !important;
+  background-color: rgba(91, 189, 114);
+  color: var(--darkestgrey) !important;
+}
+
+.save:hover {
+  background-color: rgb(69, 143, 87);
   color: white !important;
+}
+
+.save:active {
+  background-color: rgba(91, 189, 114) !important;
 }
 
 .desc-save {
