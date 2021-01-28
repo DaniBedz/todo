@@ -228,15 +228,20 @@ export class TaskManager {
     taskManager.render();
   }
 
+  // Sort taskAssignedTo ascending
   sortByTaskAssignedToAsc() {
     taskManager.tasks.sort((a, b) => {
-       if (a.taskAssignedTo == 'none') {
+       if (a.taskAssignedTo === 'none') {
+        return 1;
+       }
+      if (a.taskAssignedTo < b.taskAssignedTo) {
         return -1;
       }
-      else if (b.taskAssignedTo == 'none') {
+      if (a.taskAssignedTo > b.taskAssignedTo) {
         return 1;
+      } else {
+        return 0;
       }
-        return a.taskAssignedTo - b.taskAssignedTo;
     });
     taskManager.save();
     taskManager.render();
@@ -244,14 +249,18 @@ export class TaskManager {
 
   // Sort taskAssignedTo descending
   sortByTaskAssignedToDsc() {
-     taskManager.tasks.sort((a, b) => {
-       if (a.taskAssignedTo == 'none') {
+    taskManager.tasks.sort((a, b) => {
+      if (a.taskAssignedTo === 'none') {
+        return -1;
+       }
+      if (a.taskAssignedTo < b.taskAssignedTo) {
         return 1;
-       }
-       else if (b.taskAssignedTo == 'none') {
-         return -1;
-       }
-         return b.taskAssignedTo - a.taskAssignedTo;
+      }
+      if (a.taskAssignedTo > b.taskAssignedTo) {
+        return -1;
+      } else {
+        return 0;
+      }
     });
     taskManager.save();
     taskManager.render();

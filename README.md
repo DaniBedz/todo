@@ -1,4 +1,4 @@
-# Untitled ('To-do List')
+# taskr.me
 
 ## Created by: Dani Bednarski & Victoria Zelenyuk
 
