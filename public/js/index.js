@@ -209,6 +209,25 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
+// Change task name save button back onfocus change
+document.body.addEventListener('focusout', function (event) {
+  setTimeout(() => {
+    if (!event.target.classList.contains('save') && document.querySelector('.save')) {
+      document.querySelector('.save').innerText = "...";
+      document.querySelector('.save').classList.remove("save");
+    }
+  }, 10)
+});
+
+// Change task desc save button back onfocus change
+document.body.addEventListener('focusout', function (event) {
+  setTimeout(() => {
+    if (!event.target.classList.contains('desc-save') && document.querySelector('.desc-save')) {
+      document.querySelector('.desc-save').style.display = 'none';
+    }
+  }, 10)
+});
+
 // Enter button updates the task name
 document.body.addEventListener('keypress', function (event) {
   if (event.key === 'Enter' && event.target.placeholder === 'Type task name here..') {

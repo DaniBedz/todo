@@ -274,6 +274,11 @@ span.text {
 }
 
 .task-name {
+  background-color: var(--mediumgrey);
+  border-radius: 7px !important;
+  height: calc(1.75rem + 1.3vw) !important;
+  margin-top: auto !important;
+  margin-bottom: calc(0.6rem + 0.9vw) !important;
   margin-right: 3px;
 }
 
