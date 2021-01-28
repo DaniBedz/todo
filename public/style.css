@@ -139,7 +139,7 @@ caption {
 
 .btn-none {
   color: var(--darkestgrey);
-  background-color: whitesmoke;
+  background-color: whitesmoke !important;
 }
 
 .btn-none:hover {
