@@ -584,7 +584,7 @@ div.col {
   margin-top: -3px;
 }
 
-.text-white:not(.bg-success):not(.more) {
+.text-white:not(.bg-success):not(.more):not(.save):not(.desc-save) {
   color: rgb(200, 200, 200) !important;
 }
 
@@ -616,12 +616,21 @@ label {
   display: none;
   border: 2px solid var(--darkestgrey) !important;
   border-radius: 7px !important;
-  height: calc(1.75rem + 1.3vw) !important;
+  height: calc(1.8rem + 1.3vw) !important;
   margin-top: auto !important;
   margin-bottom: calc(0.6rem + 0.9vw) !important;
-  background-color: #28a745;
-  padding-top: 0.5vw !important;
+  padding-top: calc(0.1rem + 0.3vw) !important;
+  background-color: rgba(91, 189, 114);
+  color: var(--darkestgrey) !important;
+}
+
+.desc-save:hover {
+  background-color: rgb(69, 143, 87);
   color: white !important;
+}
+
+.desc-save:active {
+  background-color: rgba(91, 189, 114) !important;
 }
 
 li.selected.active,

@@ -182,7 +182,7 @@ document.body.addEventListener('click', function (event) {
 // Show/hide description save button
 document.body.addEventListener('click', function (event) {
   if (event.target.placeholder == 'Description..') {
-    event.target.nextSibling.nextSibling.style.display = 'flex';
+    event.target.nextSibling.nextSibling.style.display = 'inline-block';
   }
 });
 
