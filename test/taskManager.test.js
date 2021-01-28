@@ -1,5 +1,5 @@
 //Unit testing
-import { TaskManager } from '../js/taskManager.js';
+import { TaskManager } from '../public/js/taskManager.js';
 import assert from 'assert';
 
 global.localStorage = {

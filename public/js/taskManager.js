@@ -138,7 +138,9 @@ export class TaskManager {
     }
     const tasksJson = JSON.stringify(this.tasks);
     localStorage.setItem('tasks', tasksJson);
-    this.saveToFB();
+    if (typeof window !== 'undefined') {
+      this.saveToFB();
+    }
   }
 
   load() {
