@@ -50,8 +50,11 @@ Extra: You can add test data by adding a new task with the name '!test', or clea
 
 ### Planned Fixes:
 
+- Task description to stay open when saving task name
 - Calendar circles overlapping border
 
 ### Future Features to Add:
 
 - Add light mode
+- Color picker for custom assignees / types
+- Password reset branding/redirect

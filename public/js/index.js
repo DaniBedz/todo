@@ -87,12 +87,12 @@ newTaskForm.addEventListener('click', event => {
 
   // Add test data
   if (taskName === '!test') {
-    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'Dani', 'high', 'in-progress', 'Fri 22/01/21');
     taskManager.addTask('leisure', 'Stream on Twitch 🎮', 'Run competition with followers', 'Victoria', 'low', 'completed', 'Thu 28/01/21');
+    taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.addTask('other', 'Fix boiler 🔧', 'Call plumber @ 2pm', 'Dani', 'medium', 'not-started', 'Wed 27/01/21');
+    taskManager.addTask('work', 'Complete client report 📈', 'Include final figures for Mr Yamamoto', 'Dani', 'high', 'in-progress', 'Fri 22/01/21');
     taskManager.addTask('none', 'Grocery shopping 🛒', 'Need milk, bread and tea', 'Victoria', 'low', 'none', 'Sat 30/01/21');
     taskManager.addTask('leisure', 'Go for a nice walk 🚶‍♀️', 'Albert park lake', 'Victoria', 'none', 'not-started', '');
-    taskManager.addTask('none', 'Walk the dog 🐶', 'He loves it!', 'none', 'low', 'not-started', '');
     taskManager.save();
     taskManager.customAssigneesArray = ['Victoria', 'Dani'];
     localStorage.customAssignees = JSON.stringify(taskManager.customAssigneesArray);
@@ -170,7 +170,7 @@ document.body.addEventListener('click', function (event) {
 
 // Show/hide description field
 document.body.addEventListener('click', function (event) {
-  if (event.target.id.includes('descriptionBtn') && event.target.innerText === '...') {
+  if (event.target.id.includes('descriptionBtn') && event.target.innerText == '...') {
     if (event.target.parentNode.nextElementSibling.style.display === 'none') {
       event.target.parentNode.nextElementSibling.style.display = 'flex';
     } else {
@@ -187,7 +187,7 @@ document.body.addEventListener('click', function (event) {
 });
 
 // Clicking 'Save' button updates the task name
-document.body.addEventListener('click', function (event) {
+document.body.addEventListener('mousedown', function (event) {
   if (event.target.classList.contains('save')) {
     let taskId = event.target.id.replace(/\D/g, '')
     taskManager.updateTaskName(taskId, event.target.previousElementSibling.value)
@@ -210,22 +210,59 @@ document.body.addEventListener('click', function (event) {
 });
 
 // Change task name save button back onfocus change
-document.body.addEventListener('focusout', function (event) {
-  setTimeout(() => {
-    if (!event.target.classList.contains('save') && document.querySelector('.save')) {
-      document.querySelector('.save').innerText = "...";
-      document.querySelector('.save').classList.remove("save");
+document.body.addEventListener('click', function (event) {
+  // if input field is clicked
+  if (event.target.id.includes('name')) {
+    // collect all input fields
+    let inputs = document.querySelectorAll(".task-name");
+    for (let i = 0; i < inputs.length; i++) {
+      // add listeners to each for focusout
+      inputs[i].addEventListener('focusout', function (event) {
+        let descField = `description${event.target.id.replace(/\D/g, '')}`;
+        // if description field is showing
+        if (event.target.parentNode.nextSibling.nextSibling.style.display === 'flex') {
+          // Do something
+          let saveBtns = document.getElementsByClassName("save");
+          for (let i = 0; i < saveBtns.length; i++) {
+            // Set all save buttons to ...
+            saveBtns[i].innerText = "...";
+            saveBtns[i].classList.remove("save");
+          }
+        } else {
+          // Otherwise hide description fields 
+          document.getElementById(descField).style.display = 'none';
+          // Collect all save btns
+          let saveBtns = document.getElementsByClassName("save");
+          for (let i = 0; i < saveBtns.length; i++) {
+            // Set all save buttons to ... save
+            saveBtns[i].innerText = "...";
+            saveBtns[i].classList.remove("save");
+          }
+          taskManager.render();
+        }
+      })
     }
-  }, 10)
+  }
 });
 
 // Change task desc save button back onfocus change
-document.body.addEventListener('focusout', function (event) {
-  setTimeout(() => {
-    if (!event.target.classList.contains('desc-save') && document.querySelector('.desc-save')) {
-      document.querySelector('.desc-save').style.display = 'none';
-    }
-  }, 10)
+document.body.addEventListener('click', function (event) {
+  // if input field is clicked
+  if (event.target.id.includes('description')) {
+    document.body.addEventListener('click', function (event) {
+      if (!event.target.id.includes('description') && !event.target.id.includes('descriptionSaveBtn')) {
+        // Collect all save btns
+        let saveBtns = document.getElementsByClassName("desc-save");
+        // Collect all input fields
+        let inputs = document.querySelectorAll(".task-desc");
+        
+        // Add focusout listeners for all inputs
+        for (let i = 0; i < inputs.length; i++) {
+              saveBtns[i].style.display = 'none';
+        };
+      }
+    })
+  } 
 });
 
 // Enter button updates the task name
