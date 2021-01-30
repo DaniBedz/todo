@@ -23,6 +23,7 @@ body {
   border-radius: 7px !important;
   outline: none !important;
   padding-left: 1.5rem !important;
+  height: 2.8rem;
 }
 
 #addnewtaskdiv {
@@ -546,7 +547,7 @@ img {
   }
 
   .taskr {
-    margin-bottom: 10px;
+    margin-bottom: 7px;
   }
 
   #addnewtaskdiv {
@@ -555,6 +556,22 @@ img {
   }
   .title-bar {
     border-bottom: 3px solid var(--darkestgrey);
+  }
+  .btn-sort {
+    display: inline-block !important;
+  }
+
+  #sort-menu {
+    display: inline-block !important;
+  }
+
+  #newTaskNameInput {
+    position: absolute;
+    right: 54px;
+  }
+
+  .task-width {
+    width: calc(-10rem + 100vw) !important;
   }
 }
 
@@ -795,19 +812,85 @@ ul.dropdown-menu.inner.show > li {
 }
 
 #log-out {
-  width: 5rem;
+  min-width: 3.5rem !important;
   color: rgb(200, 200, 200);
   background-color: var(--darkestgrey);
   border-color: rgb(200, 200, 200);
   position: absolute;
-  right: 30px;
-  top: 9px;
+  right: 24px;
+  top: 8px;
 }
 
 #log-out:hover {
   border-color: rgb(200, 200, 200);
   background-color: rgb(200, 200, 200);
   color: var(--darkestgrey);
+}
+
+.btn-sort {
+  display: none;
+  margin-left: 10px;
+  min-width: 3.5rem !important;
+  border-radius: 10px;
+  position: absolute;
+  height: 2.8rem;
+  padding-top: 0.74rem !important;
+  padding-bottom: 0.74rem !important;
+}
+
+.btn-sort:hover {
+  border-color: rgb(200, 200, 200);
+  background-color: rgb(200, 200, 200);
+  color: var(--darkestgrey);
+}
+
+.sort-selector {
+  padding-top: 13px;
+  padding-bottom: 12px;
+  width: 105px;
+  overflow-x: clip !important;
+  overflow: clip !important;
+  color: var(--darkestgrey) !important;
+  background-color: #6baadf !important;
+  border: none !important;
+}
+
+.sort-selector:hover {
+  background-color: rgb(54, 103, 142) !important;
+}
+
+.sort-selector:active {
+  background-color: #6baadf !important;
+}
+
+.inner.show {
+  overflow: clip !important;
+}
+
+[data-id='sort-btn'] {
+  margin-left: 0.6rem;
+  height: 2.85rem;
+  margin-right: -19px !important;
+  width: 3.5rem !important;
+  min-width: 0;
+}
+
+.sortDropDown {
+  width: 158px !important;
+}
+
+.filter-option-inner-inner {
+  color: rgb(200, 200, 200);
+}
+
+#sort-menu {
+  display: none;
+}
+
+.sort-text {
+  margin-left: 14px;
+  top: 13px !important;
+  position: absolute;
 }
 
 #main-header {
@@ -877,6 +960,8 @@ ul.dropdown-menu.inner.show > li {
   font-size: 2rem;
   border-radius: 10px;
   width: 100% !important;
+  line-height: 1.3 !important;
+  padding-bottom: 3px;
 }
 .me {
   color: steelblue;

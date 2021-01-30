@@ -55,11 +55,22 @@
       <!-- Start Top Bar -->
       <div class="row title-bar text-white py-3 mx-auto top-rounded justify-content-between">
         <div id='main-header' class="col-lg-7 d-flex flex-nowrap">
-          <div class='taskr'>taskr<span class='me'>.me</span> <button id="log-out" class="btn btn-outline-dark px-1 py-1 mb-1">Log Out</button> </div>
+          <div class='taskr'>taskr<span class='me'>.me</span><button id="log-out" class="btn btn-outline-dark px-1 py-1 mb-1">Log Out</button> </div>
         </div>
         <div data-target='#desc1'>
         </div>
-        <div id="addnewtaskdiv" class="col-sm-12 col-lg-5">
+        <div id="sort-menu" class="col-1">
+          <select id="sort-btn" class="bg-grey selectpicker" data-width="fit"
+           data-noneSelectedText="Sorted" data-actionsBox="true" data-max-options="0" title="Sort">
+            <option class="bg-grey" value="taskType" data-content="<span class='btn btn-danger sort-selector'>Task Type</span>">Task Type</option>
+            <option class="bg-grey" value="taskName" data-content="<span class='btn btn-danger sort-selector'>Task Name</span>">Task Name</option>
+            <option class="bg-grey" value="taskAssignedTo" data-content="<span class='btn btn-danger sort-selector'>Assigned</span>">Assigned</option>
+            <option class="bg-grey" value="priority" data-content="<span class='btn btn-danger sort-selector'>Priority</span>">Priority</option>
+            <option class="bg-grey" value="status" data-content="<span class='btn btn-danger sort-selector'>Status</span>">Status</option>
+            <option class="bg-grey" value="dueDate" data-content="<span class='btn btn-danger sort-selector'>Due Date</span>">Due Date</option>
+          </select>
+        </div>
+        <div id="addnewtaskdiv" class="col-11 col-lg-5">
           <div class="input-group d-flex flex-nowrap justify-content-end">
             <form id="newTaskForm">
               <input id="newTaskNameInput" type="text" class="text-white pl-3 task-width rounded" placeholder="Create New Task.." autofocus>

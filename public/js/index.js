@@ -552,4 +552,32 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
+// Add sort-text class to sort button
+setTimeout(()=> {
+  let sortText = document.querySelector('.filter-option-inner-inner');
+  sortText.classList.add('sort-text');
+}, 100);
+
+setTimeout(()=> {
+  let sortDropDown = document.querySelector('.dropdown-menu');
+  sortDropDown.classList.add('sortDropDown');
+}, 100);
+
+document.body.addEventListener('click', function (event) {
+  if (event.target.innerHTML.includes('Sort') || event.target.innerHTML.includes('sort')) {
+    let sortSelectors = document.getElementsByClassName('sort-selector');
+    for (let i = 0; i < sortSelectors.length; i++) {
+      // add listeners to each selector
+      sortSelectors[i].addEventListener('click', function (event) {
+        console.log('Clicked');
+        $('#sort-btn').selectpicker('destroy');
+        $('#sort-btn').selectpicker('val', '');
+        $('select').selectpicker();
+        let sortText = document.querySelector('.filter-option-inner-inner');
+        sortText.classList.add('sort-text');
+      })
+    }
+  }
+});
+
 window.initDivMouseOver = initDivMouseOver;
