@@ -367,16 +367,20 @@ input:focus {
   overflow: visible;
 }
 
-:hover::placeholder {
-  color: rgb(200, 200, 200) !important;
+.date::-webkit-input-placeholder {
+  top: -12px;
 }
 
-:hover::-moz-placeholder {
-  color: rgb(200, 200, 200) !important;
+.important::-webkit-input-placeholder {
+  top: -12px !important;
 }
 
-:hover::-moz-placeholder {
-  color: rgb(200, 200, 200) !important;
+.form-control:not(#newTaskNameInput):hover::placeholder {
+  color: var(--mediumgrey) !important;
+}
+
+#newTaskNameInput:hover::placeholder {
+  color: var(--darkestgrey) !important;
 }
 
 .date::-moz-placeholder {
@@ -384,6 +388,14 @@ input:focus {
   font-size: calc(1.3rem + 1vw) !important;
   position: relative;
   vertical-align: middle;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+}
+
+::placeholder {
+  color: var(--lightgrey);
 }
 
 .date::-webkit-input-placeholder {
@@ -873,6 +885,8 @@ ul.dropdown-menu.inner.show > li {
   margin-right: -19px !important;
   width: 3.5rem !important;
   min-width: 0;
+  background-color: var(--darkestgrey) !important;
+  border-radius: 10px !important;
 }
 
 .sortDropDown {
@@ -888,9 +902,11 @@ ul.dropdown-menu.inner.show > li {
 }
 
 .sort-text {
-  margin-left: 14px;
-  top: 13px !important;
+  margin-left: 11px;
+  top: 11px !important;
   position: absolute;
+  font-size: 1rem;
+  color: var(--lightgrey);
 }
 
 #main-header {

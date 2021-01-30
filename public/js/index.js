@@ -1,5 +1,5 @@
 import { TaskManager } from './taskManager.js';
-import alertifySettings from './alertify.js'
+import alertifySettings from './alertify.js';
 
 // Initialise the taskManager object
 const taskManager = new TaskManager();
@@ -19,6 +19,13 @@ auth.onAuthStateChanged(user => {
       }
     })
   }
+});
+
+// Show notification if successful signin / fix safari padding / initialise taskUp/taskDown events
+document.addEventListener("DOMContentLoaded", function () {
+  fixSafariPadding();
+  initDivMouseOver();
+  showWelcome();
 });
 
 // Handles display of intro div
@@ -41,18 +48,31 @@ function hideLoadingDiv() {
 }
 window.hideLoadingDiv = hideLoadingDiv;
 
-// Show notification if successful signin & initialise taskUp/taskDown events
-window.onload = () => {
-  setTimeout(() => {
-    if (localStorage.isFirstLogin == 1) {
+// Inject class to fix strange padding issue with SlidePad app / safari
+function fixSafariPadding() {
+  if (localStorage.isSlidePad == 1) {
+    let placeholders = document.querySelectorAll('.date');
+    if (placeholders.length) {
+      for (let i = 0; i < placeholders.length; i++) {
+        if (placeholders[i].placeholder == '') {
+          placeholders[i].classList.add('important');
+        }
+      }
+    } else {
+      setTimeout(fixSafariPadding, 100);
+    }
+  }
+};
+
+// Show welcome message
+function showWelcome() {
+   if (localStorage.isFirstLogin == 1) {
       alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Thanks for signing up! I hope this is useful.</strong>`, `success`, 5);
       localStorage.isFirstLogin = 0;
     } else {
-        alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 3)
-      }
-    }, 1000);
-  initDivMouseOver();
-};
+      alertify.notify(`<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Welcome back!</strong>`, `success`, 3)
+    }
+}
 
 // Show up/down arrows
 function initDivMouseOver()   {
@@ -569,7 +589,6 @@ document.body.addEventListener('click', function (event) {
     for (let i = 0; i < sortSelectors.length; i++) {
       // add listeners to each selector
       sortSelectors[i].addEventListener('click', function (event) {
-        console.log('Clicked');
         $('#sort-btn').selectpicker('destroy');
         $('#sort-btn').selectpicker('val', '');
         $('select').selectpicker();
