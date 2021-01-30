@@ -21,11 +21,19 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-// Show notification if successful signin / fix safari padding / initialise taskUp/taskDown events
+// Page setup
 document.addEventListener("DOMContentLoaded", function () {
   fixSafariPadding();
   initDivMouseOver();
   showWelcome();
+
+  // Add classes for sort button
+  let sortText = document.querySelector('.filter-option-inner-inner');
+  sortText.classList.add('sort-text');
+
+  // Add classes for sort dropdown
+  let sortDropDown = document.querySelector('.dropdown-menu');
+  sortDropDown.classList.add('sortDropDown');
 });
 
 // Handles display of intro div
@@ -572,17 +580,7 @@ document.body.addEventListener('click', function (event) {
   }
 });
 
-// Add sort-text class to sort button
-setTimeout(()=> {
-  let sortText = document.querySelector('.filter-option-inner-inner');
-  sortText.classList.add('sort-text');
-}, 100);
-
-setTimeout(()=> {
-  let sortDropDown = document.querySelector('.dropdown-menu');
-  sortDropDown.classList.add('sortDropDown');
-}, 100);
-
+// Sort dropdown functionalty
 document.body.addEventListener('click', function (event) {
   if (event.target.innerHTML.includes('Sort') || event.target.innerHTML.includes('sort')) {
     let sortSelectors = document.getElementsByClassName('sort-selector');
@@ -594,6 +592,81 @@ document.body.addEventListener('click', function (event) {
         $('select').selectpicker();
         let sortText = document.querySelector('.filter-option-inner-inner');
         sortText.classList.add('sort-text');
+
+        // Call sort functions
+        if (event.target.innerText === 'Task Type') {
+          if (taskManager.taskTypeOrder === true && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskTypeAsc();
+            initDivMouseOver();
+            resetSorts();
+            taskManager.taskTypeOrder = false;
+          }
+          else if (taskManager.taskTypeOrder === false && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskTypeDsc();
+            initDivMouseOver();
+            resetSorts();
+          }
+        } else if (event.target.innerText === 'Task Name') {
+          if (taskManager.taskNameOrder === true && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskNameAsc();
+            initDivMouseOver();
+            resetSorts();
+            taskManager.taskNameOrder = false;
+          }
+          else if (taskManager.taskNameOrder === false && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskNameDsc();
+            initDivMouseOver();
+            resetSorts();
+          }
+        } else if (event.target.innerText === 'Assigned') {
+          if (taskManager.taskAssignedToOrder === true && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskAssignedToAsc();
+            initDivMouseOver();
+            resetSorts();
+            taskManager.taskAssignedToOrder = false;
+          }
+          else if (taskManager.taskAssignedToOrder === false && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskAssignedToDsc();
+            initDivMouseOver();
+            resetSorts();
+          }
+        } else if (event.target.innerText === 'Priority') {
+          if (taskManager.taskPriorityOrder === true && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskPriorityAsc();
+            initDivMouseOver();
+            resetSorts();
+            taskManager.taskPriorityOrder = false;
+          }
+          else if (taskManager.taskPriorityOrder === false && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskPriorityDsc();
+            initDivMouseOver();
+            resetSorts();
+          }
+        } else if (event.target.innerText === 'Status') {
+          if (taskManager.taskStatusOrder === true && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskStatusAsc();
+            initDivMouseOver();
+            resetSorts();
+            taskManager.taskStatusOrder = false;
+          }
+          else if (taskManager.taskStatusOrder === false && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskStatusDsc();
+            initDivMouseOver();
+            resetSorts();
+          }
+        } else if (event.target.innerText === 'Due Date') {
+          if (taskManager.taskDueDateOrder === true && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskDueDateAsc();
+            initDivMouseOver();
+            resetSorts();
+            taskManager.taskDueDateOrder = false;
+          }
+          else if (taskManager.taskDueDateOrder === false && taskManager.tasks.length > 0) {
+            taskManager.sortByTaskDueDateDsc();
+            initDivMouseOver();
+            resetSorts();
+          }
+        }
       })
     }
   }
