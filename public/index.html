@@ -10,12 +10,16 @@
   <link rel="manifest" href="./img/favicon/site.webmanifest">
   <link rel="shortcut icon" href="./img/favicon/favicon.ico">
   <title>taskr.me</title>
-  <script defer>
-    let app;
-    function setVar() {
-    app = window.frames[0];
-    }
+  <script>
     setTimeout(setVar, 1000);
+    function setVar() {
+      globalThis.app = window.frames[0];
+      if (window.__pad) {
+        localStorage.setItem('isSlidePad', 1)
+      } else {
+        localStorage.setItem('isSlidePad', 0)
+      }
+    }
   </script>
 </head>
 <frameset>
