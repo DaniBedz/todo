@@ -825,9 +825,8 @@ ul.dropdown-menu.inner.show > li {
 
 #log-out {
   min-width: 3.5rem !important;
-  color: rgb(200, 200, 200);
+  color: var(--lightgrey);
   background-color: var(--darkestgrey);
-  border-color: rgb(200, 200, 200);
   position: absolute;
   right: 24px;
   top: 8px;
@@ -887,6 +886,12 @@ ul.dropdown-menu.inner.show > li {
   min-width: 0;
   background-color: var(--darkestgrey) !important;
   border-radius: 10px !important;
+}
+
+[data-id='sort-btn']:hover * {
+  border-color: rgb(200, 200, 200) !important;
+  background-color: rgb(200, 200, 200) !important;
+  color: var(--darkestgrey) !important;
 }
 
 .sortDropDown {

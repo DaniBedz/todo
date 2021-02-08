@@ -396,6 +396,9 @@ export class TaskManager {
 
     // Make selectors active
     $('select').selectpicker();
+
+    // Fix padding
+    fixSafariPadding();
   }
 
   // Add child node, rather than a full render

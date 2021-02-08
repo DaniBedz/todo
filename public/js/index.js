@@ -71,6 +71,7 @@ function fixSafariPadding() {
     }
   }
 };
+window.fixSafariPadding = fixSafariPadding;
 
 // Show welcome message
 function showWelcome() {
@@ -144,13 +145,13 @@ newTaskForm.addEventListener('click', event => {
   }
 
   // Validation code
-  if (taskName.length < 3) {
-    alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;New task input invalid! </strong>&nbsp;Field must have more than 2 characters.', 'error', 5);
-    return;
-  } else {
+  // if (taskName.length < 3) {
+  //   alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-exclamation-triangle faa-shake animated ml-n2"></i>&nbsp;&nbsp;New task input invalid! </strong>&nbsp;Field must have more than 2 characters.', 'error', 5);
+  //   return;
+  // } else {
     taskManager.addNode(taskName);
     alertify.notify('<strong class="font__weight-semibold"><i class="start-icon fa fa-thumbs-up faa-bounce animated ml-n2"></i>&nbsp;&nbsp;Task Added</strong>', 'success', 2);
-  }
+  // }
 
   // Clear newTaskNameInput value
   newTaskNameInput.value = '';
