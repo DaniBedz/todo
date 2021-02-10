@@ -331,7 +331,7 @@ document.body.addEventListener('click', function (event) {
 // Handle selector updates / customAssignees
 document.body.addEventListener('click', function (event) {
   if (taskManager.tasks.length > 0) {
-    if (event.target.innerHTML === '&nbsp;Edit&nbsp;' || event.target.id.includes('bs-select')) {
+    if (event.target.innerText.includes("Edit")) {
       let taskId = event.target.id.replace(/\D/g, '');
       if (event.target.id.includes('bs-select')) {
         taskId = event.target.childNodes[0].firstChild.id.replace(/\D/g, '');
